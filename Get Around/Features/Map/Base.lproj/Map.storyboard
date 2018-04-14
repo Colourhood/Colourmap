@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MapView" customModule="Get_Around" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF5-mj-HLM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bF5-mj-HLM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Zd-1O-GMa"/>
+                            <constraint firstItem="bF5-mj-HLM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BIP-li-gT5"/>
+                            <constraint firstAttribute="trailing" secondItem="bF5-mj-HLM" secondAttribute="trailing" id="eWc-a8-Y0U"/>
+                            <constraint firstAttribute="bottom" secondItem="bF5-mj-HLM" secondAttribute="bottom" id="wGj-ER-OsK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DYo-ar-KCa"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

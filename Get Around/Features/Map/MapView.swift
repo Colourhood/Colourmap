@@ -8,7 +8,7 @@ class MapView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        onTapMap()
+        onDragMap()
         view.addSubview(componentSubview)
         renderCallOut()
     }
@@ -17,10 +17,10 @@ class MapView: UIViewController {
 extension MapView {
 
     private func renderCallOut() {
-        componentSubview.frame.size = CGSize(width: view.frame.width * 0.7,
-                                             height: view.frame.height * 0.07)
-        componentSubview.center.y = Positions.centerY
-        componentSubview.center.x = Positions.centerX
+        componentSubview.frame.size = CGSize(width: Layout.width * 0.7,
+                                             height: Layout.height * 0.06)
+        componentSubview.center.y = Position.centerY
+        componentSubview.center.x = Position.centerX
         componentSubview.alpha = 0
 
         guard let callOut: CallOut = renderNib() else { return }
@@ -45,10 +45,8 @@ extension MapView {
         destination.frame = componentSubview.bounds
         componentSubview.addSubview(destination)
 
-        UIView.animate(withDuration: 1.3, animations: {
-            self.componentSubview.frame.size = CGSize(width: UIScreen.main.bounds.width,
-                                                      height: self.view.frame.height * 0.13)
-            self.componentSubview.frame.origin = CGPoint(x: 0, y: 20)
+        UIView.animate(withDuration: 1.3, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.componentSubview.frame = CGRect(x: 0, y: 20, width: Layout.width, height: Layout.height * 0.13)
         }, completion: { _ in
             self.renderPin()
         })
@@ -56,10 +54,8 @@ extension MapView {
 
     private func renderPin() {
         guard let pin: Pin = renderNib() else { return }
-        pin.frame.size = CGSize(width: view.bounds.width / 10, height: view.bounds.width / 10)
-        pin.center.x = Positions.centerX
-        pin.center.y = Positions.centerY
-
+        pin.frame.size = CGSize(width: Layout.width / 10, height: Layout.width / 10)
+        pin.center = CGPoint(x: Position.centerX, y: Position.centerY)
         view.addSubview(pin)
     }
 }
@@ -72,10 +68,10 @@ extension MapView: UIGestureRecognizerDelegate {
         return true
     }
 
-    func onTapMap() {
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector (MapView.dismissKeyboard))
-        gesture.delegate = self
-        map.addGestureRecognizer(gesture)
+    func onDragMap() {
+        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector (MapView.dismissKeyboard))
+        dragGesture.delegate = self
+        map.addGestureRecognizer(dragGesture)
     }
 
     @objc func dismissKeyboard(_ gesture: UIGestureRecognizer) {

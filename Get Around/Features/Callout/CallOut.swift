@@ -1,13 +1,8 @@
 import UIKit
 
-class CallOut: UILabel {
+class CallOut: UILabel, RoundedEdges {
     override func awakeFromNib() {
         backgroundColor = UIColor(white: 1, alpha: 0.9)
-        roundCorners()
-    }
-
-    private func roundCorners() {
-        layer.masksToBounds = true
-        layer.cornerRadius = frame.size.width * 0.043
+        roundEdges()
     }
 }

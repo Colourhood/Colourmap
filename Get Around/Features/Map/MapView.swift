@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class MapView: UIViewController {
+class MapView: DismissableKeyboardViewController {
     // MARK: Views
     @IBOutlet weak var map: MKMapView!
     let componentSubview = UIView()
@@ -71,23 +71,10 @@ extension MapView {
         pin.center = CGPoint(x: Position.centerX, y: Position.centerY)
         view.addSubview(pin)
     }
-}
-
-extension MapView: UIGestureRecognizerDelegate {
-
-    // MARK: Gesture Recognizer
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
 
     func onDragMap() {
-        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector (MapView.dismissKeyboard))
+        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector (dismissKeyboard))
         dragGesture.delegate = self
         map.addGestureRecognizer(dragGesture)
-    }
-
-    @objc func dismissKeyboard(_ gesture: UIGestureRecognizer) {
-        view.endEditing(true)
     }
 }

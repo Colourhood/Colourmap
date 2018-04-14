@@ -1,10 +1,9 @@
 import UIKit
 
-class Destination: UIView {
+class Destination: UIView, RoundedEdges {
     @IBOutlet weak var destinationTextfield: UITextField!
 
     override func awakeFromNib() {
-        layer.masksToBounds = true
-        layer.cornerRadius = frame.size.width * 0.043
+        roundEdges()
     }
 }

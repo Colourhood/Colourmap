@@ -22,6 +22,8 @@
 		09B836DD2081ED65007E4FA1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B836DC2081ED65007E4FA1 /* MapKit.framework */; };
 		09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836DF2081EDBC007E4FA1 /* Pin.swift */; };
 		09B836E320820418007E4FA1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E220820418007E4FA1 /* LocationService.swift */; };
+		09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E52082BE85007E4FA1 /* RoundCorners.swift */; };
+		09B836E82082C287007E4FA1 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E72082C287007E4FA1 /* DismissKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Get Around.entitlements"; sourceTree = "<group>"; };
 		09B836DF2081EDBC007E4FA1 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		09B836E220820418007E4FA1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		09B836E52082BE85007E4FA1 /* RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorners.swift; sourceTree = "<group>"; };
+		09B836E72082C287007E4FA1 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,7 @@
 				0921AD2F20808A2800E9C608 /* Resources */,
 				0921AD3020808A3800E9C608 /* Features */,
 				09B836E1208203F7007E4FA1 /* Services */,
+				09B836E42082BE3F007E4FA1 /* HigherOrderViews */,
 				0921AD3B20808F9600E9C608 /* Layout */,
 			);
 			path = "Get Around";
@@ -175,6 +180,15 @@
 				09B836E220820418007E4FA1 /* LocationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		09B836E42082BE3F007E4FA1 /* HigherOrderViews */ = {
+			isa = PBXGroup;
+			children = (
+				09B836E52082BE85007E4FA1 /* RoundCorners.swift */,
+				09B836E72082C287007E4FA1 /* DismissKeyboard.swift */,
+			);
+			path = HigherOrderViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +285,8 @@
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
 				0921AD3720808B4A00E9C608 /* CallOut.swift in Sources */,
+				09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */,
+				09B836E82082C287007E4FA1 /* DismissKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

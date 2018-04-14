@@ -1,10 +1,14 @@
 import UIKit
+import MapKit
 
 class MapView: UIViewController {
+    // MARK: Views
+    @IBOutlet weak var map: MKMapView!
     let componentSubview = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        onTapMap()
         view.addSubview(componentSubview)
         renderCallOut()
     }
@@ -52,12 +56,29 @@ extension MapView {
 
     private func renderPin() {
         guard let pin: Pin = renderNib() else { return }
-        pin.frame = CGRect(x: Positions.centerX - 20,
-                           y: Positions.centerY - 20,
-                           width: view.bounds.width / 10,
-                           height: view.bounds.width / 10)
+        pin.frame.size = CGSize(width: view.bounds.width / 10, height: view.bounds.width / 10)
+        pin.center.x = Positions.centerX
+        pin.center.y = Positions.centerY
 
         view.addSubview(pin)
     }
 }
 
+extension MapView: UIGestureRecognizerDelegate {
+
+    // MARK: Gesture Recognizer
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    func onTapMap() {
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector (MapView.dismissKeyboard))
+        gesture.delegate = self
+        map.addGestureRecognizer(gesture)
+    }
+
+    @objc func dismissKeyboard(_ gesture: UIGestureRecognizer) {
+        view.endEditing(true)
+    }
+}

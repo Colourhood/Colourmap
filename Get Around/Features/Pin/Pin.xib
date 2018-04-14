@@ -18,6 +18,6 @@
         </imageView>
     </objects>
     <resources>
-        <image name="pin" width="110" height="110"/>
+        <image name="pin" width="256" height="256"/>
     </resources>
 </document>

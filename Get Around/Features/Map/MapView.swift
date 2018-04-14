@@ -11,17 +11,9 @@ class MapView: DismissableKeyboardViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        showUserLocationOnMap()
         onDragMap()
         view.addSubview(componentSubview)
         renderCallOut()
-    }
-}
-
-extension MapView: MKMapViewDelegate {
-    // MARK: MapKit
-    func showUserLocationOnMap() {
-        map.showsUserLocation = true
     }
 }
 

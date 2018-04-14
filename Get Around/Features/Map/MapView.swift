@@ -6,16 +6,27 @@ class MapView: UIViewController {
     @IBOutlet weak var map: MKMapView!
     let componentSubview = UIView()
 
+    // MARK: Data
+    var locationService = LocationService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        showUserLocationOnMap()
         onDragMap()
         view.addSubview(componentSubview)
         renderCallOut()
     }
 }
 
-extension MapView {
+extension MapView: MKMapViewDelegate {
+    // MARK: MapKit
+    func showUserLocationOnMap() {
+        map.showsUserLocation = true
+    }
+}
 
+extension MapView {
+    // MARK: Component Rendering
     private func renderCallOut() {
         componentSubview.frame.size = CGSize(width: Layout.width * 0.7,
                                              height: Layout.height * 0.06)
@@ -46,7 +57,9 @@ extension MapView {
         componentSubview.addSubview(destination)
 
         UIView.animate(withDuration: 1.3, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.componentSubview.frame = CGRect(x: 0, y: 20, width: Layout.width, height: Layout.height * 0.13)
+            self.componentSubview.frame.size = CGSize(width: Layout.width * 0.90, height: Layout.height * 0.13)
+            self.componentSubview.center.x = Position.centerX
+            self.componentSubview.frame.origin.y = self.componentSubview.frame.origin.y * 0.20
         }, completion: { _ in
             self.renderPin()
         })

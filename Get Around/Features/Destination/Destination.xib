@@ -17,13 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where Are You Headed?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T32-V7-apg" userLabel="Destination">
-                    <rect key="frame" x="20" y="10" width="184" height="24.5"/>
+                    <rect key="frame" x="20" y="10" width="333" height="24.5"/>
                     <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="15"/>
                     <color key="textColor" red="0.41702310370000001" green="0.4211520453" blue="0.4211520453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpW-cG-7gA" userLabel="Grey line">
-                    <rect key="frame" x="20" y="31.5" width="184" height="1"/>
+                    <rect key="frame" x="20" y="31.5" width="333" height="1"/>
                     <color key="backgroundColor" red="0.46549809644670048" green="0.46549809644670048" blue="0.46549809644670048" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="crd-9B-xWG"/>
@@ -35,23 +35,36 @@
                     <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKp-RE-ip9" userLabel="Panel Button">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="81"/>
+                    <connections>
+                        <action selector="panelWasPressed" destination="iN0-l3-epB" eventType="touchUpInside" id="Y5F-2L-hX8"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Hg2-Uu-SJL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.6" id="3sx-2Y-ozz"/>
                 <constraint firstItem="hpW-cG-7gA" firstAttribute="top" secondItem="T32-V7-apg" secondAttribute="bottom" constant="-3" id="4rP-IE-usb"/>
+                <constraint firstAttribute="bottom" secondItem="hKp-RE-ip9" secondAttribute="bottom" id="5e0-uU-Uih"/>
                 <constraint firstAttribute="trailing" secondItem="Hg2-Uu-SJL" secondAttribute="trailing" constant="20" id="5mX-Nw-Vej"/>
+                <constraint firstAttribute="trailing" secondItem="T32-V7-apg" secondAttribute="trailing" constant="20" id="HXK-cX-897"/>
+                <constraint firstItem="hKp-RE-ip9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ll3-c0-3Bd"/>
                 <constraint firstItem="Hg2-Uu-SJL" firstAttribute="top" secondItem="hpW-cG-7gA" secondAttribute="bottom" id="Q5j-hb-uV3"/>
                 <constraint firstItem="T32-V7-apg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="RYm-at-hC2"/>
                 <constraint firstItem="hpW-cG-7gA" firstAttribute="leading" secondItem="T32-V7-apg" secondAttribute="leading" id="W4b-iX-Zp8"/>
                 <constraint firstItem="T32-V7-apg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ZYa-A6-6E7"/>
+                <constraint firstItem="hKp-RE-ip9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jQ6-JD-31v"/>
                 <constraint firstItem="Hg2-Uu-SJL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="kjP-uq-WH8"/>
                 <constraint firstAttribute="bottom" secondItem="Hg2-Uu-SJL" secondAttribute="bottom" id="ugg-98-Yr9"/>
+                <constraint firstAttribute="trailing" secondItem="hKp-RE-ip9" secondAttribute="trailing" id="uuk-Qe-x4c"/>
                 <constraint firstItem="hpW-cG-7gA" firstAttribute="trailing" secondItem="T32-V7-apg" secondAttribute="trailing" id="yc4-i4-OcT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="destinationPanelButton" destination="hKp-RE-ip9" id="hOh-Z3-RyJ"/>
                 <outlet property="destinationTextfield" destination="Hg2-Uu-SJL" id="MXj-uy-dSB"/>
+                <outlet property="questionLabel" destination="T32-V7-apg" id="6Uu-9c-2sA"/>
             </connections>
             <point key="canvasLocation" x="32.5" y="324.5"/>
         </view>

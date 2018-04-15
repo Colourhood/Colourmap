@@ -4,18 +4,14 @@ import MapKit
 final class MapView: UIViewController {
     // MARK: Views
     @IBOutlet weak var map: MKMapView!
-    var componentSubview: ComponentManager!
-    var pinSubview: ComponentManager!
-    var locationService = LocationService()
+    var destinationSubview: ReDestination!
+    var pinSubview: RePin!
 
     override func viewDidLoad() {
-        componentSubview = ComponentManager(controller: self)
-        pinSubview = ComponentManager(controller: self)
+        destinationSubview = ReDestination(controller: self)
+        pinSubview = RePin(controller: self)
         map.dragToDismiss(controller: self)
-        super.viewDidLoad()
-
-        componentSubview.renderCallOutThenDestination { [weak self] in
-            self?.pinSubview.renderPin()
+        destinationSubview.animateIntroduction {
         }
     }
 }

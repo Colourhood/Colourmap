@@ -3,15 +3,13 @@ import CoreLocation
 
 final class LocationService: NSObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
-    public private(set) var currentLocation: CLLocation?
 
     override init() {
         super.init()
         manager.delegate = self
-        getLocationPermission()
     }
 
-    private func getLocationPermission() {
+    func getLocationPermission() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             manager.startUpdatingLocation()
@@ -22,6 +20,6 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.first
+        store.currentLocation = locations.first
     }
 }

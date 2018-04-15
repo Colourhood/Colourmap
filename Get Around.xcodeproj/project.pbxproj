@@ -12,8 +12,6 @@
 		0921AD23208088F100E9C608 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD21208088F100E9C608 /* Map.storyboard */; };
 		0921AD25208088F100E9C608 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD24208088F100E9C608 /* Assets.xcassets */; };
 		0921AD28208088F100E9C608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD26208088F100E9C608 /* LaunchScreen.storyboard */; };
-		0921AD3520808A9700E9C608 /* CallOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD3420808A9700E9C608 /* CallOut.xib */; };
-		0921AD3720808B4A00E9C608 /* CallOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD3620808B4A00E9C608 /* CallOut.swift */; };
 		0921AD3A20808C8B00E9C608 /* Pin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD3920808C8B00E9C608 /* Pin.xib */; };
 		0921AD3D20808FC200E9C608 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD3C20808FC200E9C608 /* Positions.swift */; };
 		09B836D42081C73E007E4FA1 /* Destination.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B836D32081C73E007E4FA1 /* Destination.xib */; };
@@ -24,9 +22,13 @@
 		09B836E320820418007E4FA1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E220820418007E4FA1 /* LocationService.swift */; };
 		09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E52082BE85007E4FA1 /* RoundCorners.swift */; };
 		09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */; };
-		09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EC2082D083007E4FA1 /* ComponentManager.swift */; };
+		09B836ED2082D083007E4FA1 /* ReDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EC2082D083007E4FA1 /* ReDestination.swift */; };
 		09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EF208329FF007E4FA1 /* DataStore.swift */; };
 		09B836F320833661007E4FA1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F220833661007E4FA1 /* SearchService.swift */; };
+		09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F5208347E5007E4FA1 /* ComponentManager.swift */; };
+		09B836F82083496E007E4FA1 /* RePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F72083496E007E4FA1 /* RePin.swift */; };
+		09B836FB20834B61007E4FA1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FA20834B61007E4FA1 /* Typealiases.swift */; };
+		09B836FD208360F9007E4FA1 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +39,6 @@
 		0921AD24208088F100E9C608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0921AD27208088F100E9C608 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0921AD29208088F100E9C608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0921AD3420808A9700E9C608 /* CallOut.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallOut.xib; sourceTree = "<group>"; };
-		0921AD3620808B4A00E9C608 /* CallOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallOut.swift; sourceTree = "<group>"; };
 		0921AD3920808C8B00E9C608 /* Pin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Pin.xib; sourceTree = "<group>"; };
 		0921AD3C20808FC200E9C608 /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		09B836D32081C73E007E4FA1 /* Destination.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Destination.xib; sourceTree = "<group>"; };
@@ -50,9 +50,13 @@
 		09B836E220820418007E4FA1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		09B836E52082BE85007E4FA1 /* RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorners.swift; sourceTree = "<group>"; };
 		09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableKeyboard.swift; sourceTree = "<group>"; };
-		09B836EC2082D083007E4FA1 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
+		09B836EC2082D083007E4FA1 /* ReDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReDestination.swift; sourceTree = "<group>"; };
 		09B836EF208329FF007E4FA1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		09B836F220833661007E4FA1 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		09B836F5208347E5007E4FA1 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
+		09B836F72083496E007E4FA1 /* RePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePin.swift; sourceTree = "<group>"; };
+		09B836FA20834B61007E4FA1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 				09B836E1208203F7007E4FA1 /* Services */,
 				09B836E42082BE3F007E4FA1 /* HigherOrderViews */,
 				0921AD3B20808F9600E9C608 /* Layout */,
+				09B836F920834B37007E4FA1 /* SwiftUtil */,
 			);
 			path = "Get Around";
 			sourceTree = "<group>";
@@ -113,7 +118,6 @@
 			children = (
 				0921AD3220808A5300E9C608 /* Launch */,
 				0921AD3120808A4200E9C608 /* Map */,
-				0921AD3320808A6200E9C608 /* Callout */,
 				09B836D22081C701007E4FA1 /* Destination */,
 				0921AD3820808C6800E9C608 /* Pin */,
 				09B836EB2082D029007E4FA1 /* ComponentManager */,
@@ -136,15 +140,6 @@
 				0921AD26208088F100E9C608 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
-			sourceTree = "<group>";
-		};
-		0921AD3320808A6200E9C608 /* Callout */ = {
-			isa = PBXGroup;
-			children = (
-				0921AD3420808A9700E9C608 /* CallOut.xib */,
-				0921AD3620808B4A00E9C608 /* CallOut.swift */,
-			);
-			path = Callout;
 			sourceTree = "<group>";
 		};
 		0921AD3820808C6800E9C608 /* Pin */ = {
@@ -203,7 +198,9 @@
 		09B836EB2082D029007E4FA1 /* ComponentManager */ = {
 			isa = PBXGroup;
 			children = (
-				09B836EC2082D083007E4FA1 /* ComponentManager.swift */,
+				09B836F4208347D9007E4FA1 /* Base */,
+				09B836EC2082D083007E4FA1 /* ReDestination.swift */,
+				09B836F72083496E007E4FA1 /* RePin.swift */,
 			);
 			path = ComponentManager;
 			sourceTree = "<group>";
@@ -214,6 +211,23 @@
 				09B836EF208329FF007E4FA1 /* DataStore.swift */,
 			);
 			path = DataStore;
+			sourceTree = "<group>";
+		};
+		09B836F4208347D9007E4FA1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				09B836F5208347E5007E4FA1 /* ComponentManager.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		09B836F920834B37007E4FA1 /* SwiftUtil */ = {
+			isa = PBXGroup;
+			children = (
+				09B836FA20834B61007E4FA1 /* Typealiases.swift */,
+				09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */,
+			);
+			path = SwiftUtil;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0921AD3520808A9700E9C608 /* CallOut.xib in Resources */,
 				0921AD3A20808C8B00E9C608 /* Pin.xib in Resources */,
 				09B836D42081C73E007E4FA1 /* Destination.xib in Resources */,
 				0921AD28208088F100E9C608 /* LaunchScreen.storyboard in Resources */,
@@ -304,16 +317,19 @@
 			files = (
 				09B836F320833661007E4FA1 /* SearchService.swift in Sources */,
 				09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */,
+				09B836FB20834B61007E4FA1 /* Typealiases.swift in Sources */,
 				09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */,
 				0921AD20208088F100E9C608 /* MapView.swift in Sources */,
+				09B836F82083496E007E4FA1 /* RePin.swift in Sources */,
+				09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
 				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
-				09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */,
+				09B836ED2082D083007E4FA1 /* ReDestination.swift in Sources */,
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
-				0921AD3720808B4A00E9C608 /* CallOut.swift in Sources */,
 				09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */,
+				09B836FD208360F9007E4FA1 /* NotificationExtensions.swift in Sources */,
 				09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

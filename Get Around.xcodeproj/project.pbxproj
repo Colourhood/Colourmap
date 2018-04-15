@@ -111,8 +111,10 @@
 			children = (
 				0921AD3220808A5300E9C608 /* Launch */,
 				0921AD3120808A4200E9C608 /* Map */,
-				09B836EB2082D029007E4FA1 /* ComponentManager */,
+				0921AD3320808A6200E9C608 /* Callout */,
+				09B836D22081C701007E4FA1 /* Destination */,
 				0921AD3820808C6800E9C608 /* Pin */,
+				09B836EB2082D029007E4FA1 /* ComponentManager */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -199,8 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				09B836EC2082D083007E4FA1 /* ComponentManager.swift */,
-				0921AD3320808A6200E9C608 /* Callout */,
-				09B836D22081C701007E4FA1 /* Destination */,
 			);
 			path = ComponentManager;
 			sourceTree = "<group>";

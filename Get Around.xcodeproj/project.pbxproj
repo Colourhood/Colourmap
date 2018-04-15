@@ -23,7 +23,8 @@
 		09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836DF2081EDBC007E4FA1 /* Pin.swift */; };
 		09B836E320820418007E4FA1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E220820418007E4FA1 /* LocationService.swift */; };
 		09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E52082BE85007E4FA1 /* RoundCorners.swift */; };
-		09B836E82082C287007E4FA1 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E72082C287007E4FA1 /* DismissKeyboard.swift */; };
+		09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */; };
+		09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EC2082D083007E4FA1 /* ComponentManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +47,8 @@
 		09B836DF2081EDBC007E4FA1 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		09B836E220820418007E4FA1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		09B836E52082BE85007E4FA1 /* RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorners.swift; sourceTree = "<group>"; };
-		09B836E72082C287007E4FA1 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
+		09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableKeyboard.swift; sourceTree = "<group>"; };
+		09B836EC2082D083007E4FA1 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,7 @@
 			children = (
 				0921AD3220808A5300E9C608 /* Launch */,
 				0921AD3120808A4200E9C608 /* Map */,
-				0921AD3320808A6200E9C608 /* Callout */,
-				09B836D22081C701007E4FA1 /* Destination */,
+				09B836EB2082D029007E4FA1 /* ComponentManager */,
 				0921AD3820808C6800E9C608 /* Pin */,
 			);
 			path = Features;
@@ -186,9 +187,19 @@
 			isa = PBXGroup;
 			children = (
 				09B836E52082BE85007E4FA1 /* RoundCorners.swift */,
-				09B836E72082C287007E4FA1 /* DismissKeyboard.swift */,
+				09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */,
 			);
 			path = HigherOrderViews;
+			sourceTree = "<group>";
+		};
+		09B836EB2082D029007E4FA1 /* ComponentManager */ = {
+			isa = PBXGroup;
+			children = (
+				09B836EC2082D083007E4FA1 /* ComponentManager.swift */,
+				0921AD3320808A6200E9C608 /* Callout */,
+				09B836D22081C701007E4FA1 /* Destination */,
+			);
+			path = ComponentManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,11 +293,12 @@
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
 				09B836D82081CC84007E4FA1 /* XIB+Extensions.swift in Sources */,
+				09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */,
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
 				0921AD3720808B4A00E9C608 /* CallOut.swift in Sources */,
 				09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */,
-				09B836E82082C287007E4FA1 /* DismissKeyboard.swift in Sources */,
+				09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,7 @@
 		09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E52082BE85007E4FA1 /* RoundCorners.swift */; };
 		09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */; };
 		09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EC2082D083007E4FA1 /* ComponentManager.swift */; };
+		09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EF208329FF007E4FA1 /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		09B836E52082BE85007E4FA1 /* RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorners.swift; sourceTree = "<group>"; };
 		09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableKeyboard.swift; sourceTree = "<group>"; };
 		09B836EC2082D083007E4FA1 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
+		09B836EF208329FF007E4FA1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		0921AD1C208088F100E9C608 /* Get Around */ = {
 			isa = PBXGroup;
 			children = (
+				09B836EE208329DD007E4FA1 /* DataStore */,
 				09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */,
 				0921AD1D208088F100E9C608 /* AppDelegate.swift */,
 				0921AD29208088F100E9C608 /* Info.plist */,
@@ -202,6 +205,14 @@
 			path = ComponentManager;
 			sourceTree = "<group>";
 		};
+		09B836EE208329DD007E4FA1 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				09B836EF208329FF007E4FA1 /* DataStore.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -289,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */,
+				09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */,
 				0921AD20208088F100E9C608 /* MapView.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,

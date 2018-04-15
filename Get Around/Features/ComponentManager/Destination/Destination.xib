@@ -34,6 +34,9 @@
                     <color key="textColor" red="0.37537879289999998" green="0.37909541460000001" blue="0.37909541460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="4VR-3r-bbF"/>
+                    </connections>
                 </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,6 +53,9 @@
                 <constraint firstItem="hpW-cG-7gA" firstAttribute="trailing" secondItem="T32-V7-apg" secondAttribute="trailing" id="yc4-i4-OcT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="destinationTextfield" destination="Hg2-Uu-SJL" id="MXj-uy-dSB"/>
+            </connections>
             <point key="canvasLocation" x="32.5" y="324.5"/>
         </view>
     </objects>

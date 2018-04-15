@@ -1,7 +1,7 @@
 import Foundation
 import CoreLocation
 
-class LocationService: NSObject, CLLocationManagerDelegate {
+final class LocationService: NSObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
     public private(set) var currentLocation: CLLocation?
 

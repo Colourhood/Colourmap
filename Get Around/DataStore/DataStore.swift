@@ -1,5 +1,6 @@
- import Foundation
+import Foundation
+import MapKit
 
- class DataStore: NSObject {
-    var location: String?
+final class DataStore: NSObject {
+    var addressSuggestions: [MKLocalSearchCompletion]?
  }

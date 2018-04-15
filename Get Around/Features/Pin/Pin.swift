@@ -1,4 +1,4 @@
 import UIKit
 
-class Pin: UIImageView {
+final class Pin: UIImageView {
 }

@@ -18,7 +18,7 @@
 		0921AD3D20808FC200E9C608 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD3C20808FC200E9C608 /* Positions.swift */; };
 		09B836D42081C73E007E4FA1 /* Destination.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B836D32081C73E007E4FA1 /* Destination.xib */; };
 		09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D52081C9EA007E4FA1 /* Destination.swift */; };
-		09B836D82081CC84007E4FA1 /* XIB+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D72081CC84007E4FA1 /* XIB+Extensions.swift */; };
+		09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D72081CC84007E4FA1 /* NibRender.swift */; };
 		09B836DD2081ED65007E4FA1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B836DC2081ED65007E4FA1 /* MapKit.framework */; };
 		09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836DF2081EDBC007E4FA1 /* Pin.swift */; };
 		09B836E320820418007E4FA1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E220820418007E4FA1 /* LocationService.swift */; };
@@ -26,6 +26,7 @@
 		09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */; };
 		09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EC2082D083007E4FA1 /* ComponentManager.swift */; };
 		09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836EF208329FF007E4FA1 /* DataStore.swift */; };
+		09B836F320833661007E4FA1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F220833661007E4FA1 /* SearchService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +43,7 @@
 		0921AD3C20808FC200E9C608 /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		09B836D32081C73E007E4FA1 /* Destination.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Destination.xib; sourceTree = "<group>"; };
 		09B836D52081C9EA007E4FA1 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
-		09B836D72081CC84007E4FA1 /* XIB+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XIB+Extensions.swift"; sourceTree = "<group>"; };
+		09B836D72081CC84007E4FA1 /* NibRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibRender.swift; sourceTree = "<group>"; };
 		09B836DC2081ED65007E4FA1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Get Around.entitlements"; sourceTree = "<group>"; };
 		09B836DF2081EDBC007E4FA1 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		09B836E72082C287007E4FA1 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableKeyboard.swift; sourceTree = "<group>"; };
 		09B836EC2082D083007E4FA1 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
 		09B836EF208329FF007E4FA1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		09B836F220833661007E4FA1 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +87,9 @@
 		0921AD1C208088F100E9C608 /* Get Around */ = {
 			isa = PBXGroup;
 			children = (
-				09B836EE208329DD007E4FA1 /* DataStore */,
 				09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */,
 				0921AD1D208088F100E9C608 /* AppDelegate.swift */,
-				0921AD29208088F100E9C608 /* Info.plist */,
+				09B836EE208329DD007E4FA1 /* DataStore */,
 				0921AD2F20808A2800E9C608 /* Resources */,
 				0921AD3020808A3800E9C608 /* Features */,
 				09B836E1208203F7007E4FA1 /* Services */,
@@ -101,6 +102,7 @@
 		0921AD2F20808A2800E9C608 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0921AD29208088F100E9C608 /* Info.plist */,
 				0921AD24208088F100E9C608 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -158,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0921AD3C20808FC200E9C608 /* Positions.swift */,
-				09B836D72081CC84007E4FA1 /* XIB+Extensions.swift */,
+				09B836D72081CC84007E4FA1 /* NibRender.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				09B836E220820418007E4FA1 /* LocationService.swift */,
+				09B836F220833661007E4FA1 /* SearchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -299,12 +302,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B836F320833661007E4FA1 /* SearchService.swift in Sources */,
 				09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */,
 				09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */,
 				0921AD20208088F100E9C608 /* MapView.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
-				09B836D82081CC84007E4FA1 /* XIB+Extensions.swift in Sources */,
+				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
 				09B836ED2082D083007E4FA1 /* ComponentManager.swift in Sources */,
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
@@ -453,7 +457,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BJE27J35HP;
-				INFOPLIST_FILE = "Get Around/Info.plist";
+				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -468,7 +472,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BJE27J35HP;
-				INFOPLIST_FILE = "Get Around/Info.plist";
+				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
 				PRODUCT_NAME = "$(TARGET_NAME)";

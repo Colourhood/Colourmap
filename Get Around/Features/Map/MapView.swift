@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class MapView: UIViewController {
+final class MapView: UIViewController {
     // MARK: Views
     @IBOutlet weak var map: MKMapView!
     var componentSubview: ComponentManager!

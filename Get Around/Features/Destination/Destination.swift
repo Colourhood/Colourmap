@@ -1,7 +1,8 @@
 import UIKit
 
-class Destination: UIView, RoundedEdges, UITextFieldDelegate {
+final class Destination: UIView, RoundedEdges {
     @IBOutlet weak var destinationTextfield: UITextField!
+    private let searchService = SearchService()
 
     override func awakeFromNib() {
         roundEdges()
@@ -9,6 +10,7 @@ class Destination: UIView, RoundedEdges, UITextFieldDelegate {
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {
-        store.location = textField.text
+        guard let address = textField.text else { return }
+        searchService.searchAddress(address)
     }
 }

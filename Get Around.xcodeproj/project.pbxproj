@@ -29,6 +29,11 @@
 		09B836F82083496E007E4FA1 /* RePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F72083496E007E4FA1 /* RePin.swift */; };
 		09B836FB20834B61007E4FA1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FA20834B61007E4FA1 /* Typealiases.swift */; };
 		09B836FD208360F9007E4FA1 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */; };
+		09B8370020836CDA007E4FA1 /* SearchResults.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B836FF20836CDA007E4FA1 /* SearchResults.xib */; };
+		09B8370220836E36007E4FA1 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370120836E36007E4FA1 /* SearchResults.swift */; };
+		09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B8370420836F55007E4FA1 /* AddressCell.xib */; };
+		09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370620836F76007E4FA1 /* AddressCell.swift */; };
+		09B837092083E0B0007E4FA1 /* ReSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B837082083E0B0007E4FA1 /* ReSearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +62,11 @@
 		09B836F72083496E007E4FA1 /* RePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePin.swift; sourceTree = "<group>"; };
 		09B836FA20834B61007E4FA1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
+		09B836FF20836CDA007E4FA1 /* SearchResults.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResults.xib; sourceTree = "<group>"; };
+		09B8370120836E36007E4FA1 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		09B8370420836F55007E4FA1 /* AddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
+		09B8370620836F76007E4FA1 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		09B837082083E0B0007E4FA1 /* ReSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +129,7 @@
 				0921AD3220808A5300E9C608 /* Launch */,
 				0921AD3120808A4200E9C608 /* Map */,
 				09B836D22081C701007E4FA1 /* Destination */,
+				09B836FE20836CBD007E4FA1 /* SearchResults */,
 				0921AD3820808C6800E9C608 /* Pin */,
 				09B836EB2082D029007E4FA1 /* ComponentManager */,
 			);
@@ -201,6 +212,7 @@
 				09B836F4208347D9007E4FA1 /* Base */,
 				09B836EC2082D083007E4FA1 /* ReDestination.swift */,
 				09B836F72083496E007E4FA1 /* RePin.swift */,
+				09B837082083E0B0007E4FA1 /* ReSearchResults.swift */,
 			);
 			path = ComponentManager;
 			sourceTree = "<group>";
@@ -228,6 +240,25 @@
 				09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */,
 			);
 			path = SwiftUtil;
+			sourceTree = "<group>";
+		};
+		09B836FE20836CBD007E4FA1 /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				09B836FF20836CDA007E4FA1 /* SearchResults.xib */,
+				09B8370120836E36007E4FA1 /* SearchResults.swift */,
+				09B8370320836F3B007E4FA1 /* Cells */,
+			);
+			path = SearchResults;
+			sourceTree = "<group>";
+		};
+		09B8370320836F3B007E4FA1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				09B8370420836F55007E4FA1 /* AddressCell.xib */,
+				09B8370620836F76007E4FA1 /* AddressCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +333,8 @@
 			files = (
 				0921AD3A20808C8B00E9C608 /* Pin.xib in Resources */,
 				09B836D42081C73E007E4FA1 /* Destination.xib in Resources */,
+				09B8370020836CDA007E4FA1 /* SearchResults.xib in Resources */,
+				09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */,
 				0921AD28208088F100E9C608 /* LaunchScreen.storyboard in Resources */,
 				0921AD25208088F100E9C608 /* Assets.xcassets in Resources */,
 				0921AD23208088F100E9C608 /* Map.storyboard in Resources */,
@@ -318,14 +351,17 @@
 				09B836F320833661007E4FA1 /* SearchService.swift in Sources */,
 				09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */,
 				09B836FB20834B61007E4FA1 /* Typealiases.swift in Sources */,
+				09B8370220836E36007E4FA1 /* SearchResults.swift in Sources */,
 				09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */,
 				0921AD20208088F100E9C608 /* MapView.swift in Sources */,
 				09B836F82083496E007E4FA1 /* RePin.swift in Sources */,
 				09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
+				09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */,
 				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
 				09B836ED2082D083007E4FA1 /* ReDestination.swift in Sources */,
+				09B837092083E0B0007E4FA1 /* ReSearchResults.swift in Sources */,
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
 				09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */,

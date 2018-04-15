@@ -1,30 +1,21 @@
 import UIKit
 import MapKit
 
-class MapView: DismissableKeyboardViewController {
+class MapView: UIViewController {
     // MARK: Views
     @IBOutlet weak var map: MKMapView!
-    let componentSubview = ComponentManager()
-    let pinSubview = ComponentManager()
+    var componentSubview: ComponentManager!
+    var pinSubview: ComponentManager!
     var locationService = LocationService()
 
     override func viewDidLoad() {
+        componentSubview = ComponentManager(controller: self)
+        pinSubview = ComponentManager(controller: self)
+        map.dragToDismiss(controller: self)
         super.viewDidLoad()
-        onDragMap()
-        view.addSubview(componentSubview)
-        view.addSubview(pinSubview)
 
-        componentSubview.renderCallOutThenDestination {
-            self.pinSubview.pin()
+        componentSubview.renderCallOutThenDestination { [weak self] in
+            self?.pinSubview.renderPin()
         }
-    }
-}
-
-extension MapView {
-
-    func onDragMap() {
-        let dragGesture = UIPanGestureRecognizer(target: self, action: #selector (dismissKeyboard))
-        dragGesture.delegate = self
-        map.addGestureRecognizer(dragGesture)
     }
 }

@@ -3,19 +3,33 @@ import UIKit
 class ComponentManager: UIView {
     typealias closure = () -> Void
 
+    // MARK: Initialization
+    init(controller: UIViewController) {
+        super.init(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0))
+        controller.view.addSubview(self)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    // MARK: Public methods - Rendering
     func renderCallOutThenDestination(finish: @escaping closure = {}) {
-        renderCallOut {
-            self.renderDestination {
+        renderCallOut { [weak self] in
+            self?.renderDestination {
                 finish()
             }
         }
     }
 
-    func pin() {
-        renderPin()
+    func renderPin() {
+        guard let pin: Pin = renderNib() else { return }
+        pin.frame.size = CGSize(width: Layout.width / 10, height: Layout.width / 10)
+        pin.center = CGPoint(x: Position.centerX, y: Position.centerY)
+        addSubview(pin)
     }
 
-    // MARK: Component Rendering
+    // MARK: Private Component Rendering
     private func renderCallOut(completed: @escaping closure = {}) {
         frame.size = CGSize(width: Layout.width * 0.7, height: Layout.height * 0.06)
         center.y = Position.centerY
@@ -48,14 +62,7 @@ class ComponentManager: UIView {
         })
     }
 
-    private func renderPin() {
-        guard let pin: Pin = renderNib() else { return }
-        pin.frame.size = CGSize(width: Layout.width / 10, height: Layout.width / 10)
-        pin.center = CGPoint(x: Position.centerX, y: Position.centerY)
-        addSubview(pin)
-    }
-
-    // MARK: Component Removal
+    // MARK: Private Component Removal
     private func removeCallOut() {
         guard let callout: CallOut = subviews.first as? CallOut else { return }
         callout.removeFromSuperview()

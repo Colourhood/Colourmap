@@ -5,13 +5,18 @@ class MapView: DismissableKeyboardViewController {
     // MARK: Views
     @IBOutlet weak var map: MKMapView!
     let componentSubview = ComponentManager()
+    let pinSubview = ComponentManager()
     var locationService = LocationService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         onDragMap()
         view.addSubview(componentSubview)
-        componentSubview.renderCallOut()
+        view.addSubview(pinSubview)
+
+        componentSubview.renderCallOutThenDestination {
+            self.pinSubview.pin()
+        }
     }
 }
 

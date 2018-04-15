@@ -1,8 +1,22 @@
 import UIKit
 
 class ComponentManager: UIView {
+    typealias closure = () -> Void
+
+    func renderCallOutThenDestination(finish: @escaping closure = {}) {
+        renderCallOut {
+            self.renderDestination {
+                finish()
+            }
+        }
+    }
+
+    func pin() {
+        renderPin()
+    }
+
     // MARK: Component Rendering
-    func renderCallOut() {
+    private func renderCallOut(completed: @escaping closure = {}) {
         frame.size = CGSize(width: Layout.width * 0.7, height: Layout.height * 0.06)
         center.y = Position.centerY
         center.x = Position.centerX
@@ -16,11 +30,11 @@ class ComponentManager: UIView {
             self.alpha = 1
         }, completion: { _ in
             self.removeCallOut()
-            self.renderDestination()
+            completed()
         })
     }
 
-    func renderDestination() {
+    private func renderDestination(completed: @escaping closure = {}) {
         guard let destination: Destination = renderNib() else { return }
         destination.frame = bounds
         addSubview(destination)
@@ -30,16 +44,16 @@ class ComponentManager: UIView {
             self.center.x = Position.centerX
             self.frame.origin.y = self.frame.origin.y * 0.20
         }, completion: { _ in
-//            self.renderPin()
+            completed()
         })
     }
 
-//    func renderPin() {
-//        guard let pin: Pin = renderNib() else { return }
-//        pin.frame.size = CGSize(width: Layout.width / 10, height: Layout.width / 10)
-//        pin.center = CGPoint(x: Position.centerX, y: Position.centerY)
-//        view.addSubview(pin)
-//    }
+    private func renderPin() {
+        guard let pin: Pin = renderNib() else { return }
+        pin.frame.size = CGSize(width: Layout.width / 10, height: Layout.width / 10)
+        pin.center = CGPoint(x: Position.centerX, y: Position.centerY)
+        addSubview(pin)
+    }
 
     // MARK: Component Removal
     private func removeCallOut() {

@@ -38,4 +38,8 @@ class SearchResults: UITableView, UITableViewDataSource, UITableViewDelegate, Ro
         cell.subAddress.text = locationData.subtitle
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("cell was selected")
+    }
 }

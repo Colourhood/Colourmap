@@ -9,11 +9,11 @@ final class MapView: UIViewController {
     var pinSubview: RePin!
 
     override func viewDidLoad() {
+        map.dragToDismiss(controller: self)
         pinSubview = RePin(controller: self)
         destinationSubview = ReDestination(controller: self)
         searchResultsSubview = ReSearchResults(controller: self)
-
-        map.dragToDismiss(controller: self)
+        
         destinationSubview.animateIntroduction {
         }
     }

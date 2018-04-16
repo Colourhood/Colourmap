@@ -48,10 +48,13 @@ final class ReSearchResults: ComponentManager {
 
         switch gesture.state {
         case .changed:
-            if translation.y < frame.size.height * 0.01 {
+            if translation.y < 0.13 * 1.65 {
                 DispatchQueue.main.async {
                     self.frame.origin.y = (Layout.height * 0.13 * 1.65) + translation.y
-//                    self.alpha = translation.y / (Layout.height * 0.13)
+
+//                    if (translation.y < 0.0) {
+//                        self.alpha = ((translation.y * -1) / -50) / self.frame.size.height
+//                    }
                 }
             }
         case .ended:
@@ -59,6 +62,10 @@ final class ReSearchResults: ComponentManager {
                 UIView.animate(withDuration: 1) {
                     self.frame.origin.y = (Layout.height * 0.08)
                     self.alpha = 0
+                }
+            } else {
+                UIView.animate(withDuration: 0.2) {
+                    self.frame.origin.y = (Layout.height * 0.13 * 1.65)
                 }
             }
             break

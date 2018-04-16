@@ -20,16 +20,20 @@ final class ReSearchResults: ComponentManager {
     // MARK: Notification Observer
     private func registerNotification() {
         NotificationCenter.default.addObserver(forName: Notification.UpdateSearchResults, object: nil, queue: .main) { [weak self] _ in
-            let newHeight = Layout.height * 0.065 * CGFloat(store.addressSuggestions.count)
-            self?.frame.size.height = newHeight
-            self?.searchResults?.frame.size.height = newHeight
-            self?.searchResults?.reloadData()
+            DispatchQueue.main.async {
+                let newHeight = Layout.height * 0.065 * CGFloat(store.addressSuggestions.count)
+                self?.frame.size.height = newHeight
+                self?.searchResults?.frame.size.height = newHeight
+                self?.searchResults?.reloadData()
+            }
         }
 
         NotificationCenter.default.addObserver(forName: Notification.DismissSearchResults, object: nil, queue: .main) { [weak self] _ in
-            let newHeight = CGFloat(integerLiteral: 0)
-            self?.frame.size.height = newHeight
-            self?.searchResults?.frame.size.height = newHeight
+            DispatchQueue.main.async {
+                let newHeight = CGFloat(integerLiteral: 0)
+                self?.frame.size.height = newHeight
+                self?.searchResults?.frame.size.height = newHeight
+            }
         }
     }
 
@@ -39,8 +43,27 @@ final class ReSearchResults: ComponentManager {
         addGestureRecognizer(gesture)
     }
 
-    @objc private func handleGesture(_ gesture: UIGestureRecognizer) {
-        print(gesture)
+    @objc private func handleGesture(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self)
+
+        switch gesture.state {
+        case .changed:
+            if translation.y < frame.size.height * 0.01 {
+                DispatchQueue.main.async {
+                    self.frame.origin.y = (Layout.height * 0.13 * 1.65) + translation.y
+//                    self.alpha = translation.y / (Layout.height * 0.13)
+                }
+            }
+        case .ended:
+            if translation.y < -(frame.size.height / 5) {
+                UIView.animate(withDuration: 1) {
+                    self.frame.origin.y = (Layout.height * 0.08)
+                    self.alpha = 0
+                }
+            }
+            break
+        default: break
+        }
     }
 
     // MARK: Private Component Rendering

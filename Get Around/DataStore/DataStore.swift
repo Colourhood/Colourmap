@@ -3,5 +3,5 @@ import MapKit
 
 final class DataStore: NSObject {
     var currentLocation: CLLocation?
-    var addressSuggestions: ArraySlice<MKLocalSearchCompletion> = ArraySlice([])
+    var addressSuggestions: [MKLocalSearchCompletion] = []
  }

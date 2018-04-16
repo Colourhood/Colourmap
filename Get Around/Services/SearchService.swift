@@ -14,7 +14,8 @@ final class SearchService: NSObject, MKLocalSearchCompleterDelegate {
     }
 
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        store.addressSuggestions = completer.results.prefix(3)
+        let filteredResults = completer.results.prefix(3).filter { $0.subtitle != "Search Nearby" }
+        store.addressSuggestions = filteredResults
         NotificationCenter.default.post(name: Notification.UpdateSearchResults, object: nil)
     }
 }

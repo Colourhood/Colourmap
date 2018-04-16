@@ -14,6 +14,7 @@ final class SearchService: NSObject, MKLocalSearchCompleterDelegate {
     }
 
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        store.addressSuggestions = completer.results
+        store.addressSuggestions = completer.results.prefix(3)
+        NotificationCenter.default.post(name: Notification.UpdateSearchResults, object: nil)
     }
 }

@@ -29,7 +29,6 @@
 		09B836F82083496E007E4FA1 /* RePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F72083496E007E4FA1 /* RePin.swift */; };
 		09B836FB20834B61007E4FA1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FA20834B61007E4FA1 /* Typealiases.swift */; };
 		09B836FD208360F9007E4FA1 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */; };
-		09B8370020836CDA007E4FA1 /* SearchResults.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B836FF20836CDA007E4FA1 /* SearchResults.xib */; };
 		09B8370220836E36007E4FA1 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370120836E36007E4FA1 /* SearchResults.swift */; };
 		09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B8370420836F55007E4FA1 /* AddressCell.xib */; };
 		09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370620836F76007E4FA1 /* AddressCell.swift */; };
@@ -62,7 +61,6 @@
 		09B836F72083496E007E4FA1 /* RePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePin.swift; sourceTree = "<group>"; };
 		09B836FA20834B61007E4FA1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
-		09B836FF20836CDA007E4FA1 /* SearchResults.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResults.xib; sourceTree = "<group>"; };
 		09B8370120836E36007E4FA1 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		09B8370420836F55007E4FA1 /* AddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
 		09B8370620836F76007E4FA1 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
@@ -211,8 +209,8 @@
 			children = (
 				09B836F4208347D9007E4FA1 /* Base */,
 				09B836EC2082D083007E4FA1 /* ReDestination.swift */,
-				09B836F72083496E007E4FA1 /* RePin.swift */,
 				09B837082083E0B0007E4FA1 /* ReSearchResults.swift */,
+				09B836F72083496E007E4FA1 /* RePin.swift */,
 			);
 			path = ComponentManager;
 			sourceTree = "<group>";
@@ -245,7 +243,6 @@
 		09B836FE20836CBD007E4FA1 /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
-				09B836FF20836CDA007E4FA1 /* SearchResults.xib */,
 				09B8370120836E36007E4FA1 /* SearchResults.swift */,
 				09B8370320836F3B007E4FA1 /* Cells */,
 			);
@@ -333,7 +330,6 @@
 			files = (
 				0921AD3A20808C8B00E9C608 /* Pin.xib in Resources */,
 				09B836D42081C73E007E4FA1 /* Destination.xib in Resources */,
-				09B8370020836CDA007E4FA1 /* SearchResults.xib in Resources */,
 				09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */,
 				0921AD28208088F100E9C608 /* LaunchScreen.storyboard in Resources */,
 				0921AD25208088F100E9C608 /* Assets.xcassets in Resources */,

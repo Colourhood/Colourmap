@@ -7,43 +7,46 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressCell" customModule="Get_Around" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressCell" rowHeight="76" id="WtB-fc-gDI">
-            <rect key="frame" x="0.0" y="0.0" width="294" height="76"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressCell" rowHeight="54" id="WtB-fc-gDI" customClass="AddressCell" customModule="Get_Around" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="294" height="54"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WtB-fc-gDI" id="AY9-Ov-rFd">
-                <rect key="frame" x="0.0" y="0.0" width="294" height="75.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="294" height="53.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="Bi0-FK-8ki">
-                        <rect key="frame" x="15" y="-0.5" width="38" height="76.5"/>
+                        <rect key="frame" x="10" y="-0.5" width="27" height="54.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Bi0-FK-8ki" secondAttribute="height" multiplier="0.5" id="j4N-bs-t6X"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="315 1st Ave N" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXI-Ji-hiz">
-                        <rect key="frame" x="73" y="19.5" width="130" height="18"/>
-                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="18"/>
+                        <rect key="frame" x="44.5" y="14" width="213.5" height="13"/>
+                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="13"/>
                         <color key="textColor" red="0.37537879289999998" green="0.37909541460000001" blue="0.37909541460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seattle, WA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZa-0H-6Po">
-                        <rect key="frame" x="73" y="42.5" width="86" height="15"/>
-                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="15"/>
+                        <rect key="frame" x="44.5" y="32" width="213.5" height="11"/>
+                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="11"/>
                         <color key="textColor" red="0.41702310370000001" green="0.4211520453" blue="0.4211520453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mZa-0H-6Po" firstAttribute="top" secondItem="PXI-Ji-hiz" secondAttribute="bottom" constant="5" id="C12-Uk-3io"/>
-                    <constraint firstItem="PXI-Ji-hiz" firstAttribute="leading" secondItem="Bi0-FK-8ki" secondAttribute="trailing" constant="20" id="Jhp-jY-OIc"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mZa-0H-6Po" secondAttribute="trailing" constant="20" id="H1q-Pc-tLg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PXI-Ji-hiz" secondAttribute="trailing" constant="20" id="Imx-yb-aQd"/>
+                    <constraint firstItem="PXI-Ji-hiz" firstAttribute="leading" secondItem="Bi0-FK-8ki" secondAttribute="trailing" multiplier="1.2" id="Jhp-jY-OIc"/>
                     <constraint firstItem="PXI-Ji-hiz" firstAttribute="centerY" secondItem="AY9-Ov-rFd" secondAttribute="centerY" multiplier="0.76" id="YZL-GN-chc"/>
-                    <constraint firstItem="Bi0-FK-8ki" firstAttribute="leading" secondItem="AY9-Ov-rFd" secondAttribute="leading" constant="15" id="bcA-fe-Ugm"/>
+                    <constraint firstItem="Bi0-FK-8ki" firstAttribute="leading" secondItem="AY9-Ov-rFd" secondAttribute="leading" constant="10" id="bcA-fe-Ugm"/>
                     <constraint firstItem="mZa-0H-6Po" firstAttribute="leading" secondItem="PXI-Ji-hiz" secondAttribute="leading" id="dGn-Yz-RB1"/>
                     <constraint firstItem="Bi0-FK-8ki" firstAttribute="centerY" secondItem="AY9-Ov-rFd" secondAttribute="centerY" id="iFd-SF-jQv"/>
                 </constraints>
@@ -51,7 +54,11 @@
             <constraints>
                 <constraint firstItem="Bi0-FK-8ki" firstAttribute="height" secondItem="WtB-fc-gDI" secondAttribute="height" id="kbR-zd-DE8"/>
             </constraints>
-            <point key="canvasLocation" x="-113" y="16"/>
+            <connections>
+                <outlet property="mainAddress" destination="PXI-Ji-hiz" id="vFx-Ps-u6t"/>
+                <outlet property="subAddress" destination="mZa-0H-6Po" id="IsU-kW-nf5"/>
+            </connections>
+            <point key="canvasLocation" x="-113" y="8"/>
         </tableViewCell>
     </objects>
     <resources>

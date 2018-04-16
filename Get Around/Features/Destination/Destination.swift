@@ -14,7 +14,8 @@ final class Destination: UIView, RoundedEdges {
 
     // MARK: Notification Center Observer
     func registerNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: Notification.DestinationPanelDidAnimateTop, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard),
+                                               name: Notification.DestinationPanelDidAnimateTop, object: nil)
     }
 
     @objc func textFieldDidChange(_ textField: UITextField) {

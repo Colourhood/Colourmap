@@ -7,7 +7,7 @@ final class Destination: UIView, RoundedEdges {
     private let searchService = SearchService()
 
     override func awakeFromNib() {
-        roundEdges()
+        roundEdges(0.03)
         registerNotification()
         destinationTextfield.addTarget(self, action: #selector (textFieldDidChange), for: .editingChanged)
     }
@@ -20,7 +20,11 @@ final class Destination: UIView, RoundedEdges {
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let address = textField.text else { return }
+
         searchService.searchAddress(address)
+        if address.count == 0 {
+            NotificationCenter.default.post(name: Notification.DismissSearchResults, object: nil)
+        }
     }
 
     @objc func showKeyboard() {

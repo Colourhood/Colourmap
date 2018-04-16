@@ -1,12 +1,12 @@
 import UIKit
 
 protocol RoundedEdges {
-    func roundEdges()
+    func roundEdges(_ ratio: CGFloat)
 }
 
 extension RoundedEdges where Self: UIView {
-    func roundEdges() {
+    func roundEdges(_ ratio: CGFloat) {
         layer.masksToBounds = true
-        layer.cornerRadius = frame.size.width * 0.03
+        layer.cornerRadius = frame.size.width * ratio
     }
 }

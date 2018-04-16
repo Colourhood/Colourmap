@@ -6,11 +6,7 @@ class SearchResults: UITableView, UITableViewDataSource, UITableViewDelegate, Ro
         super.init(frame: frame, style: style)
         dataSource = self
         delegate = self
-        isScrollEnabled = false
-        separatorStyle = .none
-        alpha = 0.9
-        roundEdges()
-        
+        customUI()
         registerCell()
     }
 
@@ -19,6 +15,13 @@ class SearchResults: UITableView, UITableViewDataSource, UITableViewDelegate, Ro
     }
 
     // MARK: Private methods
+    private func customUI() {
+        isScrollEnabled = false
+        separatorStyle = .none
+        alpha = 0.9
+        roundEdges(0.025)
+    }
+
     private func registerCell() {
         register(AddressCell.self, forCellReuseIdentifier: String(describing: AddressCell.self))
     }

@@ -21,9 +21,15 @@ extension MapView: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         if !store.didCenterOnUserLocation {
             store.didCenterOnUserLocation = true
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
             let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
             map.setRegion(region, animated: false)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
+                let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+                self.map.setRegion(region, animated: true)
+            }
         }
     }
 }

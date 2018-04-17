@@ -32,7 +32,7 @@ final class ReDestination: ComponentManager {
     }
 
     @objc func animateToTop() {
-        UIView.animate(withDuration: 0.65, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.frame.size.width = Layout.width * 0.90
             self.frame.origin.y = Layout.height * 0.08
             self.destinationView?.layer.cornerRadius = self.frame.size.width * 0.025
@@ -42,9 +42,9 @@ final class ReDestination: ComponentManager {
         })
     }
 
-    func animateToBottom() {
+    @objc func animateToBottom() {
         destinationView?.destinationPanelButton.isHidden = false
-        UIView.animate(withDuration: 0.65, delay: 0.3, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.7, delay: 0.2, options: .curveEaseInOut, animations: {
             self.frame.origin.y = (Layout.height - self.frame.height)
             self.frame.size.width = Layout.width
             self.center.x = Position.centerX
@@ -57,8 +57,6 @@ final class ReDestination: ComponentManager {
 
         if text.isEmpty {
             animateToBottom()
-        } else {
-            NotificationCenter.default.post(name: Notification.AnimateDismissSearchResults, object: nil)
         }
     }
 

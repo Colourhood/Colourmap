@@ -36,9 +36,6 @@ final class ReSearchResults: ComponentManager {
                 self?.searchResults?.frame.size.height = newHeight
             }
         }
-
-        NotificationCenter.default.addObserver(self, selector: #selector (animateDismiss),
-                                               name: Notification.AnimateDismissSearchResults, object: nil)
     }
 
     // MARK: Animation
@@ -72,7 +69,7 @@ final class ReSearchResults: ComponentManager {
     }
 
     // MARK: Animation Blocks
-    @objc private func animateDismiss() {
+    private func animateDismiss() {
         if didShow {
             UIView.animate(withDuration: 0.4, animations: {
                 self.frame.origin.y = (Layout.height * 0.08)

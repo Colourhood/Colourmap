@@ -16,3 +16,14 @@ final class MapView: UIViewController {
         destinationSubview.animateIntroduction()
     }
 }
+
+extension MapView: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if !store.didCenterOnUserLocation {
+            store.didCenterOnUserLocation = true
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+            map.setRegion(region, animated: false)
+        }
+    }
+}

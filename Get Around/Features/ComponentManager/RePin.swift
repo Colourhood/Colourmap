@@ -21,7 +21,7 @@ final class RePin: ComponentManager {
     // MARK: Private Superview Framing
     private func initialFrame() {
         frame.size = CGSize(width: Layout.width * 0.08, height: Layout.width * 0.08)
-        center = CGPoint(x: (Position.centerX * 0.95), y: (Position.centerY * 0.97))
+        center = CGPoint(x: (Position.centerX), y: (Position.centerY * 0.97))
     }
 }
 

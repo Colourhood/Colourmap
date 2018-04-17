@@ -3,7 +3,7 @@ import UIKit
 
 final class ReSearchResults: ComponentManager {
     var searchResults: SearchResults?
-    var didRenderView: Bool = false
+    var didShow = false
 
     override init(controller: UIViewController) {
         super.init(controller: controller)
@@ -20,6 +20,7 @@ final class ReSearchResults: ComponentManager {
     // MARK: Notification Observer
     private func registerNotification() {
         NotificationCenter.default.addObserver(forName: Notification.UpdateSearchResults, object: nil, queue: .main) { [weak self] _ in
+            self?.didShow = true
             DispatchQueue.main.async {
                 let newHeight = Layout.height * 0.065 * CGFloat(store.addressSuggestions.count)
                 self?.frame.size.height = newHeight
@@ -35,6 +36,9 @@ final class ReSearchResults: ComponentManager {
                 self?.searchResults?.frame.size.height = newHeight
             }
         }
+
+        NotificationCenter.default.addObserver(self, selector: #selector (animateDismiss),
+                                               name: Notification.AnimateDismissSearchResults, object: nil)
     }
 
     // MARK: Animation
@@ -54,17 +58,7 @@ final class ReSearchResults: ComponentManager {
             }
         case .ended:
             if translation.y < -(frame.size.height / 5) {
-                // Animate Dismiss
-                UIView.animate(withDuration: 0.4, animations: {
-                    self.frame.origin.y = (Layout.height * 0.08)
-                    self.alpha = 0
-                }, completion: { _ in
-                    let newHeight = CGFloat(0)
-                    self.frame.origin.y = Layout.height * 0.13 * 1.65
-                    self.frame.size.height = newHeight
-                    self.searchResults?.frame.size.height = newHeight
-                    self.alpha = 1
-                })
+                animateDismiss()
             } else {
                 // Go back into original position
                 UIView.animate(withDuration: 0.2) {
@@ -74,6 +68,23 @@ final class ReSearchResults: ComponentManager {
             }
             break
         default: break
+        }
+    }
+
+    // MARK: Animation Blocks
+    @objc private func animateDismiss() {
+        if didShow {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.frame.origin.y = (Layout.height * 0.08)
+                self.alpha = 0
+            }, completion: { _ in
+                let newHeight = CGFloat(0)
+                self.frame.origin.y = Layout.height * 0.13 * 1.65
+                self.frame.size.height = newHeight
+                self.searchResults?.frame.size.height = newHeight
+                self.alpha = 1
+            })
+            didShow = false
         }
     }
 

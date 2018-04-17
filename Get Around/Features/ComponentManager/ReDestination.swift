@@ -1,7 +1,6 @@
 import UIKit
 
 final class ReDestination: ComponentManager {
-
     var destinationView: Destination?
 
     // MARK: Initialization
@@ -20,19 +19,20 @@ final class ReDestination: ComponentManager {
     private func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector (animateToTop),
                                                name: Notification.DestinationPanelPressed, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(checkTextField),
+                                               name: Notification.MapDragged, object: nil)
     }
 
     // MARK: Animations
-    func animateIntroduction(next: @escaping closure) {
+    func animateIntroduction() {
         UIView.animate(withDuration: 1.0, delay: 0.3, options: .curveEaseInOut, animations: {
             self.frame.origin.y = Layout.height - self.frame.height
-        }, completion: { _ in
-            next()
         })
     }
 
     @objc func animateToTop() {
-        UIView.animate(withDuration: 0.80, delay: 0.0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.65, delay: 0.0, options: .curveEaseOut, animations: {
             self.frame.size.width = Layout.width * 0.90
             self.frame.origin.y = Layout.height * 0.08
             self.destinationView?.layer.cornerRadius = self.frame.size.width * 0.025
@@ -40,6 +40,26 @@ final class ReDestination: ComponentManager {
         }, completion: { _ in
             NotificationCenter.default.post(name: Notification.DestinationPanelDidAnimateTop, object: nil)
         })
+    }
+
+    func animateToBottom() {
+        destinationView?.destinationPanelButton.isHidden = false
+        UIView.animate(withDuration: 0.65, delay: 0.3, options: .curveEaseInOut, animations: {
+            self.frame.origin.y = (Layout.height - self.frame.height)
+            self.frame.size.width = Layout.width
+            self.center.x = Position.centerX
+        })
+    }
+
+    // MARK: Private Methods
+    @objc private func checkTextField() {
+        guard let text = destinationView?.destinationTextfield.text else { return }
+
+        if text.isEmpty {
+            animateToBottom()
+        } else {
+            NotificationCenter.default.post(name: Notification.AnimateDismissSearchResults, object: nil)
+        }
     }
 
     // MARK: Private Component Rendering

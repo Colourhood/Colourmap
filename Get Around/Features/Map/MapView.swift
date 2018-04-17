@@ -13,8 +13,6 @@ final class MapView: UIViewController {
         pinSubview = RePin(controller: self)
         searchResultsSubview = ReSearchResults(controller: self)
         destinationSubview = ReDestination(controller: self)
-        
-        destinationSubview.animateIntroduction {
-        }
+        destinationSubview.animateIntroduction()
     }
 }

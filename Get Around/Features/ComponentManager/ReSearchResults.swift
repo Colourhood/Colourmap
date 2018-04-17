@@ -30,7 +30,7 @@ final class ReSearchResults: ComponentManager {
 
         NotificationCenter.default.addObserver(forName: Notification.DismissSearchResults, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.async {
-                let newHeight = CGFloat(integerLiteral: 0)
+                let newHeight = CGFloat(0)
                 self?.frame.size.height = newHeight
                 self?.searchResults?.frame.size.height = newHeight
             }
@@ -48,24 +48,28 @@ final class ReSearchResults: ComponentManager {
 
         switch gesture.state {
         case .changed:
-            if translation.y < 0.13 * 1.65 {
-                DispatchQueue.main.async {
-                    self.frame.origin.y = (Layout.height * 0.13 * 1.65) + translation.y
-
-//                    if (translation.y < 0.0) {
-//                        self.alpha = ((translation.y * -1) / -50) / self.frame.size.height
-//                    }
-                }
+            if translation.y < 0 {
+                self.frame.origin.y = (Layout.height * 0.13 * 1.65) + translation.y
+                self.alpha = (self.frame.size.height * 0.03) / (translation.y * -1)
             }
         case .ended:
             if translation.y < -(frame.size.height / 5) {
-                UIView.animate(withDuration: 1) {
+                // Animate Dismiss
+                UIView.animate(withDuration: 0.4, animations: {
                     self.frame.origin.y = (Layout.height * 0.08)
                     self.alpha = 0
-                }
+                }, completion: { _ in
+                    let newHeight = CGFloat(0)
+                    self.frame.origin.y = Layout.height * 0.13 * 1.65
+                    self.frame.size.height = newHeight
+                    self.searchResults?.frame.size.height = newHeight
+                    self.alpha = 1
+                })
             } else {
+                // Go back into original position
                 UIView.animate(withDuration: 0.2) {
                     self.frame.origin.y = (Layout.height * 0.13 * 1.65)
+                    self.alpha = 1
                 }
             }
             break

@@ -11,8 +11,8 @@ final class MapView: UIViewController {
     override func viewDidLoad() {
         map.dragToDismiss(controller: self)
         pinSubview = RePin(controller: self)
-        destinationSubview = ReDestination(controller: self)
         searchResultsSubview = ReSearchResults(controller: self)
+        destinationSubview = ReDestination(controller: self)
         
         destinationSubview.animateIntroduction {
         }

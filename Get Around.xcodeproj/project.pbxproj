@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090FCAE62085F6A00041B018 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090FCAE52085F6A00041B018 /* Debouncer.swift */; };
 		0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD1D208088F100E9C608 /* AppDelegate.swift */; };
 		0921AD20208088F100E9C608 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD1F208088F100E9C608 /* MapView.swift */; };
 		0921AD23208088F100E9C608 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD21208088F100E9C608 /* Map.storyboard */; };
@@ -28,7 +29,7 @@
 		09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F5208347E5007E4FA1 /* ComponentManager.swift */; };
 		09B836F82083496E007E4FA1 /* RePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836F72083496E007E4FA1 /* RePin.swift */; };
 		09B836FB20834B61007E4FA1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FA20834B61007E4FA1 /* Typealiases.swift */; };
-		09B836FD208360F9007E4FA1 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */; };
+		09B836FD208360F9007E4FA1 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836FC208360F9007E4FA1 /* Notification.swift */; };
 		09B8370220836E36007E4FA1 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370120836E36007E4FA1 /* SearchResults.swift */; };
 		09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B8370420836F55007E4FA1 /* AddressCell.xib */; };
 		09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370620836F76007E4FA1 /* AddressCell.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		090FCAE52085F6A00041B018 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		0921AD1A208088F100E9C608 /* Get Around.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Around.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0921AD1D208088F100E9C608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0921AD1F208088F100E9C608 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -60,7 +62,7 @@
 		09B836F5208347E5007E4FA1 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
 		09B836F72083496E007E4FA1 /* RePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePin.swift; sourceTree = "<group>"; };
 		09B836FA20834B61007E4FA1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
-		09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
+		09B836FC208360F9007E4FA1 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		09B8370120836E36007E4FA1 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		09B8370420836F55007E4FA1 /* AddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
 		09B8370620836F76007E4FA1 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
@@ -235,7 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				09B836FA20834B61007E4FA1 /* Typealiases.swift */,
-				09B836FC208360F9007E4FA1 /* NotificationExtensions.swift */,
+				09B836FC208360F9007E4FA1 /* Notification.swift */,
+				090FCAE52085F6A00041B018 /* Debouncer.swift */,
 			);
 			path = SwiftUtil;
 			sourceTree = "<group>";
@@ -358,10 +361,11 @@
 				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
 				09B836ED2082D083007E4FA1 /* ReDestination.swift in Sources */,
 				09B837092083E0B0007E4FA1 /* ReSearchResults.swift in Sources */,
+				090FCAE62085F6A00041B018 /* Debouncer.swift in Sources */,
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
 				09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */,
-				09B836FD208360F9007E4FA1 /* NotificationExtensions.swift in Sources */,
+				09B836FD208360F9007E4FA1 /* Notification.swift in Sources */,
 				09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

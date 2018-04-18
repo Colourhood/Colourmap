@@ -3,8 +3,10 @@ import MapKit
 
 final class SearchService: NSObject, MKLocalSearchCompleterDelegate {
     private let searchRequest = MKLocalSearchCompleter()
+    private let store: DataStore
 
-    override init() {
+    init(store: DataStore) {
+        self.store = store
         super.init()
         searchRequest.delegate = self
     }

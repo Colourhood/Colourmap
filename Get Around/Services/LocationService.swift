@@ -18,8 +18,4 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
         default: break
         }
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        store.currentLocation = locations.first
-    }
 }

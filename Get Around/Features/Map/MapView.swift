@@ -8,11 +8,14 @@ final class MapView: UIViewController {
     var destinationSubview: ReDestination!
     var pinSubview: RePin!
 
+    // MARK: Data Store
+    let store = DataStore()
+    
     override func viewDidLoad() {
         map.dragToDismiss(controller: self)
-        pinSubview = RePin(controller: self)
-        searchResultsSubview = ReSearchResults(controller: self)
-        destinationSubview = ReDestination(controller: self)
+        pinSubview = RePin(controller: self, store: store)
+        searchResultsSubview = ReSearchResults(controller: self, store: store)
+        destinationSubview = ReDestination(controller: self, store: store)
         destinationSubview.animateIntroduction()
     }
 }
@@ -30,6 +33,15 @@ extension MapView: MKMapViewDelegate {
                 let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
                 self.map.setRegion(region, animated: true)
             }
+        }
+    }
+
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(centerLocation) { [weak self] (placemark, _) in
+            self?.destinationSubview.destinationView?.destinationTextfield.text = placemark?.first?.name
         }
     }
 }

@@ -2,8 +2,8 @@ import UIKit
 
 final class RePin: ComponentManager {
 
-    override init(controller: UIViewController) {
-        super.init(controller: controller)
+    override init(controller: UIViewController, store: DataStore) {
+        super.init(controller: controller, store: store)
         initialFrame()
         renderPin()
     }

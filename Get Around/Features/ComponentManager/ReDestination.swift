@@ -2,16 +2,19 @@ import UIKit
 
 final class ReDestination: ComponentManager {
     var destinationView: Destination?
+    let searchService: SearchService
 
     // MARK: Initialization
-    override init(controller: UIViewController) {
-        super.init(controller: controller)
+    override init(controller: UIViewController, store: DataStore) {
+        searchService = SearchService(store: store)
+        super.init(controller: controller, store: store)
         initialFrame()
         renderDestination()
         registerNotification()
     }
 
     required init?(coder aDecoder: NSCoder) {
+        searchService = SearchService(store: DataStore())
         super.init(coder: aDecoder)
     }
 
@@ -22,6 +25,27 @@ final class ReDestination: ComponentManager {
 
         NotificationCenter.default.addObserver(self, selector: #selector(checkTextField),
                                                name: Notification.MapDragged, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTextField),
+                                               name: Notification.SearchResultsCellWasPressed, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard),
+                                               name: Notification.DestinationPanelDidAnimateTop, object: nil)
+
+        destinationView?.destinationTextfield.addTarget(self, action: #selector (textFieldDidChange), for: .editingChanged)
+    }
+
+
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        guard let address = textField.text else { return }
+        searchService.searchAddress(address)
+        if address.isEmpty {
+            NotificationCenter.default.post(name: Notification.DismissSearchResults, object: nil)
+        }
+    }
+
+    @objc func showKeyboard() {
+        destinationView?.destinationTextfield.becomeFirstResponder()
     }
 
     // MARK: Animations
@@ -58,6 +82,10 @@ final class ReDestination: ComponentManager {
         if text.isEmpty {
             animateToBottom()
         }
+    }
+
+    @objc private func updateTextField() {
+        destinationView?.destinationTextfield.text = store.selectedLocation
     }
 
     // MARK: Private Component Rendering

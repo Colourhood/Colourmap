@@ -5,8 +5,8 @@ final class ReSearchResults: ComponentManager {
     var searchResults: SearchResults?
     var didShow = false
 
-    override init(controller: UIViewController) {
-        super.init(controller: controller)
+    override init(controller: UIViewController, store: DataStore) {
+        super.init(controller: controller, store: store)
         initialFrame()
         renderSearchResults()
         registerNotification()
@@ -20,22 +20,22 @@ final class ReSearchResults: ComponentManager {
     // MARK: Notification Observer
     private func registerNotification() {
         NotificationCenter.default.addObserver(forName: Notification.UpdateSearchResults, object: nil, queue: .main) { [weak self] _ in
-            self?.didShow = true
-            DispatchQueue.main.async {
-                let newHeight = Layout.height * 0.065 * CGFloat(store.addressSuggestions.count)
-                self?.frame.size.height = newHeight
-                self?.searchResults?.frame.size.height = newHeight
-                self?.searchResults?.reloadData()
-            }
+            guard let `self` = self else { return }
+            self.didShow = true
+            let newHeight = Layout.height * 0.065 * CGFloat(self.store.addressSuggestions.count)
+            self.frame.size.height = newHeight
+            self.searchResults?.frame.size.height = newHeight
+            self.searchResults?.reloadData()
         }
 
         NotificationCenter.default.addObserver(forName: Notification.DismissSearchResults, object: nil, queue: .main) { [weak self] _ in
-            DispatchQueue.main.async {
-                let newHeight = CGFloat(0)
-                self?.frame.size.height = newHeight
-                self?.searchResults?.frame.size.height = newHeight
-            }
+            let newHeight = CGFloat(0)
+            self?.frame.size.height = newHeight
+            self?.searchResults?.frame.size.height = newHeight
         }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(animateDismiss),
+                                               name: Notification.SearchResultsCellWasPressed, object: nil)
     }
 
     // MARK: Animation
@@ -69,7 +69,7 @@ final class ReSearchResults: ComponentManager {
     }
 
     // MARK: Animation Blocks
-    private func animateDismiss() {
+    @objc private func animateDismiss() {
         if didShow {
             UIView.animate(withDuration: 0.4, animations: {
                 self.frame.origin.y = (Layout.height * 0.08)
@@ -88,6 +88,8 @@ final class ReSearchResults: ComponentManager {
     // MARK: Private Component Rendering
     private func renderSearchResults() {
         let view = SearchResults(frame: bounds)
+        view.dataSource = self
+        view.delegate = self
         searchResults = view
         addSubview(view)
     }
@@ -97,6 +99,26 @@ final class ReSearchResults: ComponentManager {
         self.frame.size.width = Layout.width * 0.90
         self.frame.origin.y = (Layout.height * 0.13) * 1.65
         self.center.x = Position.centerX
+    }
+}
+
+extension ReSearchResults: UITableViewDataSource, UITableViewDelegate {
+    // MARK: TableView Delegate Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return store.addressSuggestions.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let locationData = store.addressSuggestions[indexPath.row]
+        guard let cell: AddressCell = renderNib() else { return UITableViewCell() }
+        cell.mainAddress.text = locationData.title
+        cell.subAddress.text = locationData.subtitle
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        store.selectedLocation = store.addressSuggestions[indexPath.row].title
+        NotificationCenter.default.post(name: Notification.SearchResultsCellWasPressed, object: nil)
     }
 }
 

@@ -1,14 +1,4 @@
-//
-//  AppDelegate.swift
-//  Get Around
-//
-//  Created by Andrei Villasana on 4/12/18.
-//  Copyright © 2018 Andrei Villasana. All rights reserved.
-//
-
 import UIKit
-
-let store = DataStore()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

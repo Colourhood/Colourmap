@@ -38,9 +38,13 @@ final class ReDestination: ComponentManager {
 
     @objc func textFieldDidChange(_ textField: UITextField) {
         guard let address = textField.text else { return }
-        searchService.searchAddress(address)
-        if address.isEmpty {
-            NotificationCenter.default.post(name: Notification.DismissSearchResults, object: nil)
+
+        if address.count == 0 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                NotificationCenter.default.post(name: Notification.DismissSearchResults, object: nil)
+            }
+        } else {
+            searchService.searchAddress(address)
         }
     }
 

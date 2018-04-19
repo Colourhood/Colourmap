@@ -2,19 +2,16 @@ import UIKit
 
 final class ReDestination: ComponentManager {
     var destinationView: Destination?
-    let searchService: SearchService
 
     // MARK: Initialization
-    override init(controller: UIViewController, store: DataStore) {
-        searchService = SearchService(store: store)
-        super.init(controller: controller, store: store)
+    override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
+        super.init(controller: controller, store: store, service: service)
         initialFrame()
         renderDestination()
         registerNotification()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        searchService = SearchService(store: DataStore())
         super.init(coder: aDecoder)
     }
 
@@ -44,7 +41,7 @@ final class ReDestination: ComponentManager {
                 NotificationCenter.default.post(name: Notification.DismissSearchResults, object: nil)
             }
         } else {
-            searchService.searchAddress(address)
+            service.search.searchAddress(address)
         }
     }
 

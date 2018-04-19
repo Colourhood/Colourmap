@@ -5,8 +5,8 @@ final class ReSearchResults: ComponentManager {
     var searchResults: SearchResults?
     var didShow = false
 
-    override init(controller: UIViewController, store: DataStore) {
-        super.init(controller: controller, store: store)
+    override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
+        super.init(controller: controller, store: store, service: service)
         initialFrame()
         renderSearchResults()
         registerNotification()

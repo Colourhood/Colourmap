@@ -15,6 +15,7 @@
 		0921AD28208088F100E9C608 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD26208088F100E9C608 /* LaunchScreen.storyboard */; };
 		0921AD3A20808C8B00E9C608 /* Pin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD3920808C8B00E9C608 /* Pin.xib */; };
 		0921AD3D20808FC200E9C608 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD3C20808FC200E9C608 /* Positions.swift */; };
+		096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A9FB920886CDF00EFCF79 /* ServiceProvider.swift */; };
 		09B836D42081C73E007E4FA1 /* Destination.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B836D32081C73E007E4FA1 /* Destination.xib */; };
 		09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D52081C9EA007E4FA1 /* Destination.swift */; };
 		09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D72081CC84007E4FA1 /* NibRender.swift */; };
@@ -47,6 +48,7 @@
 		0921AD29208088F100E9C608 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0921AD3920808C8B00E9C608 /* Pin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Pin.xib; sourceTree = "<group>"; };
 		0921AD3C20808FC200E9C608 /* Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
+		096A9FB920886CDF00EFCF79 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		09B836D32081C73E007E4FA1 /* Destination.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Destination.xib; sourceTree = "<group>"; };
 		09B836D52081C9EA007E4FA1 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		09B836D72081CC84007E4FA1 /* NibRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibRender.swift; sourceTree = "<group>"; };
@@ -103,9 +105,9 @@
 			children = (
 				09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */,
 				0921AD1D208088F100E9C608 /* AppDelegate.swift */,
-				09B836EE208329DD007E4FA1 /* DataStore */,
 				0921AD2F20808A2800E9C608 /* Resources */,
 				0921AD3020808A3800E9C608 /* Features */,
+				09B836EE208329DD007E4FA1 /* DataStore */,
 				09B836E1208203F7007E4FA1 /* Services */,
 				09B836E42082BE3F007E4FA1 /* HigherOrderViews */,
 				0921AD3B20808F9600E9C608 /* Layout */,
@@ -191,6 +193,7 @@
 		09B836E1208203F7007E4FA1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				096A9FB920886CDF00EFCF79 /* ServiceProvider.swift */,
 				09B836E220820418007E4FA1 /* LocationService.swift */,
 				09B836F220833661007E4FA1 /* SearchService.swift */,
 			);
@@ -356,6 +359,7 @@
 				09B836F82083496E007E4FA1 /* RePin.swift in Sources */,
 				09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
+				096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
 				09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */,
 				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
@@ -511,6 +515,7 @@
 				DEVELOPMENT_TEAM = BJE27J35HP;
 				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -526,6 +531,7 @@
 				DEVELOPMENT_TEAM = BJE27J35HP;
 				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

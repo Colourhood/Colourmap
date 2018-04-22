@@ -1,5 +1,7 @@
 import UIKit
 import MapKit
+import RxSwift
+import RxCocoa
 
 final class MapView: UIViewController {
     // MARK: Views
@@ -13,6 +15,7 @@ final class MapView: UIViewController {
     // MARK: Data Store
     var store: DataStore!
     var service: ServiceProvider!
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         store = DataStore()
@@ -22,18 +25,22 @@ final class MapView: UIViewController {
         pinSubview = RePin(controller: self, store: store, service: service)
         searchResultsSubview = ReSearchResults(controller: self, store: store, service: service)
         destinationSubview = ReDestination(controller: self, store: store, service: service)
+
         destinationSubview.animateIntroduction()
-
-        registerNotifications()
+        subscriptions()
     }
 
-    func registerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector (getDestinationLocation),
-                                               name: Notification.SearchResultsCellWasPressed, object: nil)
+    func subscriptions() {
+        // External Subcriptions
+        store.searchResultsPressed.subscribe(onNext: { [weak self] in
+            self?.getDestinationLocation()
+        }).disposed(by: disposeBag)
+
+        // Internal Subscriptions
     }
 
-    @objc func getDestinationLocation() {
-        guard let address = store.selectedLocation else { return }
+    private func getDestinationLocation() {
+        let address = store.selectedLocation.value
         geocoder.geocodeAddressString(address) { [weak self] (placemark, _) in
             self?.store.destinationLocation = placemark?.first?.location?.coordinate
             self?.zoomOutToStartAndDestination()
@@ -70,6 +77,10 @@ extension MapView: MKMapViewDelegate {
                 self.map.setRegion(region, animated: true)
             }
         }
+    }
+
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        store.mapDragged.onNext(())
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

@@ -7,8 +7,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
         return true
     }
 
-    @objc func dismissKeyboard(_ gesture: UIGestureRecognizer) {
-        NotificationCenter.default.post(name: Notification.MapDragged, object: nil)
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }

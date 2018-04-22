@@ -1,8 +1,11 @@
 import UIKit
+import RxSwift
 
 class ComponentManager: UIView {
     public let store: DataStore
     public let service: ServiceProvider
+    public let disposeBag = DisposeBag()
+    
     // MARK: Initialization
     init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
         self.store = store

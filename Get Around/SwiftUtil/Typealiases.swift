@@ -1,1 +1,1 @@
-typealias closure = () -> Void
+typealias closure<Type> = ((Type) -> Void)

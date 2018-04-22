@@ -1,5 +1,5 @@
-import Foundation
 import UIKit
+import RxCocoa
 
 final class ReSearchResults: ComponentManager {
     var searchResults: SearchResults?
@@ -9,7 +9,7 @@ final class ReSearchResults: ComponentManager {
         super.init(controller: controller, store: store, service: service)
         initialFrame()
         renderSearchResults()
-        registerNotification()
+        subscriptions()
         swipeUpPanGesture()
     }
 
@@ -17,25 +17,37 @@ final class ReSearchResults: ComponentManager {
         super.init(coder: aDecoder)
     }
 
-    // MARK: Notification Observer
-    private func registerNotification() {
-        NotificationCenter.default.addObserver(forName: Notification.UpdateSearchResults, object: nil, queue: .main) { [weak self] _ in
-            guard let `self` = self else { return }
-            self.didShow = true
-            let newHeight = Layout.height * 0.065 * CGFloat(self.store.addressSuggestions.count)
-            self.frame.size.height = newHeight
-            self.searchResults?.frame.size.height = newHeight
-            self.searchResults?.reloadData()
-        }
+    private func subscriptions() {
+        // External Subscriptions
+        store.addressSuggestions.asObservable()
+            .subscribe(onNext: { results in
+                self.didShow = true
+                let count = self.store.addressSuggestions.value.count
+                let newHeight = Layout.height * 0.065 * CGFloat(count)
+                self.frame.size.height = newHeight
+                self.searchResults?.frame.size.height = newHeight
+                self.searchResults?.reloadData()
+            }).disposed(by: disposeBag)
 
-        NotificationCenter.default.addObserver(forName: Notification.DismissSearchResults, object: nil, queue: .main) { [weak self] _ in
-            let newHeight = CGFloat(0)
-            self?.frame.size.height = newHeight
-            self?.searchResults?.frame.size.height = newHeight
-        }
+        store.searchResultsDismiss
+            .subscribe(onNext: { [weak self] in
+                let newHeight = CGFloat(0)
+                self?.frame.size.height = newHeight
+                self?.searchResults?.frame.size.height = newHeight
+            }).disposed(by: disposeBag)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(animateDismiss),
-                                               name: Notification.SearchResultsCellWasPressed, object: nil)
+        store.searchResultsPressed
+            .subscribe(onNext: { [weak self] in
+                self?.animateDismiss()
+            }).disposed(by: disposeBag)
+
+        // Internal Subscriptions
+        searchResults?.rx.itemSelected
+            .subscribe(onNext: { [unowned self] index in
+                let selectedAddress = self.store.addressSuggestions.value[index.row].title
+                self.store.selectedLocation.value = selectedAddress
+                self.store.searchResultsPressed.onNext(())
+            }).disposed(by: disposeBag)
     }
 
     // MARK: Animation
@@ -105,20 +117,16 @@ final class ReSearchResults: ComponentManager {
 extension ReSearchResults: UITableViewDataSource, UITableViewDelegate {
     // MARK: TableView Delegate Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.addressSuggestions.count
+        let count = store.addressSuggestions.value.count
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let locationData = store.addressSuggestions[indexPath.row]
+        let locationData = store.addressSuggestions.value[indexPath.row]
         guard let cell: AddressCell = renderNib() else { return UITableViewCell() }
         cell.mainAddress.text = locationData.title
         cell.subAddress.text = locationData.subtitle
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        store.selectedLocation = store.addressSuggestions[indexPath.row].title
-        NotificationCenter.default.post(name: Notification.SearchResultsCellWasPressed, object: nil)
     }
 }
 

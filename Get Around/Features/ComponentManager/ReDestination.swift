@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class ReDestination: ComponentManager {
     var destinationView: Destination?
@@ -8,7 +10,7 @@ final class ReDestination: ComponentManager {
         super.init(controller: controller, store: store, service: service)
         initialFrame()
         renderDestination()
-        registerNotification()
+        subscriptions()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -16,30 +18,38 @@ final class ReDestination: ComponentManager {
     }
 
     // MARK: Notification Center Observer
-    private func registerNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector (animateToTop),
-                                               name: Notification.DestinationPanelPressed, object: nil)
+    private func subscriptions() {
+        // External Subscriptions
+        store.destinationPress.subscribe(onNext: { [weak self] in
+            self?.animateToTop()
+        }).disposed(by: disposeBag)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(checkTextField),
-                                               name: Notification.MapDragged, object: nil)
+        store.mapDragged.subscribe(onNext: { [weak self] in
+            self?.checkTextField()
+        }).disposed(by: disposeBag)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTextField),
-                                               name: Notification.SearchResultsCellWasPressed, object: nil)
+        store.destinationPanelAnimateTop.subscribe(onNext: { [weak self] in
+            self?.showKeyboard()
+        }).disposed(by: disposeBag)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard),
-                                               name: Notification.DestinationPanelDidAnimateTop, object: nil)
+        // Internal Subscriptions
+        destinationView?.destinationTextfield.rx.controlEvent(.editingChanged)
+            .debounce(0.2, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                self?.destinationDidChange()
+            }).disposed(by: disposeBag)
 
-        destinationView?.destinationTextfield.addTarget(self, action: #selector (textFieldDidChange), for: .editingChanged)
+        destinationView?.destinationTextfield.rx.controlEvent(.editingDidEndOnExit)
+            .subscribe(onNext: { _ in
+                self.store.searchResultsPressed.onNext(())
+            }).disposed(by: disposeBag)
     }
 
+    private func destinationDidChange() {
+        guard let address =  destinationView?.destinationTextfield.text else { return }
 
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let address = textField.text else { return }
-
-        if address.count == 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                NotificationCenter.default.post(name: Notification.DismissSearchResults, object: nil)
-            }
+        if address.isEmpty {
+            store.searchResultsDismiss.onNext(())
         } else {
             service.search.searchAddress(address)
         }
@@ -56,18 +66,18 @@ final class ReDestination: ComponentManager {
         })
     }
 
-    @objc func animateToTop() {
+    func animateToTop() {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.frame.size.width = Layout.width * 0.90
             self.frame.origin.y = Layout.height * 0.08
             self.destinationView?.layer.cornerRadius = self.frame.size.width * 0.025
             self.center.x = Position.centerX
         }, completion: { _ in
-            NotificationCenter.default.post(name: Notification.DestinationPanelDidAnimateTop, object: nil)
+            self.store.destinationPanelAnimateTop.onNext(())
         })
     }
 
-    @objc func animateToBottom() {
+    func animateToBottom() {
         destinationView?.destinationPanelButton.isHidden = false
         UIView.animate(withDuration: 0.7, delay: 0.2, options: .curveEaseInOut, animations: {
             self.frame.origin.y = (Layout.height - self.frame.height)
@@ -77,16 +87,13 @@ final class ReDestination: ComponentManager {
     }
 
     // MARK: Private Methods
-    @objc private func checkTextField() {
+    private func checkTextField() {
         guard let text = destinationView?.destinationTextfield.text else { return }
+        store.selectedLocation.value = text
 
         if text.isEmpty {
             animateToBottom()
         }
-    }
-
-    @objc private func updateTextField() {
-        destinationView?.destinationTextfield.text = store.selectedLocation
     }
 
     // MARK: Private Component Rendering
@@ -94,6 +101,7 @@ final class ReDestination: ComponentManager {
         guard let view: Destination = renderNib() else { return }
         view.frame = bounds
         destinationView = view
+        destinationView?.store = store
         addSubview(view)
     }
 

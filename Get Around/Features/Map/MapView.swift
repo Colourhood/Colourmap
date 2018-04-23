@@ -32,11 +32,22 @@ final class MapView: UIViewController {
 
     func subscriptions() {
         // External Subcriptions
-        store.searchResultsPressed.subscribe(onNext: { [weak self] in
-            self?.getDestinationLocation()
+        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
+            switch event {
+            case .press:
+                self?.getDestinationLocation()
+            default: break
+            }
         }).disposed(by: disposeBag)
 
-        // Internal Subscriptions
+        store.dsMap.event.subscribe(onNext: { [weak self] event in
+            switch event {
+            case .map(let type):
+                self?.map.mapType = type
+            default: break
+            }
+        }).disposed(by: disposeBag)
+
     }
 
     private func getDestinationLocation() {
@@ -57,7 +68,20 @@ final class MapView: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
         let region = MKCoordinateRegion(center: center, span: span)
 
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = destination
+
+        store.dsMap.event.onNext(.map(type: .mutedStandard))
+        resetAnnotations()
+        map.addAnnotation(annotation)
         map.setRegion(region, animated: true)
+//        map.isScrollEnabled = false
+//        map.isZoomEnabled = false
+    }
+
+    private func resetAnnotations() {
+        let pinAnnotations = map.annotations.filter { !$0.isEqual(map.userLocation) }
+        map.removeAnnotations(pinAnnotations)
     }
 }
 
@@ -80,15 +104,25 @@ extension MapView: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        store.mapDragged.onNext(())
+        store.dsMap.event.onNext(.onDrag)
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+//        if !store.hidePin.value {
+            let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
 
-        geocoder.reverseGeocodeLocation(centerLocation) { [weak self] (placemark, _) in
-            self?.destinationSubview.destinationView?.destinationTextfield.text = placemark?.first?.name
+            geocoder.reverseGeocodeLocation(centerLocation) { [weak self] (placemark, _) in
+                self?.destinationSubview.destinationView?.destinationTextfield.text = placemark?.first?.name
+            }
+//        }
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        if !annotation.isEqual(mapView.userLocation) {
+            return PinMarker(annotation: annotation, reuseIdentifier: nil)
         }
+        return nil
     }
 
     func findCenterPoint(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) -> CLLocationCoordinate2D {

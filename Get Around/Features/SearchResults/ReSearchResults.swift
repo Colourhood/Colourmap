@@ -29,25 +29,30 @@ final class ReSearchResults: ComponentManager {
                 self.searchResults?.reloadData()
             }).disposed(by: disposeBag)
 
-        store.searchResultsDismiss
-            .subscribe(onNext: { [weak self] in
-                let newHeight = CGFloat(0)
-                self?.frame.size.height = newHeight
-                self?.searchResults?.frame.size.height = newHeight
-            }).disposed(by: disposeBag)
-
-        store.searchResultsPressed
-            .subscribe(onNext: { [weak self] in
+        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
+            switch event {
+            case .dismiss:
+                self?.hideSearchResults()
+            case .press:
                 self?.animateDismiss()
-            }).disposed(by: disposeBag)
+            }
+        }).disposed(by: disposeBag)
 
         // Internal Subscriptions
         searchResults?.rx.itemSelected
             .subscribe(onNext: { [unowned self] index in
                 let selectedAddress = self.store.addressSuggestions.value[index.row].title
                 self.store.selectedLocation.value = selectedAddress
-                self.store.searchResultsPressed.onNext(())
+                self.store.dsPin.event.onNext(.isHidden(val: true))
+                self.controller.view.endEditing(true)
+                self.store.dsSearchResults.event.onNext(.press)
             }).disposed(by: disposeBag)
+    }
+
+    private func hideSearchResults() {
+        let newHeight = CGFloat(0)
+        frame.size.height = newHeight
+        searchResults?.frame.size.height = newHeight
     }
 
     // MARK: Animation

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0912D86E208BC94600F3F2BC /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0912D86D208BC94600F3F2BC /* RxCocoa.framework */; };
 		0912D86F208BC94600F3F2BC /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0912D86D208BC94600F3F2BC /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0912D874208C877C00F3F2BC /* PinMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0912D873208C877C00F3F2BC /* PinMarker.swift */; };
 		0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD1D208088F100E9C608 /* AppDelegate.swift */; };
 		0921AD20208088F100E9C608 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921AD1F208088F100E9C608 /* MapView.swift */; };
 		0921AD23208088F100E9C608 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0921AD21208088F100E9C608 /* Map.storyboard */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		0912D86D208BC94600F3F2BC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		0912D873208C877C00F3F2BC /* PinMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinMarker.swift; sourceTree = "<group>"; };
 		0921AD1A208088F100E9C608 /* Get Around.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Around.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0921AD1D208088F100E9C608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0921AD1F208088F100E9C608 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -102,10 +104,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0912D870208C86D900F3F2BC /* PinMarker */ = {
+			isa = PBXGroup;
+			children = (
+				0912D873208C877C00F3F2BC /* PinMarker.swift */,
+			);
+			path = PinMarker;
+			sourceTree = "<group>";
+		};
 		0921AD11208088F100E9C608 = {
 			isa = PBXGroup;
 			children = (
-				0912D86D208BC94600F3F2BC /* RxCocoa.framework */,
 				0921AD1C208088F100E9C608 /* Get Around */,
 				0921AD1B208088F100E9C608 /* Products */,
 				09B836D92081ED5B007E4FA1 /* Frameworks */,
@@ -153,6 +162,7 @@
 				09B836D22081C701007E4FA1 /* Destination */,
 				09B836FE20836CBD007E4FA1 /* SearchResults */,
 				0921AD3820808C6800E9C608 /* Pin */,
+				0912D870208C86D900F3F2BC /* PinMarker */,
 				09B836EB2082D029007E4FA1 /* ComponentManager */,
 			);
 			path = Features;
@@ -178,6 +188,7 @@
 		0921AD3820808C6800E9C608 /* Pin */ = {
 			isa = PBXGroup;
 			children = (
+				09B836F72083496E007E4FA1 /* RePin.swift */,
 				0921AD3920808C8B00E9C608 /* Pin.xib */,
 				09B836DF2081EDBC007E4FA1 /* Pin.swift */,
 			);
@@ -196,6 +207,7 @@
 		09B836D22081C701007E4FA1 /* Destination */ = {
 			isa = PBXGroup;
 			children = (
+				09B836EC2082D083007E4FA1 /* ReDestination.swift */,
 				09B836D32081C73E007E4FA1 /* Destination.xib */,
 				09B836D52081C9EA007E4FA1 /* Destination.swift */,
 			);
@@ -205,6 +217,7 @@
 		09B836D92081ED5B007E4FA1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0912D86D208BC94600F3F2BC /* RxCocoa.framework */,
 				094835C2208BAAB70094DA73 /* RxSwift.framework */,
 				09B836DC2081ED65007E4FA1 /* MapKit.framework */,
 			);
@@ -234,9 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				09B836F4208347D9007E4FA1 /* Base */,
-				09B836EC2082D083007E4FA1 /* ReDestination.swift */,
-				09B837082083E0B0007E4FA1 /* ReSearchResults.swift */,
-				09B836F72083496E007E4FA1 /* RePin.swift */,
 			);
 			path = ComponentManager;
 			sourceTree = "<group>";
@@ -268,6 +278,7 @@
 		09B836FE20836CBD007E4FA1 /* SearchResults */ = {
 			isa = PBXGroup;
 			children = (
+				09B837082083E0B0007E4FA1 /* ReSearchResults.swift */,
 				09B8370120836E36007E4FA1 /* SearchResults.swift */,
 				09B8370320836F3B007E4FA1 /* Cells */,
 			);
@@ -377,6 +388,7 @@
 				09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */,
 				0921AD20208088F100E9C608 /* MapView.swift in Sources */,
 				09B836F82083496E007E4FA1 /* RePin.swift in Sources */,
+				0912D874208C877C00F3F2BC /* PinMarker.swift in Sources */,
 				09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */,

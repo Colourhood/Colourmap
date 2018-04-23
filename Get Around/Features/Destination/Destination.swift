@@ -9,10 +9,12 @@ final class Destination: UIView, RoundedEdges {
 
     override func awakeFromNib() {
         roundEdges(0.03)
+        destinationTextfield.autocorrectionType = .no
+        destinationTextfield.autocapitalizationType = .none
     }
 
     @IBAction func panelWasPressed() {
         destinationPanelButton.isHidden = true
-        store?.destinationPress.onNext(())
+        store?.dsDestination.event.onNext(.press)
     }
 }

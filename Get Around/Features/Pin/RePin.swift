@@ -6,13 +6,23 @@ final class RePin: ComponentManager {
         super.init(controller: controller, store: store, service: service)
         initialFrame()
         renderPin()
+        subscribe()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    func renderPin() {
+    private func subscribe() {
+        store.dsPin.event.subscribe(onNext: { [weak self] event in
+            switch event {
+            case .isHidden(let value):
+                self?.isHidden = value
+            }
+        }).disposed(by: disposeBag)
+    }
+
+    private func renderPin() {
         guard let pin: Pin = renderNib() else { return }
         pin.frame = bounds
         addSubview(pin)

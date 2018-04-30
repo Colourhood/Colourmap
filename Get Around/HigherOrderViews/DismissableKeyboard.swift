@@ -11,12 +11,3 @@ extension UIViewController: UIGestureRecognizerDelegate {
         view.endEditing(true)
     }
 }
-
-
-extension MKMapView {
-    func dragToDismiss(controller: UIViewController) {
-        let dragGesture = UIPanGestureRecognizer(target: controller, action: #selector (controller.dismissKeyboard))
-        dragGesture.delegate = controller
-        addGestureRecognizer(dragGesture)
-    }
-}

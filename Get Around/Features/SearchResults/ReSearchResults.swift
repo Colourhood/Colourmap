@@ -8,7 +8,7 @@ final class ReSearchResults: ComponentManager {
     override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
         super.init(controller: controller, store: store, service: service)
         initialFrame()
-        renderSearchResults()
+        renderComponent()
         subscriptions()
         swipeUpPanGesture()
     }
@@ -103,7 +103,7 @@ final class ReSearchResults: ComponentManager {
     }
 
     // MARK: Private Component Rendering
-    private func renderSearchResults() {
+    internal override func renderComponent() {
         let view = SearchResults(frame: bounds)
         view.dataSource = self
         view.delegate = self
@@ -112,7 +112,7 @@ final class ReSearchResults: ComponentManager {
     }
 
     // MARK: Private Superview Framing
-    private func initialFrame() {
+    internal override func initialFrame() {
         self.frame.size.width = Layout.width * 0.90
         self.frame.origin.y = (Layout.height * 0.13) * 1.65
         self.center.x = Position.centerX

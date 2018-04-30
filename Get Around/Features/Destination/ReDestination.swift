@@ -9,7 +9,7 @@ final class ReDestination: ComponentManager {
     override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
         super.init(controller: controller, store: store, service: service)
         initialFrame()
-        renderDestination()
+        renderComponent()
         subscriptions()
     }
 
@@ -116,7 +116,7 @@ final class ReDestination: ComponentManager {
     }
 
     // MARK: Private Component Rendering
-    private func renderDestination() {
+    internal override func renderComponent() {
         guard let view: Destination = renderNib() else { return }
         view.frame = bounds
         destinationView = view
@@ -125,7 +125,7 @@ final class ReDestination: ComponentManager {
     }
 
     // MARK: Private Superview Framing
-    private func initialFrame() {
+    internal override func initialFrame() {
         let newSize = CGSize(width: Layout.width, height: Layout.height * 0.13)
         let newOrigin = CGPoint(x: 0, y: Layout.height)
         frame = CGRect(origin: newOrigin, size: newSize)

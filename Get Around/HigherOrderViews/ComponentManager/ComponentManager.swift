@@ -1,12 +1,17 @@
 import UIKit
 import RxSwift
 
-class ComponentManager: UIView {
+protocol ComponentRender {
+    func renderComponent()
+    func initialFrame()
+}
+
+class ComponentManager: UIView, ComponentRender {
     public let controller: UIViewController
     public let store: DataStore
     public let service: ServiceProvider
     public let disposeBag = DisposeBag()
-    
+
     // MARK: Initialization
     init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
         self.controller = controller
@@ -22,4 +27,8 @@ class ComponentManager: UIView {
         self.service = ServiceProvider(store: store)
         super.init(coder: aDecoder)
     }
+
+    open func renderComponent() {}
+
+    open func initialFrame() {}
 }

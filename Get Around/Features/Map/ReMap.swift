@@ -2,11 +2,11 @@ import UIKit
 import MapKit
 
 final class ReMap: ComponentManager {
-    var mapView: Map?
+    private var mapView: Map?
     let geocoder = CLGeocoder()
 
-    override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
-        super.init(controller: controller, store: store, service: service)
+    override init(context: Context) {
+        super.init(context: context)
         initialFrame()
         renderComponent()
     }
@@ -36,33 +36,33 @@ final class ReMap: ComponentManager {
 extension ReMap: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        store.currentLocation = userLocation.coordinate
-
-        if !store.didCenterOnUserLocation {
-            store.didCenterOnUserLocation = true
-            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-            let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-            mapView.setRegion(region, animated: false)
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
-                let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-                self.mapView?.setRegion(region, animated: true)
-            }
-        }
+//        store.currentLocation = userLocation.coordinate
+//
+//        if !store.didCenterOnUserLocation {
+//            store.didCenterOnUserLocation = true
+//            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+//            let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+//            mapView.setRegion(region, animated: false)
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
+//                let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
+//                self.mapView?.setRegion(region, animated: true)
+//            }
+//        }
     }
 
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        store.dsMap.event.onNext(.onDrag)
+//        store.dsMap.event.onNext(.onDrag)
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        //        if !store.hidePin.value {
-        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-
-        geocoder.reverseGeocodeLocation(centerLocation) { [weak self] (placemark, _) in
-//            self?.destinationSubview.destinationView?.destinationTextfield.text = placemark?.first?.name
-        }
+//        //        if !store.hidePin.value {
+//        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+//
+//        geocoder.reverseGeocodeLocation(centerLocation) { [weak self] (placemark, _) in
+////            self?.destinationSubview.destinationView?.destinationTextfield.text = placemark?.first?.name
+//        }
         //        }
     }
 
@@ -98,30 +98,30 @@ extension ReMap: MKMapViewDelegate {
     }
 
     private func getDestinationLocation() {
-        let address = store.selectedLocation.value
-        geocoder.geocodeAddressString(address) { [weak self] (placemark, _) in
-            self?.store.destinationLocation = placemark?.first?.location?.coordinate
-            self?.zoomOutToStartAndDestination()
-        }
+//        let address = store.selectedLocation.value
+//        geocoder.geocodeAddressString(address) { [weak self] (placemark, _) in
+//            self?.store.destinationLocation = placemark?.first?.location?.coordinate
+//            self?.zoomOutToStartAndDestination()
+//        }
     }
 
     func zoomOutToStartAndDestination() {
-        guard let start = store.currentLocation, let destination = store.destinationLocation else { return }
-        let center = findCenterPoint(start: start, destination: destination)
-
-        let latDelta = abs(start.latitude - destination.latitude) * Double(Layout.height / Layout.width) * 1.3
-        let lonDelta = abs(start.longitude - destination.longitude) * 1.6
-
-        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
-        let region = MKCoordinateRegion(center: center, span: span)
-
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = destination
-
-        store.dsMap.event.onNext(.map(type: .mutedStandard))
-        resetAnnotations()
-        mapView?.addAnnotation(annotation)
-        mapView?.setRegion(region, animated: true)
+//        guard let start = store.currentLocation, let destination = store.destinationLocation else { return }
+//        let center = findCenterPoint(start: start, destination: destination)
+//
+//        let latDelta = abs(start.latitude - destination.latitude) * Double(Layout.height / Layout.width) * 1.3
+//        let lonDelta = abs(start.longitude - destination.longitude) * 1.6
+//
+//        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+//        let region = MKCoordinateRegion(center: center, span: span)
+//
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = destination
+//
+//        store.dsMap.event.onNext(.map(type: .mutedStandard))
+//        resetAnnotations()
+//        mapView?.addAnnotation(annotation)
+//        mapView?.setRegion(region, animated: true)
         //        map.isScrollEnabled = false
         //        map.isZoomEnabled = false
     }

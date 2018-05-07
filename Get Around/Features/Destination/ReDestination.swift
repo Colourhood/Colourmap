@@ -3,83 +3,83 @@ import RxSwift
 import RxCocoa
 
 final class ReDestination: ComponentManager {
-    var destinationView: Destination?
+    private var destinationView: Destination?
 
-    // MARK: Initialization
-    override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
-        super.init(controller: controller, store: store, service: service)
+    override init(context: Context) {
+        super.init(context: context)
         initialFrame()
         renderComponent()
-        subscriptions()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialFrame()
+        renderComponent()
     }
 
-    // MARK: Notification Center Observer
-    private func subscriptions() {
-        // External Subscriptions
-        store.dsDestination.event.subscribe(onNext: { [weak self] event in
-            switch event {
-            case .press:
-                self?.animateToTop()
-                self?.store.dsPin.event.onNext(.isHidden(val: false))
-            }
-        }).disposed(by: disposeBag)
-
-        store.dsMap.event.subscribe(onNext: { [weak self] event in
-            switch event {
-            case .onDrag:
-                self?.checkTextField()
-            default: break
-            }
-        }).disposed(by: disposeBag)
-
-//        store.destinationPanelAnimateTop.subscribe(onNext: { [weak self] in
-//            self?.showKeyboard()
+//    // MARK: Notification Center Observer
+//    private func subscriptions() {
+//        // External Subscriptions
+//        store.dsDestination.event.subscribe(onNext: { [weak self] event in
+//            switch event {
+//            case .press:
+//                self?.animateToTop()
+//                self?.store.dsPin.event.onNext(.isHidden(val: false))
+//            }
 //        }).disposed(by: disposeBag)
-
-        store.selectedLocation.asObservable()
-            .subscribe(onNext: { address in
-                self.destinationView?.destinationTextfield.text = address
-            }).disposed(by: disposeBag)
-
-        // Internal Subscriptions
-        destinationView?.destinationTextfield.rx.controlEvent(.editingDidBegin)
-            .subscribe(onNext: { [weak self] _ in
-                self?.store.dsPin.event.onNext(.isHidden(val: false))
-            }).disposed(by: disposeBag)
-
-        destinationView?.destinationTextfield.rx.controlEvent(.editingChanged)
-            .debounce(0.2, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-                self?.destinationDidChange()
-            }).disposed(by: disposeBag)
-
-        destinationView?.destinationTextfield.rx.controlEvent(.editingDidEndOnExit)
-            .subscribe(onNext: { [weak self] _ in
-                self?.store.dsSearchResults.event.onNext(.press)
-                self?.store.dsPin.event.onNext(.isHidden(val: true))
-            }).disposed(by: disposeBag)
-    }
-
-    private func destinationDidChange() {
-        guard let address =  destinationView?.destinationTextfield.text else { return }
-
-        if address.isEmpty {
-            store.dsSearchResults.event.onNext(.press)
-        } else {
-            service.search.searchAddress(address)
-        }
-    }
-
-    private func showKeyboard() {
-        destinationView?.destinationTextfield.becomeFirstResponder()
-    }
+//
+//        store.dsMap.event.subscribe(onNext: { [weak self] event in
+//            switch event {
+//            case .onDrag:
+//                self?.checkTextField()
+//            default: break
+//            }
+//        }).disposed(by: disposeBag)
+//
+////        store.destinationPanelAnimateTop.subscribe(onNext: { [weak self] in
+////            self?.showKeyboard()
+////        }).disposed(by: disposeBag)
+//
+//        store.selectedLocation.asObservable()
+//            .subscribe(onNext: { address in
+//                self.destinationView?.destinationTextfield.text = address
+//            }).disposed(by: disposeBag)
+//
+//        // Internal Subscriptions
+//        destinationView?.destinationTextfield.rx.controlEvent(.editingDidBegin)
+//            .subscribe(onNext: { [weak self] _ in
+//                self?.store.dsPin.event.onNext(.isHidden(val: false))
+//            }).disposed(by: disposeBag)
+//
+//        destinationView?.destinationTextfield.rx.controlEvent(.editingChanged)
+//            .debounce(0.2, scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] in
+//                self?.destinationDidChange()
+//            }).disposed(by: disposeBag)
+//
+//        destinationView?.destinationTextfield.rx.controlEvent(.editingDidEndOnExit)
+//            .subscribe(onNext: { [weak self] _ in
+//                self?.store.dsSearchResults.event.onNext(.press)
+//                self?.store.dsPin.event.onNext(.isHidden(val: true))
+//            }).disposed(by: disposeBag)
+//    }
+//
+//    private func destinationDidChange() {
+//        guard let address =  destinationView?.destinationTextfield.text else { return }
+//
+//        if address.isEmpty {
+//            store.dsSearchResults.event.onNext(.press)
+//        } else {
+//            service.search.searchAddress(address)
+//        }
+//    }
+//
+//    private func showKeyboard() {
+//        destinationView?.destinationTextfield.becomeFirstResponder()
+//    }
 
     // MARK: Animations
-    public func animateIntroduction() {
+    public func popFromBottom() {
         UIView.animate(withDuration: 1.0, delay: 0.3, options: .curveEaseInOut, animations: {
             self.frame.origin.y = Layout.height - self.frame.height
         })
@@ -92,7 +92,7 @@ final class ReDestination: ComponentManager {
             self.destinationView?.layer.cornerRadius = self.frame.size.width * 0.025
             self.center.x = Position.centerX
         }, completion: { _ in
-            self.showKeyboard()
+//            self.showKeyboard()
         })
     }
 
@@ -105,22 +105,22 @@ final class ReDestination: ComponentManager {
         })
     }
 
-    // MARK: Private Methods
-    private func checkTextField() {
-        guard let text = destinationView?.destinationTextfield.text else { return }
-        store.selectedLocation.value = text
-
-        if text.isEmpty {
-            animateToBottom()
-        }
-    }
+//    // MARK: Private Methods
+//    private func checkTextField() {
+//        guard let text = destinationView?.destinationTextfield.text else { return }
+//        store.selectedLocation.value = text
+//
+//        if text.isEmpty {
+//            animateToBottom()
+//        }
+//    }
 
     // MARK: Private Component Rendering
     internal override func renderComponent() {
         guard let view: Destination = renderNib() else { return }
         view.frame = bounds
         destinationView = view
-        destinationView?.store = store
+        destinationView?.store = context.store
         addSubview(view)
     }
 

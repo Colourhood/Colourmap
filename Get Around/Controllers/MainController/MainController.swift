@@ -1,31 +1,26 @@
 import UIKit
-import MapKit
-import RxSwift
-import RxCocoa
 
 final class MainController: UIViewController {
     // MARK: ReComponents
-    var map: ReMap!
-    var searchResults: ReSearchResults!
-    var destination: ReDestination!
-    var pin: RePin!
+    public private(set) var map: ReMap!
+    public private(set) var searchResults: ReSearchResults!
+    public private(set) var destination: ReDestination!
+    public private(set) var pin: RePin!
 
-    // MARK: Data Store
-    var store: DataStore!
-    var service: ServiceProvider!
-    var disposeBag = DisposeBag()
+    // MARK: Context
+    public private(set) var mainContext: Context!
     
     override func viewDidLoad() {
-        store = DataStore()
-        service = ServiceProvider(store: store)
+        mainContext = MainContext(controller: self)
+        
+        map = ReMap(context: mainContext)
+        pin = RePin(context: mainContext)
+        searchResults = ReSearchResults(context: mainContext)
+        destination = ReDestination(context: mainContext)
+    }
 
-        map = ReMap(controller: self, store: store, service: service)
-        pin = RePin(controller: self, store: store, service: service)
-        searchResults = ReSearchResults(controller: self, store: store, service: service)
-        destination = ReDestination(controller: self, store: store, service: service)
-
-        destination.animateIntroduction()
-//        subscriptions()
+    override func viewWillAppear(_ animated: Bool) {
+        mainContext.store.viewDidLoad.onNext(())
     }
 
     

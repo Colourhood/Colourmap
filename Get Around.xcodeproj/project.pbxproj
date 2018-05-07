@@ -43,6 +43,9 @@
 		09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B8370420836F55007E4FA1 /* AddressCell.xib */; };
 		09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370620836F76007E4FA1 /* AddressCell.swift */; };
 		09B837092083E0B0007E4FA1 /* ReSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B837082083E0B0007E4FA1 /* ReSearchResults.swift */; };
+		09E24E32209D979C004E4297 /* ReActiveSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E31209D979C004E4297 /* ReActiveSearchState.swift */; };
+		09E24E36209DA8D4004E4297 /* MainContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E35209DA8D4004E4297 /* MainContext.swift */; };
+		09E24E39209DA903004E4297 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E38209DA903004E4297 /* Context.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,6 +101,9 @@
 		09B8370420836F55007E4FA1 /* AddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
 		09B8370620836F76007E4FA1 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		09B837082083E0B0007E4FA1 /* ReSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSearchResults.swift; sourceTree = "<group>"; };
+		09E24E31209D979C004E4297 /* ReActiveSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReActiveSearchState.swift; sourceTree = "<group>"; };
+		09E24E35209DA8D4004E4297 /* MainContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContext.swift; sourceTree = "<group>"; };
+		09E24E38209DA903004E4297 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +151,7 @@
 				09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */,
 				0921AD1D208088F100E9C608 /* AppDelegate.swift */,
 				0921AD2F20808A2800E9C608 /* Resources */,
-				096521A720954EBF00E5B658 /* Controller */,
+				096521A720954EBF00E5B658 /* Controllers */,
 				09AD2798208F0494009FC67D /* ReStates */,
 				0921AD3020808A3800E9C608 /* Features */,
 				09B836EE208329DD007E4FA1 /* DataStore */,
@@ -239,13 +245,13 @@
 			path = "Base State";
 			sourceTree = "<group>";
 		};
-		096521A720954EBF00E5B658 /* Controller */ = {
+		096521A720954EBF00E5B658 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0921AD1F208088F100E9C608 /* MainController.swift */,
-				0921AD21208088F100E9C608 /* MainController.storyboard */,
+				09E24E37209DA8ED004E4297 /* Shared */,
+				09E24E33209DA8A6004E4297 /* MainController */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		09AD2798208F0494009FC67D /* ReStates */ = {
@@ -253,6 +259,7 @@
 			children = (
 				092929FD2095B08A00467AB0 /* Base State */,
 				09292A002095B0C400467AB0 /* ReInitialState.swift */,
+				09E24E31209D979C004E4297 /* ReActiveSearchState.swift */,
 			);
 			path = ReStates;
 			sourceTree = "<group>";
@@ -339,6 +346,32 @@
 				09B8370620836F76007E4FA1 /* AddressCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		09E24E33209DA8A6004E4297 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				09E24E34209DA8C0004E4297 /* Context */,
+				0921AD1F208088F100E9C608 /* MainController.swift */,
+				0921AD21208088F100E9C608 /* MainController.storyboard */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
+		09E24E34209DA8C0004E4297 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				09E24E35209DA8D4004E4297 /* MainContext.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		09E24E37209DA8ED004E4297 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				09E24E38209DA903004E4297 /* Context.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,6 +477,7 @@
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				096521A920954EE600E5B658 /* Map.swift in Sources */,
 				096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */,
+				09E24E39209DA903004E4297 /* Context.swift in Sources */,
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
 				09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */,
 				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
@@ -453,6 +487,8 @@
 				09B836E320820418007E4FA1 /* LocationService.swift in Sources */,
 				09B836E62082BE85007E4FA1 /* RoundCorners.swift in Sources */,
 				09B836E82082C287007E4FA1 /* DismissableKeyboard.swift in Sources */,
+				09E24E36209DA8D4004E4297 /* MainContext.swift in Sources */,
+				09E24E32209D979C004E4297 /* ReActiveSearchState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

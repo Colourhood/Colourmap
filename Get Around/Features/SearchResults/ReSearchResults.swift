@@ -2,14 +2,13 @@ import UIKit
 import RxCocoa
 
 final class ReSearchResults: ComponentManager {
-    var searchResults: SearchResults?
-    var didShow = false
+    private var searchResults: SearchResults?
+    private var didShow = false
 
-    override init(controller: UIViewController, store: DataStore, service: ServiceProvider) {
-        super.init(controller: controller, store: store, service: service)
+    override init(context: Context) {
+        super.init(context: context)
         initialFrame()
         renderComponent()
-        subscriptions()
         swipeUpPanGesture()
     }
 
@@ -17,37 +16,37 @@ final class ReSearchResults: ComponentManager {
         super.init(coder: aDecoder)
     }
 
-    private func subscriptions() {
-        // External Subscriptions
-        store.addressSuggestions.asObservable()
-            .subscribe(onNext: { results in
-                self.didShow = true
-                let count = self.store.addressSuggestions.value.count
-                let newHeight = Layout.height * 0.065 * CGFloat(count)
-                self.frame.size.height = newHeight
-                self.searchResults?.frame.size.height = newHeight
-                self.searchResults?.reloadData()
-            }).disposed(by: disposeBag)
-
-        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
-            switch event {
-            case .dismiss:
-                self?.hideSearchResults()
-            case .press:
-                self?.animateDismiss()
-            }
-        }).disposed(by: disposeBag)
-
-        // Internal Subscriptions
-        searchResults?.rx.itemSelected
-            .subscribe(onNext: { [unowned self] index in
-                let selectedAddress = self.store.addressSuggestions.value[index.row].title
-                self.store.selectedLocation.value = selectedAddress
-                self.store.dsPin.event.onNext(.isHidden(val: true))
-                self.controller.view.endEditing(true)
-                self.store.dsSearchResults.event.onNext(.press)
-            }).disposed(by: disposeBag)
-    }
+//    private func subscriptions() {
+//        // External Subscriptions
+//        store.addressSuggestions.asObservable()
+//            .subscribe(onNext: { results in
+//                self.didShow = true
+//                let count = self.store.addressSuggestions.value.count
+//                let newHeight = Layout.height * 0.065 * CGFloat(count)
+//                self.frame.size.height = newHeight
+//                self.searchResults?.frame.size.height = newHeight
+//                self.searchResults?.reloadData()
+//            }).disposed(by: disposeBag)
+//
+//        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
+//            switch event {
+//            case .dismiss:
+//                self?.hideSearchResults()
+//            case .press:
+//                self?.animateDismiss()
+//            }
+//        }).disposed(by: disposeBag)
+//
+//        // Internal Subscriptions
+//        searchResults?.rx.itemSelected
+//            .subscribe(onNext: { [unowned self] index in
+//                let selectedAddress = self.store.addressSuggestions.value[index.row].title
+//                self.store.selectedLocation.value = selectedAddress
+//                self.store.dsPin.event.onNext(.isHidden(val: true))
+//                self.controller.view.endEditing(true)
+//                self.store.dsSearchResults.event.onNext(.press)
+//            }).disposed(by: disposeBag)
+//    }
 
     private func hideSearchResults() {
         let newHeight = CGFloat(0)
@@ -122,16 +121,17 @@ final class ReSearchResults: ComponentManager {
 extension ReSearchResults: UITableViewDataSource, UITableViewDelegate {
     // MARK: TableView Delegate Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = store.addressSuggestions.value.count
-        return count
+//        let count = store.addressSuggestions.value.count
+//        return count
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let locationData = store.addressSuggestions.value[indexPath.row]
-        guard let cell: AddressCell = renderNib() else { return UITableViewCell() }
-        cell.mainAddress.text = locationData.title
-        cell.subAddress.text = locationData.subtitle
-        return cell
+//        let locationData = store.addressSuggestions.value[indexPath.row]
+        /* guard let cell: AddressCell = renderNib() else { */ return UITableViewCell() // }
+//        cell.mainAddress.text = locationData.title
+//        cell.subAddress.text = locationData.subtitle
+//        return cell
     }
 }
 

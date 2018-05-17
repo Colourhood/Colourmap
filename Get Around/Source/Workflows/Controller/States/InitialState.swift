@@ -1,12 +1,14 @@
 import RxSwift
 
 extension StateManager {
-    class ReInitialState: State {
+    final class InitialState: State {
         private var context: MainContext
+        private var controller: MainController?
         private var disposeBag = DisposeBag()
 
         init(context: MainContext) {
             self.context = context
+            self.controller = context.controller as? MainController
             subscribeToReComponents()
         }
 
@@ -20,7 +22,7 @@ extension StateManager {
         }
 
         private func subscribeToEvents() {
-            context.store.dsDestination.event
+            controller?.destination.events
                 .subscribe(onNext: { [unowned self] event in
                     switch event {
                     case .press:
@@ -28,7 +30,7 @@ extension StateManager {
                     }
                 }).disposed(by: disposeBag)
 
-            context.store.dsMap.event
+            controller?.map.events
                 .subscribe(onNext: { event in
                     switch event {
                     case .onDrag: break
@@ -38,7 +40,7 @@ extension StateManager {
         }
 
         private func changeStateToActiveSearch() {
-            context.stateManager?.changeState(ReActiveSearchState(context: context))
+            context.stateManager?.changeState(ActiveSearchState(context: context))
         }
     }
 }

@@ -2,10 +2,10 @@ import UIKit
 
 final class MainController: UIViewController {
     // MARK: ReComponents
-    public private(set) var map: ReMap!
-    public private(set) var searchResults: ReSearchResults!
-    public private(set) var destination: ReDestination!
-    public private(set) var pin: RePin!
+    private(set) var map: ReMap!
+    private(set) var searchResults: ReSearchResults!
+    private(set) var destination: ReDestination!
+    private(set) var pin: RePin!
 
     // MARK: Context
     public private(set) var mainContext: Context!

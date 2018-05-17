@@ -1,8 +1,15 @@
 import UIKit
 import MapKit
+import RxSwift
 
 final class ReMap: ComponentManager {
+    enum events {
+        case onDrag
+        case updatedUserLocation(MKUserLocation)
+    }
     private var mapView: Map?
+
+    let events = PublishSubject<events>()
     let geocoder = CLGeocoder()
 
     override init(context: Context) {

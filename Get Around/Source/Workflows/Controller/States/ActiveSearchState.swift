@@ -1,5 +1,5 @@
 extension StateManager {
-    class ReActiveSearchState: State {
+    final class ActiveSearchState: State {
         private var context: MainContext
 
         init(context: MainContext) {

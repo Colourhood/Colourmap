@@ -2,19 +2,49 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum DestinationEvents {
+    case press
+}
+
 final class ReDestination: ComponentManager {
+
     private var destinationView: Destination?
+    let events = PublishSubject<DestinationEvents>()
 
     override init(context: Context) {
         super.init(context: context)
         initialFrame()
         renderComponent()
+        internalEvents()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialFrame()
         renderComponent()
+        internalEvents()
+    }
+
+    private func internalEvents() {
+        destinationView?.destinationButtonPressed = { [weak self] _ in
+            self?.events.onNext(DestinationEvents.press)
+        }
+    }
+
+    // MARK: Private Component Rendering
+    internal override func renderComponent() {
+        guard let view: Destination = renderNib() else { return }
+        view.frame = bounds
+        destinationView = view
+        addSubview(view)
+    }
+
+    // MARK: Private Superview Framing
+    internal override func initialFrame() {
+        let newSize = CGSize(width: Layout.width, height: Layout.height * 0.13)
+        let newOrigin = CGPoint(x: 0, y: Layout.height)
+        frame = CGRect(origin: newOrigin, size: newSize)
+        center.x = Position.centerX
     }
 
 //    // MARK: Notification Center Observer
@@ -114,21 +144,4 @@ final class ReDestination: ComponentManager {
 //            animateToBottom()
 //        }
 //    }
-
-    // MARK: Private Component Rendering
-    internal override func renderComponent() {
-        guard let view: Destination = renderNib() else { return }
-        view.frame = bounds
-        destinationView = view
-        destinationView?.store = context.store
-        addSubview(view)
-    }
-
-    // MARK: Private Superview Framing
-    internal override func initialFrame() {
-        let newSize = CGSize(width: Layout.width, height: Layout.height * 0.13)
-        let newOrigin = CGPoint(x: 0, y: Layout.height)
-        frame = CGRect(origin: newOrigin, size: newSize)
-        center.x = Position.centerX
-    }
 }

@@ -5,7 +5,7 @@ final class Destination: UIView, RoundedEdges {
     @IBOutlet weak var destinationTextfield: UITextField!
     @IBOutlet weak var destinationPanelButton: UIButton!
 
-    var store: DataStore?
+    var destinationButtonPressed: closure<Void>?
 
     override func awakeFromNib() {
         roundEdges(0.03)
@@ -13,8 +13,8 @@ final class Destination: UIView, RoundedEdges {
         destinationTextfield.autocapitalizationType = .none
     }
 
-    @IBAction func panelWasPressed() {
-        destinationPanelButton.isHidden = true
-        store?.dsDestination.event.onNext(.press)
+    @IBAction private func panelWasPressed() {
+//        destinationPanelButton.isHidden = true
+        destinationButtonPressed?(())
     }
 }

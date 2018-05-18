@@ -1,23 +1,16 @@
 import UIKit
+import RxSwift
+
+enum PinEvents {
+    case isHidden(val: Bool)
+}
 
 final class RePin: ComponentManager {
+    // MARK: Class properties
+    let events = PublishSubject<PinEvents>()
 
-    override init(context: Context) {
-        super.init(context: context)
-        initialFrame()
-        renderComponent()
-        listenForEvents()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    private func listenForEvents() {
-        guard let mainContext = context as? MainContext else { return }
-
-        mainContext.store.dsPin.event
-            .subscribe(onNext: { [weak self] event in
+    override func childViewEvents() {
+        events.subscribe(onNext: { [weak self] event in
             switch event {
             case .isHidden(let value):
                 self?.isHidden = value

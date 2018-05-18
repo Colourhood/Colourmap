@@ -1,20 +1,17 @@
-import UIKit
 import RxCocoa
+import RxSwift
+import UIKit
+
+
+enum SearchResultEvents {
+    case press
+    case dismiss
+}
 
 final class ReSearchResults: ComponentManager {
     private var searchResults: SearchResults?
     private var didShow = false
-
-    override init(context: Context) {
-        super.init(context: context)
-        initialFrame()
-        renderComponent()
-        swipeUpPanGesture()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    let events = PublishSubject<SearchResultEvents>()
 
 //    private func subscriptions() {
 //        // External Subscriptions

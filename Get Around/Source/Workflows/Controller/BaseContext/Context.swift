@@ -13,6 +13,5 @@ final class EmptyContext: Context {
     public private(set) var stateManager: StateManager?
     public private(set) var service: ServiceProvider?
 
-    init() {
-    }
+    init() {}
 }

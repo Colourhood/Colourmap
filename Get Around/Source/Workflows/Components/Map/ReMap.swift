@@ -7,23 +7,10 @@ final class ReMap: ComponentManager {
         case onDrag
         case updatedUserLocation(MKUserLocation)
     }
-    private var mapView: Map?
 
+    private var mapView: Map?
     let events = PublishSubject<events>()
     let geocoder = CLGeocoder()
-
-    override init(context: Context) {
-        super.init(context: context)
-        initialFrame()
-        renderComponent()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initialFrame()
-        renderComponent()
-    }
-
 
     // MARK: Private Component Rendering
     internal override func renderComponent() {

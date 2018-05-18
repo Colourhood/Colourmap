@@ -7,25 +7,10 @@ enum DestinationEvents {
 }
 
 final class ReDestination: ComponentManager {
-
     private var destinationView: Destination?
     let events = PublishSubject<DestinationEvents>()
 
-    override init(context: Context) {
-        super.init(context: context)
-        initialFrame()
-        renderComponent()
-        internalEvents()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initialFrame()
-        renderComponent()
-        internalEvents()
-    }
-
-    private func internalEvents() {
+    internal override func childViewEvents() {
         destinationView?.destinationButtonPressed = { [weak self] _ in
             self?.events.onNext(DestinationEvents.press)
         }

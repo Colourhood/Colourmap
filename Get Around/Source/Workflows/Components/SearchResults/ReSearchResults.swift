@@ -13,6 +13,22 @@ final class ReSearchResults: ComponentManager {
     private var didShow = false
     let events = PublishSubject<SearchResultEvents>()
 
+    // MARK: Private Component Rendering
+    internal override func renderComponent() {
+        let view = SearchResults(frame: bounds)
+        view.dataSource = self
+        view.delegate = self
+        searchResults = view
+        addSubview(view)
+    }
+
+    // MARK: Private Superview Framing
+    internal override func initialFrame() {
+        self.frame.size.width = Layout.width * 0.90
+        self.frame.origin.y = (Layout.height * 0.13) * 1.65
+        self.center.x = Position.centerX
+    }
+
 //    private func subscriptions() {
 //        // External Subscriptions
 //        store.addressSuggestions.asObservable()
@@ -96,22 +112,6 @@ final class ReSearchResults: ComponentManager {
             })
             didShow = false
         }
-    }
-
-    // MARK: Private Component Rendering
-    internal override func renderComponent() {
-        let view = SearchResults(frame: bounds)
-        view.dataSource = self
-        view.delegate = self
-        searchResults = view
-        addSubview(view)
-    }
-
-    // MARK: Private Superview Framing
-    internal override func initialFrame() {
-        self.frame.size.width = Layout.width * 0.90
-        self.frame.origin.y = (Layout.height * 0.13) * 1.65
-        self.center.x = Position.centerX
     }
 }
 

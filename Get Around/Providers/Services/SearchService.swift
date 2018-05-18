@@ -1,12 +1,12 @@
 import Foundation
 import MapKit
+import RxSwift
 
 final class SearchService: NSObject, MKLocalSearchCompleterDelegate {
     private let searchRequest = MKLocalSearchCompleter()
-    private let store: DataStore
+    private(set) var addressSuggestions = Variable<[MKLocalSearchCompletion]>([])
 
-    init(store: DataStore) {
-        self.store = store
+    override init() {
         super.init()
         searchRequest.delegate = self
     }
@@ -19,6 +19,6 @@ final class SearchService: NSObject, MKLocalSearchCompleterDelegate {
         let slice = completer.results.prefix(3)
         let filter = slice.filter { $0.subtitle != "Search Nearby" }
 
-        store.addressSuggestions.value = filter
+        addressSuggestions.value = filter
     }
 }

@@ -44,6 +44,7 @@
 		09B8370520836F55007E4FA1 /* AddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B8370420836F55007E4FA1 /* AddressCell.xib */; };
 		09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B8370620836F76007E4FA1 /* AddressCell.swift */; };
 		09B837092083E0B0007E4FA1 /* ReSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B837082083E0B0007E4FA1 /* ReSearchResults.swift */; };
+		09C0012F20AEB91E00A8F476 /* StartupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C0012E20AEB91E00A8F476 /* StartupState.swift */; };
 		09E24E32209D979C004E4297 /* ActiveSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E31209D979C004E4297 /* ActiveSearchState.swift */; };
 		09E24E36209DA8D4004E4297 /* MainContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E35209DA8D4004E4297 /* MainContext.swift */; };
 		09E24E39209DA903004E4297 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E38209DA903004E4297 /* Context.swift */; };
@@ -103,6 +104,7 @@
 		09B8370420836F55007E4FA1 /* AddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCell.xib; sourceTree = "<group>"; };
 		09B8370620836F76007E4FA1 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		09B837082083E0B0007E4FA1 /* ReSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReSearchResults.swift; sourceTree = "<group>"; };
+		09C0012E20AEB91E00A8F476 /* StartupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupState.swift; sourceTree = "<group>"; };
 		09E24E31209D979C004E4297 /* ActiveSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSearchState.swift; sourceTree = "<group>"; };
 		09E24E35209DA8D4004E4297 /* MainContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContext.swift; sourceTree = "<group>"; };
 		09E24E38209DA903004E4297 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		0928AEC820AD4AF700B3B74D /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				09C0013020AEBF7700A8F476 /* StateManager */,
 				09B836EE208329DD007E4FA1 /* DataStore */,
 				09B836E1208203F7007E4FA1 /* Services */,
 			);
@@ -261,13 +264,11 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		092929FD2095B08A00467AB0 /* Base State */ = {
+		092929FD2095B08A00467AB0 /* BaseState */ = {
 			isa = PBXGroup;
 			children = (
-				092929FE2095B09F00467AB0 /* State.swift */,
-				0928AEC920AD52BB00B3B74D /* StateManager.swift */,
 			);
-			path = "Base State";
+			path = BaseState;
 			sourceTree = "<group>";
 		};
 		096521A720954EBF00E5B658 /* Workflows */ = {
@@ -283,9 +284,10 @@
 		09AD2798208F0494009FC67D /* States */ = {
 			isa = PBXGroup;
 			children = (
+				09C0012E20AEB91E00A8F476 /* StartupState.swift */,
 				09292A002095B0C400467AB0 /* InitialState.swift */,
 				09E24E31209D979C004E4297 /* ActiveSearchState.swift */,
-				092929FD2095B08A00467AB0 /* Base State */,
+				092929FD2095B08A00467AB0 /* BaseState */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -374,24 +376,41 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		09C0013020AEBF7700A8F476 /* StateManager */ = {
+			isa = PBXGroup;
+			children = (
+				0928AEC920AD52BB00B3B74D /* StateManager.swift */,
+				09C0013120AEBF8800A8F476 /* Base */,
+			);
+			path = StateManager;
+			sourceTree = "<group>";
+		};
+		09C0013120AEBF8800A8F476 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				092929FE2095B09F00467AB0 /* State.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		09E24E34209DA8C0004E4297 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				0921AD1F208088F100E9C608 /* MainController.swift */,
 				09E24E35209DA8D4004E4297 /* MainContext.swift */,
 				09AD2798208F0494009FC67D /* States */,
-				09E24E37209DA8ED004E4297 /* Base Context */,
+				09E24E37209DA8ED004E4297 /* BaseContext */,
 			);
 			name = Modules;
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		09E24E37209DA8ED004E4297 /* Base Context */ = {
+		09E24E37209DA8ED004E4297 /* BaseContext */ = {
 			isa = PBXGroup;
 			children = (
 				09E24E38209DA903004E4297 /* Context.swift */,
 			);
-			path = "Base Context";
+			path = BaseContext;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,6 +513,7 @@
 				0912D874208C877C00F3F2BC /* PinMarker.swift in Sources */,
 				092929FF2095B09F00467AB0 /* State.swift in Sources */,
 				09B836F6208347E5007E4FA1 /* ComponentManager.swift in Sources */,
+				09C0012F20AEB91E00A8F476 /* StartupState.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
 				096521A920954EE600E5B658 /* Map.swift in Sources */,
 				096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */,

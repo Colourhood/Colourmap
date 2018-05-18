@@ -2,6 +2,7 @@ import RxSwift
 
 extension StateManager {
     final class InitialState: State {
+        // MARK: Class Properties
         private var context: MainContext
         private var controller: MainController?
         private var disposeBag = DisposeBag()

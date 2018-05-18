@@ -1,7 +1,9 @@
-class ServiceProvider {
+final class ServiceProvider {
     let search: SearchService
+    let location: LocationService
 
     init(store: DataStore) {
-        search = SearchService(store: store)
+        search = SearchService()
+        location = LocationService()
     }
 }

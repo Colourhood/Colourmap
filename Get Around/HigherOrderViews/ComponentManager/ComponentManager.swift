@@ -1,9 +1,10 @@
 import RxSwift
 import UIKit
 
-protocol ComponentRender {
+@objc protocol ComponentRender {
     func renderComponent()
     func initialFrame()
+    @objc optional func childViewEvents()
 }
 
 class ComponentManager: UIView, ComponentRender {
@@ -15,6 +16,10 @@ class ComponentManager: UIView, ComponentRender {
         self.context = context
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         context.controller?.view.addSubview(self)
+
+        initialFrame()
+        renderComponent()
+        childViewEvents()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -22,7 +27,8 @@ class ComponentManager: UIView, ComponentRender {
         super.init(coder: aDecoder)
     }
 
-    open func renderComponent() {}
-
+    // MARK: Procotol Definitions
     open func initialFrame() {}
+    open func renderComponent() {}
+    open func childViewEvents() {}
 }

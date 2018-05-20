@@ -1,6 +1,6 @@
 import UIKit
 
-struct Layout {
-    static let width: CGFloat = UIScreen.main.bounds.width
-    static let height: CGFloat = UIScreen.main.bounds.height
+public struct Layout {
+    public static let width: CGFloat = UIScreen.main.bounds.width
+    public static let height: CGFloat = UIScreen.main.bounds.height
 }

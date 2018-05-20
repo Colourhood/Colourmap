@@ -24,6 +24,9 @@
 		54148B3B20B22E9E005195A9 /* ComponentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54148B3A20B22E9E005195A9 /* ComponentManager.swift */; };
 		54148B3D20B22EB8005195A9 /* DismissableKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54148B3C20B22EB8005195A9 /* DismissableKeyboard.swift */; };
 		54148B3E20B23342005195A9 /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54148B3820B22E67005195A9 /* RoundCorners.swift */; };
+		541F0E0F20B2371000583763 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E0E20B2371000583763 /* Typealiases.swift */; };
+		541F0E1520B2374B00583763 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E1320B2374B00583763 /* Positions.swift */; };
+		541F0E1620B2374B00583763 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E1420B2374B00583763 /* Layout.swift */; };
 		54BAB91920B2172100A3BDA0 /* Simplerhood.h in Headers */ = {isa = PBXBuildFile; fileRef = 54BAB91720B2172100A3BDA0 /* Simplerhood.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		54148B3820B22E67005195A9 /* RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorners.swift; sourceTree = "<group>"; };
 		54148B3A20B22E9E005195A9 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
 		54148B3C20B22EB8005195A9 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DismissableKeyboard.swift; path = "../../../../../../Get Around Project/Get Around/Source/HigherOrderViews/DismissableKeyboard.swift"; sourceTree = "<group>"; };
+		541F0E0E20B2371000583763 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = "../../../../../Get Around Project/Get Around/Source/SwiftUtil/Typealiases.swift"; sourceTree = "<group>"; };
+		541F0E1320B2374B00583763 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Positions.swift; path = "../../../../../../Get Around Project/Get Around/Source/Layout/Positions.swift"; sourceTree = "<group>"; };
+		541F0E1420B2374B00583763 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = "../../../../../../Get Around Project/Get Around/Source/Layout/Layout.swift"; sourceTree = "<group>"; };
 		54BAB91420B2172100A3BDA0 /* Simplerhood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simplerhood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54BAB91720B2172100A3BDA0 /* Simplerhood.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simplerhood.h; sourceTree = "<group>"; };
 		54BAB91820B2172100A3BDA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +57,7 @@
 		54148B3120B22162005195A9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				541F0E0D20B2370400583763 /* DataTypes */,
 				54148B3220B221E2005195A9 /* UIKit */,
 			);
 			path = Sources;
@@ -59,6 +66,7 @@
 		54148B3220B221E2005195A9 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				541F0E1220B2373100583763 /* Layout & Positions */,
 				54148B3920B22E91005195A9 /* Component Manager */,
 				54148B3720B22E60005195A9 /* View Extensions */,
 			);
@@ -80,6 +88,23 @@
 				54148B3A20B22E9E005195A9 /* ComponentManager.swift */,
 			);
 			path = "Component Manager";
+			sourceTree = "<group>";
+		};
+		541F0E0D20B2370400583763 /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				541F0E0E20B2371000583763 /* Typealiases.swift */,
+			);
+			path = DataTypes;
+			sourceTree = "<group>";
+		};
+		541F0E1220B2373100583763 /* Layout & Positions */ = {
+			isa = PBXGroup;
+			children = (
+				541F0E1320B2374B00583763 /* Positions.swift */,
+				541F0E1420B2374B00583763 /* Layout.swift */,
+			);
+			path = "Layout & Positions";
 			sourceTree = "<group>";
 		};
 		54BAB90A20B2172100A3BDA0 = {
@@ -215,9 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				541F0E0F20B2371000583763 /* Typealiases.swift in Sources */,
 				54148B3E20B23342005195A9 /* RoundCorners.swift in Sources */,
 				54148B3B20B22E9E005195A9 /* ComponentManager.swift in Sources */,
+				541F0E1520B2374B00583763 /* Positions.swift in Sources */,
 				54148B3D20B22EB8005195A9 /* DismissableKeyboard.swift in Sources */,
+				541F0E1620B2374B00583763 /* Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

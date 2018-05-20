@@ -16,9 +16,16 @@ final class SearchService: NSObject, MKLocalSearchCompleterDelegate {
     }
 
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        let slice = completer.results.prefix(3)
-        let filter = slice.filter { $0.subtitle != "Search Nearby" }
+        let slice = fetchFirstThreeResults(completer)
+        let filtered = filterOurSearchNearbySuggestedResults(slice)
+        addressSuggestions.value = filtered
+    }
 
-        addressSuggestions.value = filter
+    private func fetchFirstThreeResults(_ search: MKLocalSearchCompleter) -> ArraySlice<MKLocalSearchCompletion> {
+        return search.results.prefix(3)
+    }
+
+    private func filterOurSearchNearbySuggestedResults(_ results: ArraySlice<MKLocalSearchCompletion>) -> [MKLocalSearchCompletion] {
+        return results.filter { $0.subtitle != "Search Nearby" }
     }
 }

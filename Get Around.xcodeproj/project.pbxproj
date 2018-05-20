@@ -28,7 +28,6 @@
 		096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A9FB920886CDF00EFCF79 /* ServiceProvider.swift */; };
 		09B836D42081C73E007E4FA1 /* Destination.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B836D32081C73E007E4FA1 /* Destination.xib */; };
 		09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D52081C9EA007E4FA1 /* Destination.swift */; };
-		09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836D72081CC84007E4FA1 /* NibRender.swift */; };
 		09B836DD2081ED65007E4FA1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B836DC2081ED65007E4FA1 /* MapKit.framework */; };
 		09B836E02081EDBC007E4FA1 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836DF2081EDBC007E4FA1 /* Pin.swift */; };
 		09B836E320820418007E4FA1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B836E220820418007E4FA1 /* LocationService.swift */; };
@@ -88,7 +87,6 @@
 		096A9FB920886CDF00EFCF79 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		09B836D32081C73E007E4FA1 /* Destination.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Destination.xib; sourceTree = "<group>"; };
 		09B836D52081C9EA007E4FA1 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
-		09B836D72081CC84007E4FA1 /* NibRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibRender.swift; sourceTree = "<group>"; };
 		09B836DC2081ED65007E4FA1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Get Around.entitlements"; sourceTree = "<group>"; };
 		09B836DF2081EDBC007E4FA1 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				0921AD3C20808FC200E9C608 /* Positions.swift */,
-				09B836D72081CC84007E4FA1 /* NibRender.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -525,7 +522,6 @@
 				09B836D62081C9EA007E4FA1 /* Destination.swift in Sources */,
 				0928AECA20AD52BB00B3B74D /* StateManager.swift in Sources */,
 				09B8370720836F76007E4FA1 /* AddressCell.swift in Sources */,
-				09B836D82081CC84007E4FA1 /* NibRender.swift in Sources */,
 				09B836ED2082D083007E4FA1 /* ReDestination.swift in Sources */,
 				09B837092083E0B0007E4FA1 /* ReSearchResults.swift in Sources */,
 				0921AD3D20808FC200E9C608 /* Positions.swift in Sources */,
@@ -682,9 +678,10 @@
 				);
 				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -702,10 +699,10 @@
 				);
 				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies -Onone";
 				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

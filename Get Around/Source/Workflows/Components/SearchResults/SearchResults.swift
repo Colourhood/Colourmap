@@ -21,6 +21,7 @@ class SearchResults: UITableView, RoundedEdges {
     }
 
     private func registerCell() {
-        register(AddressCell.self, forCellReuseIdentifier: String(describing: AddressCell.self))
+        let cellName = "AddressCell"
+        register(AddressCell.self, forCellReuseIdentifier: cellName)
     }
 }

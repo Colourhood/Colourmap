@@ -24,6 +24,13 @@ class ComponentManager: UIView, ComponentRender {
         super.init(coder: aDecoder)
     }
 
+    // MARK: Internal Methods
+    internal func renderNib<T: UIView>() -> T? {
+        let nib = UINib(nibName: String(describing: T.self), bundle: nil)
+        let component = nib.instantiate(withOwner: nil, options: nil).first as? T
+        return component
+    }
+
     // MARK: Procotol Definitions
     open func initialFrame() {}
     open func renderComponent() {}

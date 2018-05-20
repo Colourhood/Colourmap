@@ -7,8 +7,13 @@ final class Destination: UIView, RoundedEdges {
 
     var destinationButtonPressed: closure<Void>?
 
-    override func awakeFromNib() {
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         roundEdges(0.03)
+        customizeTextField()
+    }
+
+    private func customizeTextField() {
         destinationTextfield.autocorrectionType = .no
         destinationTextfield.autocapitalizationType = .none
     }

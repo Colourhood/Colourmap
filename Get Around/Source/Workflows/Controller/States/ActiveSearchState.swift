@@ -1,12 +1,10 @@
 extension StateManager {
-    final class ActiveSearchState: State {
-        private var context: MainContext
+    final class ActiveSearchState: BaseState {
+        private var mainContext: MainContext?
 
-        init(context: MainContext) {
-            self.context = context
-        }
-
-        func subscribeToEvents() {
+        override init(context: Context) {
+            super.init(context: context)
+            self.mainContext = context as? MainContext
         }
     }
 }

@@ -1,47 +1,44 @@
 import RxSwift
 
 extension StateManager {
-    final class InitialState: State {
+    final class InitialState: BaseState {
         // MARK: Class Properties
-        private var context: MainContext
-        private var controller: MainController?
-        private var disposeBag = DisposeBag()
+        private var mainContext: MainContext?
 
-        init(context: MainContext) {
-            self.context = context
-            self.controller = context.controller as? MainController
-            subscribeToReComponents()
+        // MARK: Parent Methods
+        override func bindContext() {
+            mainContext = super.context as? MainContext
         }
 
-        private func subscribeToReComponents() {
-            guard let controller = context.controller as? MainController else { return }
-
-            context.store.viewDidLoad
-                .subscribe(onNext: { _ in
-                    controller.destination.popFromBottom()
-                }).disposed(by: disposeBag)
+        override func stateEntry() {
+            subscribeToEvents()
         }
 
         private func subscribeToEvents() {
-            controller?.destination.events
-                .subscribe(onNext: { [unowned self] event in
-                    switch event {
-                    case .press:
-                        self.changeStateToActiveSearch()
-                    }
-                }).disposed(by: disposeBag)
+            mainContext?.mainController?.controllerRendered = { [weak self] _ in
+                print("Did call event")
+                self?.mainContext?.mainController?.destination.popFromBottom()
+            }
 
-            controller?.map.events
-                .subscribe(onNext: { event in
-                    switch event {
-                    case .onDrag: break
-                    default: break
-                    }
-                }).disposed(by: disposeBag)
+//            mainContext?.mainController?.destination.events
+//                .subscribe(onNext: { [unowned self] event in
+//                    switch event {
+//                    case .press:
+//                        self.changeStateToActiveSearch()
+//                    }
+//                }).disposed(by: disposeBag)
+//
+//            mainContext?.mainController?.map.events
+//                .subscribe(onNext: { event in
+//                    switch event {
+//                    case .onDrag: break
+//                    default: break
+//                    }
+//                }).disposed(by: disposeBag)
         }
 
         private func changeStateToActiveSearch() {
-            context.stateManager?.changeState(ActiveSearchState(context: context))
+            mainContext?.stateManager?.changeState(ActiveSearchState(context: super.context))
         }
     }
 }

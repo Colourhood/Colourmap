@@ -1,12 +1,15 @@
 extension StateManager {
-    final class StartupState: State {
+    final class StartupState: BaseState {
         // MARK: Class Properties
-        private var context: MainContext
+        private var mainContext: MainContext?
 
-        init(context: MainContext) {
-            self.context = context
+        // MARK: Parent Methods
+        override func bindContext() {
+            mainContext = super.context as? MainContext
         }
-
-        // MARK: Private methods
+        
+        override func stateEntry() {
+            mainContext = context as? MainContext
+        }
     }
 }

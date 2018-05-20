@@ -1,7 +1,7 @@
 import UIKit
 
 protocol Context {
-    var store: DataStore { get }
+//    var store: DataStore { get }
     var controller: UIViewController? { get }
     var stateManager: StateManager? { get }
     var service: ServiceProvider? { get }

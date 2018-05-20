@@ -8,21 +8,23 @@ final class MainController: UIViewController {
     private(set) var pin: RePin!
 
     // MARK: Context
-    public private(set) var mainContext: Context!
-    
+    private(set) var mainContext: Context!
+
+    // MARK: Controller Event
+    var controllerRendered: closure<Void>?
+
+    // MARK: Superclass Methods
     override func viewDidLoad() {
-        mainContext = MainContext(controller: self)
-        
+        super.viewDidLoad()
+        mainContext = MainContext(mainController: self)
+
         map = ReMap(context: mainContext)
         pin = RePin(context: mainContext)
         searchResults = ReSearchResults(context: mainContext)
         destination = ReDestination(context: mainContext)
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        mainContext.store.viewDidLoad.onNext(())
+        controllerRendered?(())
     }
-
     
 //    func subscriptions() {
 //        // External Subcriptions

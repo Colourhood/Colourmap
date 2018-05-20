@@ -8,7 +8,7 @@ final class MainController: UIViewController {
     private(set) var pin: RePin!
 
     // MARK: Context
-    private(set) var mainContext: Context!
+    private var mainContext: Context!
 
     // MARK: Controller Event
     var controllerRendered: closure<Void>?
@@ -16,14 +16,12 @@ final class MainController: UIViewController {
     // MARK: Superclass Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        map = ReMap(controller: self)
+        pin = RePin(controller: self)
+        searchResults = ReSearchResults(controller: self)
+        destination = ReDestination(controller: self)
+
         mainContext = MainContext(mainController: self)
-
-        map = ReMap(context: mainContext)
-        pin = RePin(context: mainContext)
-        searchResults = ReSearchResults(context: mainContext)
-        destination = ReDestination(context: mainContext)
-
-        controllerRendered?(())
     }
     
 //    func subscriptions() {

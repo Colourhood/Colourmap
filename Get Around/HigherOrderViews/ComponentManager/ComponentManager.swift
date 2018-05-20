@@ -8,14 +8,12 @@ import UIKit
 }
 
 class ComponentManager: UIView, ComponentRender {
-    public let context: Context
     public let disposeBag = DisposeBag()
 
     // MARK: Initialization
-    init(context: Context) {
-        self.context = context
+    init(controller: UIViewController) {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        context.controller?.view.addSubview(self)
+        controller.view.addSubview(self)
 
         initialFrame()
         renderComponent()
@@ -23,7 +21,6 @@ class ComponentManager: UIView, ComponentRender {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        self.context = EmptyContext()
         super.init(coder: aDecoder)
     }
 

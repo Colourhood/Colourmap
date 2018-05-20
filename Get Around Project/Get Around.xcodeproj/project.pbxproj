@@ -47,6 +47,7 @@
 		09E24E39209DA903004E4297 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E38209DA903004E4297 /* Context.swift */; };
 		54148B2D20B21F12005195A9 /* Simplerhood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BAB93A20B21D3300A3BDA0 /* Simplerhood.framework */; };
 		54148B2E20B21F12005195A9 /* Simplerhood.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54BAB93A20B21D3300A3BDA0 /* Simplerhood.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		541F0E0B20B2367800583763 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E0A20B2367800583763 /* Layout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		09E24E31209D979C004E4297 /* ActiveSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSearchState.swift; sourceTree = "<group>"; };
 		09E24E35209DA8D4004E4297 /* MainContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContext.swift; sourceTree = "<group>"; };
 		09E24E38209DA903004E4297 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		541F0E0A20B2367800583763 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		54BAB91F20B2176200A3BDA0 /* Simplerhood.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simplerhood.xcodeproj; path = "../Get Around Frameworks/Simplerhood/Simplerhood.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				0921AD3C20808FC200E9C608 /* Positions.swift */,
+				541F0E0A20B2367800583763 /* Layout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				092929FF2095B09F00467AB0 /* State.swift in Sources */,
 				09C0012F20AEB91E00A8F476 /* StartupState.swift in Sources */,
 				0921AD1E208088F100E9C608 /* AppDelegate.swift in Sources */,
+				541F0E0B20B2367800583763 /* Layout.swift in Sources */,
 				096521A920954EE600E5B658 /* Map.swift in Sources */,
 				096A9FBA20886CDF00EFCF79 /* ServiceProvider.swift in Sources */,
 				09E24E39209DA903004E4297 /* Context.swift in Sources */,

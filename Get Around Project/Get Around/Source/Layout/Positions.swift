@@ -6,8 +6,3 @@ struct Position {
     static let centerX: CGFloat = UIScreen.main.bounds.midX
     static let bottomY: CGFloat = UIScreen.main.bounds.maxY
 }
-
-struct Layout {
-    static let width: CGFloat = UIScreen.main.bounds.width
-    static let height: CGFloat = UIScreen.main.bounds.height
-}

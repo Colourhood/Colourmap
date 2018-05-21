@@ -1,7 +1,7 @@
-import UIKit
-import RxSwift
-import RxCocoa
 import Simplerhood
+import RxCocoa
+import RxSwift
+import UIKit
 
 enum DestinationEvents {
     case press
@@ -12,8 +12,8 @@ final class ReDestination: ComponentManager {
     let events = PublishSubject<DestinationEvents>()
 
     internal override func childViewEvents() {
-        destinationView?.destinationButtonPressed = { [weak self] _ in
-            self?.events.onNext(DestinationEvents.press)
+        destinationView?.destinationButtonPressed = { [unowned self] _ in
+            self.events.onNext(DestinationEvents.press)
         }
     }
 

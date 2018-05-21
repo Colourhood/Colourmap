@@ -9,10 +9,7 @@ final class MainController: UIViewController {
     private(set) var pin: RePin!
 
     // MARK: Context
-    private var mainContext: Context!
-
-    // MARK: Controller Event
-    var controllerRendered: closure<Void>?
+    private(set) var mainContext: MainContext!
 
     // MARK: Superclass Methods
     override func viewDidLoad() {
@@ -23,6 +20,7 @@ final class MainController: UIViewController {
         destination = ReDestination(controller: self)
 
         mainContext = MainContext(mainController: self)
+        
     }
     
 //    func subscriptions() {

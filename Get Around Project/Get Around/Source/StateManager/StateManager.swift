@@ -1,9 +1,7 @@
 final class StateManager {
-    var state: State
+    private(set) var state: State?
 
-    init(context: MainContext) {
-        state = InitialState(context: context)
-    }
+    init() {}
 
     func changeState(_ state: State) {
         self.state = state

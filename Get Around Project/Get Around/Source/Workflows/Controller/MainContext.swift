@@ -4,15 +4,18 @@ final class MainContext: Context {
     private(set) var store = DataStore()
     private(set) var service: ServiceProvider?
     private(set) var stateManager: StateManager?
-    internal var controller: UIViewController?
+    private(set) var controller: UIViewController?
 
     init(mainController: MainController) {
         self.controller = mainController
         self.service = ServiceProvider(store: store)
-        self.stateManager = StateManager(context: self)
+        self.stateManager = StateManager()
+
+        initializeStartUpState()
     }
 
-    var mainController: MainController? {
-        return controller as? MainController
+    private func initializeStartUpState() {
+        let startUpState = StateManager.StartupState(context: self)
+        stateManager?.changeState(startUpState)
     }
 }

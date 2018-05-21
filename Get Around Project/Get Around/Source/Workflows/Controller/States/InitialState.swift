@@ -4,10 +4,12 @@ extension StateManager {
     final class InitialState: BaseState {
         // MARK: Class Properties
         private var mainContext: MainContext?
+        private var mainController: MainController?
 
         // MARK: Parent Methods
         override func bindContext() {
             mainContext = super.context as? MainContext
+            mainController = super.context.controller as? MainController
         }
 
         override func stateEntry() {
@@ -17,7 +19,7 @@ extension StateManager {
 
         // MARK: Private Methods
         private func subscribeToComponentEvents() {
-            mainContext?.mainController?.destination.events
+            mainController?.destination.events
                 .subscribe(onNext: { [unowned self] event in
                     switch event {
                     case .press:
@@ -25,7 +27,7 @@ extension StateManager {
                     }
                 }).disposed(by: disposeBag)
 
-            mainContext?.mainController?.map.events
+            mainController?.map.events
                 .subscribe(onNext: { event in
                     switch event {
                     case .onDrag: break
@@ -35,7 +37,7 @@ extension StateManager {
         }
 
         private func animateDestinationPopFromBottom() {
-            mainContext?.mainController?.destination.popFromBottom()
+            mainController?.destination.popFromBottom()
         }
 
         // MARK: State Changes

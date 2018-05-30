@@ -3,14 +3,14 @@ import UIKit
 @objc public protocol ComponentRender {
     func renderComponent()
     func initialFrame()
+    func bindController(_ controller: UIViewController)
     @objc optional func childViewEvents()
 }
 
 open class ComponentManager: UIView, ComponentRender {
     // MARK: Initialization
-    public init(controller: UIViewController) {
+    public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        controller.view.addSubview(self)
 
         initialFrame()
         renderComponent()
@@ -28,8 +28,13 @@ open class ComponentManager: UIView, ComponentRender {
         return component
     }
 
-    // MARK: Procotol Definitions
+    // MARK: Procotol Function Definitions
     open func initialFrame() {}
     open func renderComponent() {}
+
+    open func bindController(_ controller: UIViewController) {
+        controller.view.addSubview(self)
+    }
+    
     open func childViewEvents() {}
 }

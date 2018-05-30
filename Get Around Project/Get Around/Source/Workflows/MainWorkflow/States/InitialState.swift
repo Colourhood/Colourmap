@@ -1,20 +1,27 @@
+import Simplerhood
 import RxSwift
 
-extension StateManager {
+extension MainContext {
     final class InitialState: BaseState {
         // MARK: Class Properties
-        private var mainContext: MainContext?
         private var mainController: MainController?
+        private var mainContext: MainContext?
+        private var stateManager: StateManager?
+        private var disposeBag = DisposeBag()
 
         // MARK: Parent Methods
         override func bindContext() {
             mainContext = super.context as? MainContext
-            mainController = super.context.controller as? MainController
+            mainController = mainContext?.controller
+            stateManager = mainContext?.provider?.stateManager
         }
 
         override func stateEntry() {
             animateDestinationPopFromBottom()
             subscribeToComponentEvents()
+        }
+
+        override func stateExit() {
         }
 
         // MARK: Private Methods
@@ -42,7 +49,8 @@ extension StateManager {
 
         // MARK: State Changes
         private func changeStateToActiveSearch() {
-            mainContext?.stateManager?.changeState(ActiveSearchState(context: super.context))
+            guard let mainCon = mainContext else { return }
+            stateManager?.changeState(ActiveSearchState(context: mainCon))
         }
     }
 }

@@ -1,12 +1,13 @@
-import UIKit
 import Simplerhood
+import RxSwift
+import UIKit
 
 final class Destination: UIView, RoundedEdges {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var destinationTextfield: UITextField!
     @IBOutlet weak var destinationPanelButton: UIButton!
 
-    var destinationButtonPressed: closure<Void>?
+    private(set) var buttonEmitter = PublishSubject<Void>()
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -20,7 +21,6 @@ final class Destination: UIView, RoundedEdges {
     }
 
     @IBAction private func panelWasPressed() {
-//        destinationPanelButton.isHidden = true
-        destinationButtonPressed?(())
+        buttonEmitter.onNext(())
     }
 }

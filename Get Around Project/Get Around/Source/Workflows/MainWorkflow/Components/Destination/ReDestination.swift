@@ -9,12 +9,13 @@ enum DestinationEvents {
 
 final class ReDestination: ComponentManager {
     private var destinationView: Destination?
+    private var disposeBag = DisposeBag()
     let events = PublishSubject<DestinationEvents>()
 
     internal override func childViewEvents() {
-        destinationView?.destinationButtonPressed = { [unowned self] _ in
-            self.events.onNext(DestinationEvents.press)
-        }
+        destinationView?.buttonEmitter.subscribe(onNext: { [unowned self] _ in
+            self.events.onNext(.press)
+        }).disposed(by: disposeBag)
     }
 
     // MARK: Private Component Rendering

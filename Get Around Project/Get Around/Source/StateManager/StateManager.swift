@@ -1,9 +1,10 @@
-final class StateManager {
+final public class StateManager {
     private(set) var state: State?
 
-    init() {}
+    public init() {}
 
-    func changeState(_ state: State) {
+    public func changeState(_ state: State) {
         self.state = state
+        state.completed?()
     }
 }

@@ -1,4 +1,6 @@
-extension StateManager {
+import Simplerhood
+
+extension MainContext {
     final class ActiveSearchState: BaseState {
         private var mainContext: MainContext?
 

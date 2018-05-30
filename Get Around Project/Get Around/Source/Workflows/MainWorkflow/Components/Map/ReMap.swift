@@ -3,14 +3,15 @@ import MapKit
 import RxSwift
 import Simplerhood
 
+enum MapEvents {
+    case onDrag
+    case updatedUserLocation(MKUserLocation)
+}
+
 final class ReMap: ComponentManager {
-    enum events {
-        case onDrag
-        case updatedUserLocation(MKUserLocation)
-    }
 
     private var mapView: Map?
-    let events = PublishSubject<events>()
+    let events = PublishSubject<MapEvents>()
     let geocoder = CLGeocoder()
 
     // MARK: Private Component Rendering
@@ -48,6 +49,7 @@ extension ReMap: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        events.onNext(.onDrag)
 //        store.dsMap.event.onNext(.onDrag)
     }
 

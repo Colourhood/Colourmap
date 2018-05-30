@@ -3,24 +3,26 @@ import UIKit
 
 final class MainController: UIViewController {
     // MARK: ReComponents
-    private(set) var map: ReMap!
-    private(set) var searchResults: ReSearchResults!
-    private(set) var destination: ReDestination!
-    private(set) var pin: RePin!
+    let map = ReMap()
+    let searchResults = ReSearchResults()
+    let destination = ReDestination()
+    let pin = RePin()
+
+    // MARK: Service Provider
+    private let provider = ServiceProvider()
 
     // MARK: Context
-    private(set) var mainContext: MainContext!
+    private(set) var mainContext = MainContext()
 
     // MARK: Superclass Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        map = ReMap(controller: self)
-        pin = RePin(controller: self)
-        searchResults = ReSearchResults(controller: self)
-        destination = ReDestination(controller: self)
+        map.bindController(self)
+        searchResults.bindController(self)
+        destination.bindController(self)
+        pin.bindController(self)
 
-        mainContext = MainContext(mainController: self)
-        
+        mainContext.bindController(self, provider)
     }
     
 //    func subscriptions() {

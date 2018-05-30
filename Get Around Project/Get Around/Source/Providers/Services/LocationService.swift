@@ -1,15 +1,14 @@
 import CoreLocation
 import Foundation
-import RxSwift
 
-enum LocationAuthStatus {
+public enum LocationAuthStatus {
     case authorized
     case unauthorized
 }
 
-final class LocationService: NSObject, CLLocationManagerDelegate {
+final public class LocationService: NSObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager()
-    private(set) var authStatus = PublishSubject<LocationAuthStatus>()
+    public var authStatus: closure<LocationAuthStatus>?
 
     override init() {
         super.init()
@@ -17,7 +16,7 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     }
 
     // MARK: Public methods
-    func getLocationPermission() {
+    public func getLocationPermission() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             locationAuthorized()
@@ -30,11 +29,11 @@ final class LocationService: NSObject, CLLocationManagerDelegate {
     // MARK: Private methods
     private func locationAuthorized() {
         manager.startUpdatingLocation()
-        authStatus.onNext(.authorized)
+        authStatus?(.authorized)
     }
 
     private func locationUnauthorized() {
         manager.requestWhenInUseAuthorization()
-        authStatus.onNext(.unauthorized)
+        authStatus?(.unauthorized)
     }
 }

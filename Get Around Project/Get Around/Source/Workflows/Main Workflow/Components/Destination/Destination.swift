@@ -1,13 +1,15 @@
+import UIKit.UIView
 import Simplerhood
 import RxSwift
-import UIKit
 
 final class Destination: UIView, RoundedEdges {
+    // MARK: IBOutlets
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var destinationTextfield: UITextField!
     @IBOutlet weak var destinationPanelButton: UIButton!
 
-    private(set) var buttonEmitter = PublishSubject<Void>()
+    // MARK: Class Properties
+    let buttonEmitter = PublishSubject<Void>()
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)

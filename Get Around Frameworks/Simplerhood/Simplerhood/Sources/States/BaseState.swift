@@ -20,9 +20,8 @@ open class BaseState: State {
 
     // MARK: Private methods
     private func completion() {
-        completed = { [weak self] in
-            print("State completed")
-            self?.stateEntry()
+        completed = { [unowned self] in
+            self.stateEntry()
         }
     }
 }

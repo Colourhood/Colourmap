@@ -40,8 +40,7 @@ extension MainContext {
 
         // MARK: State Changes
         private func changeStateToInitialState() {
-            guard let mainCon = mainContext else { return }
-            stateManager?.changeState(InitialState(context: mainCon))
+            stateManager?.changeState(InitialState(context: context))
         }
     }
 }

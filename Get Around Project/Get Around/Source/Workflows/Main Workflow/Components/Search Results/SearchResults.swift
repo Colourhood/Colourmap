@@ -1,26 +1,21 @@
-import UIKit
 import Simplerhood
+import UIKit
 
-class SearchResults: UITableView, RoundedEdges {
-
+final class SearchResults: UITableView, RoundedEdges {
+    // MARK: Initialization
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        customUI()
+        roundEdges(0.025)
         registerCell()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        roundEdges(0.025)
+        registerCell()
     }
 
     // MARK: Private methods
-    private func customUI() {
-        isScrollEnabled = false
-        separatorStyle = .none
-        alpha = 0.9
-        roundEdges(0.025)
-    }
-
     private func registerCell() {
         let cellName = "AddressCell"
         register(AddressCell.self, forCellReuseIdentifier: cellName)

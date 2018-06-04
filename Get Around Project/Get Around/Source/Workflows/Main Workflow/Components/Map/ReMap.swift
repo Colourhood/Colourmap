@@ -1,10 +1,11 @@
-import UIKit
-import MapKit
-import RxSwift
 import Simplerhood
+import RxSwift
+import MapKit
+import UIKit
 
 enum MapEvents {
     case onDrag
+    case onDragStopped(centerCoordinate: CLLocationCoordinate2D)
     case updatedUserLocation(MKUserLocation)
 }
 
@@ -26,6 +27,15 @@ final class ReMap: ComponentManager {
     // MARK: Private Superview Framing
     internal override func initialFrame() {
         frame = CGRect(x: 0, y: 0, width: Layout.width, height: Layout.height)
+    }
+}
+
+extension ReMap {
+    // MARK: Component Changes
+    public func centerOnUserLocation(location: CLLocation) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView?.setRegion(region, animated: true)
     }
 }
 
@@ -54,13 +64,9 @@ extension ReMap: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        //        if !store.hidePin.value {
+        events.onNext(.onDragStopped(centerCoordinate: mapView.centerCoordinate))
+//      if !store.hidePin.value {
 //        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
-//
-//        geocoder.reverseGeocodeLocation(centerLocation) { [weak self] (placemark, _) in
-////            self?.destinationSubview.destinationView?.destinationTextfield.text = placemark?.first?.name
-//        }
-        //        }
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

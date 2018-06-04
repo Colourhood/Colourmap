@@ -1,4 +1,4 @@
-import UIKit
+import UIKit.UIView
 
 public protocol RoundedEdges {
     func roundEdges(_ ratio: CGFloat)

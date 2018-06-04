@@ -27,6 +27,8 @@
 		541F0E0F20B2371000583763 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E0E20B2371000583763 /* Typealiases.swift */; };
 		541F0E1520B2374B00583763 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E1320B2374B00583763 /* Positions.swift */; };
 		541F0E1620B2374B00583763 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F0E1420B2374B00583763 /* Layout.swift */; };
+		54958D4C20BFE34800D546A6 /* Geocoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54958D4B20BFE34800D546A6 /* Geocoder+Extensions.swift */; };
+		54958D4E20C126C100D546A6 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54958D4D20C126C100D546A6 /* CLLocation+Extensions.swift */; };
 		54BAB91920B2172100A3BDA0 /* Simplerhood.h in Headers */ = {isa = PBXBuildFile; fileRef = 54BAB91720B2172100A3BDA0 /* Simplerhood.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54E61A2120B6A1E3005BC509 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E61A1E20B6A1E3005BC509 /* StateManager.swift */; };
 		54E61A2320B6A1E3005BC509 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E61A2020B6A1E3005BC509 /* State.swift */; };
@@ -44,6 +46,8 @@
 		541F0E0E20B2371000583763 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = "../../../../../Get Around Project/Get Around/Source/SwiftUtil/Typealiases.swift"; sourceTree = "<group>"; };
 		541F0E1320B2374B00583763 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Positions.swift; path = "../../../../../../Get Around Project/Get Around/Source/Layout/Positions.swift"; sourceTree = "<group>"; };
 		541F0E1420B2374B00583763 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = "../../../../../../Get Around Project/Get Around/Source/Layout/Layout.swift"; sourceTree = "<group>"; };
+		54958D4B20BFE34800D546A6 /* Geocoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geocoder+Extensions.swift"; sourceTree = "<group>"; };
+		54958D4D20C126C100D546A6 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		54BAB91420B2172100A3BDA0 /* Simplerhood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simplerhood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54BAB91720B2172100A3BDA0 /* Simplerhood.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simplerhood.h; sourceTree = "<group>"; };
 		54BAB91820B2172100A3BDA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,7 +78,7 @@
 				54E61A2520B6A20D005BC509 /* Services */,
 				54E61A1D20B6A1D7005BC509 /* States */,
 				54E61A1A20B6A1AD005BC509 /* Context */,
-				541F0E0D20B2370400583763 /* DataTypes */,
+				541F0E0D20B2370400583763 /* Data Types */,
 				54148B3220B221E2005195A9 /* UIKit */,
 			);
 			path = Sources;
@@ -107,12 +111,13 @@
 			path = "Component Manager";
 			sourceTree = "<group>";
 		};
-		541F0E0D20B2370400583763 /* DataTypes */ = {
+		541F0E0D20B2370400583763 /* Data Types */ = {
 			isa = PBXGroup;
 			children = (
 				541F0E0E20B2371000583763 /* Typealiases.swift */,
+				54958D4D20C126C100D546A6 /* CLLocation+Extensions.swift */,
 			);
-			path = DataTypes;
+			path = "Data Types";
 			sourceTree = "<group>";
 		};
 		541F0E1220B2373100583763 /* Layout & Positions */ = {
@@ -122,6 +127,14 @@
 				541F0E1420B2374B00583763 /* Layout.swift */,
 			);
 			path = "Layout & Positions";
+			sourceTree = "<group>";
+		};
+		54958D4A20BFE2C100D546A6 /* Service Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				54958D4B20BFE34800D546A6 /* Geocoder+Extensions.swift */,
+			);
+			path = "Service Extensions";
 			sourceTree = "<group>";
 		};
 		54BAB90A20B2172100A3BDA0 = {
@@ -183,6 +196,7 @@
 				54E61A2B20B6A387005BC509 /* ServiceProvider.swift */,
 				54E61A2720B6A217005BC509 /* LocationService.swift */,
 				54E61A2620B6A217005BC509 /* SearchService.swift */,
+				54958D4A20BFE2C100D546A6 /* Service Extensions */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -286,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54E61A2D20B6A387005BC509 /* ServiceProvider.swift in Sources */,
+				54958D4E20C126C100D546A6 /* CLLocation+Extensions.swift in Sources */,
 				541F0E0F20B2371000583763 /* Typealiases.swift in Sources */,
 				54E61A2120B6A1E3005BC509 /* StateManager.swift in Sources */,
 				54E61A3620B6A7C2005BC509 /* Context.swift in Sources */,
@@ -294,6 +309,7 @@
 				54E61A2320B6A1E3005BC509 /* State.swift in Sources */,
 				54E61A2920B6A217005BC509 /* LocationService.swift in Sources */,
 				541F0E1520B2374B00583763 /* Positions.swift in Sources */,
+				54958D4C20BFE34800D546A6 /* Geocoder+Extensions.swift in Sources */,
 				54E61A2820B6A217005BC509 /* SearchService.swift in Sources */,
 				54E61A3420B6A751005BC509 /* BaseState.swift in Sources */,
 				54148B3D20B22EB8005195A9 /* DismissableKeyboard.swift in Sources */,

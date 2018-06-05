@@ -74,8 +74,6 @@ extension ReDestination {
             self.frame.origin.y = Layout.height * 0.08
             self.destinationView?.layer.cornerRadius = self.frame.size.width * 0.025
             self.center.x = Position.centerX
-        }, completion: { _ in
-            //            self.showKeyboard()
         })
     }
 
@@ -88,65 +86,3 @@ extension ReDestination {
         })
     }
 }
-
-//    // MARK: Notification Center Observer
-//    private func subscriptions() {
-//        // External Subscriptions
-//        store.dsDestination.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .press:
-//                self?.animateToTop()
-//                self?.store.dsPin.event.onNext(.isHidden(val: false))
-//            }
-//        }).disposed(by: disposeBag)
-//
-//        store.dsMap.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .onDrag:
-//                self?.checkTextField()
-//            default: break
-//            }
-//        }).disposed(by: disposeBag)
-//
-////        store.destinationPanelAnimateTop.subscribe(onNext: { [weak self] in
-////            self?.showKeyboard()
-////        }).disposed(by: disposeBag)
-//
-//        store.selectedLocation.asObservable()
-//            .subscribe(onNext: { address in
-//                self.destinationView?.destinationTextfield.text = address
-//            }).disposed(by: disposeBag)
-//
-//        // Internal Subscriptions
-//        destinationView?.destinationTextfield.rx.controlEvent(.editingDidBegin)
-//            .subscribe(onNext: { [weak self] _ in
-//                self?.store.dsPin.event.onNext(.isHidden(val: false))
-//            }).disposed(by: disposeBag)
-//
-//        destinationView?.destinationTextfield.rx.controlEvent(.editingDidEndOnExit)
-//            .subscribe(onNext: { [weak self] _ in
-//                self?.store.dsSearchResults.event.onNext(.press)
-//                self?.store.dsPin.event.onNext(.isHidden(val: true))
-//            }).disposed(by: disposeBag)
-//    }
-//
-//    private func destinationDidChange() {
-//        guard let address =  destinationView?.destinationTextfield.text else { return }
-//
-//        if address.isEmpty {
-//            store.dsSearchResults.event.onNext(.press)
-//        } else {
-//            service.search.searchAddress(address)
-//        }
-//    }
-//
-//
-//    // MARK: Private Methods
-//    private func checkTextField() {
-//        guard let text = destinationView?.destinationTextfield.text else { return }
-//        store.selectedLocation.value = text
-//
-//        if text.isEmpty {
-//            animateToBottom()
-//        }
-//    }

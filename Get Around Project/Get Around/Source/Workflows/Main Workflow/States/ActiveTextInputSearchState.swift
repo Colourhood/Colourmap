@@ -11,6 +11,7 @@ extension MainContext {
 
         // MARK: Services
         private var stateManager: StateManager?
+        private var geocoder: CLGeocoder?
         private var search: SearchService?
 
         // MARK: ReComponents
@@ -24,6 +25,7 @@ extension MainContext {
             mainContext = super.context as? MainContext
 
             stateManager = mainContext?.provider?.stateManager
+            geocoder = mainContext?.provider?.geocoder
             search = mainContext?.provider?.search
 
             destination = mainContext?.controller?.destination
@@ -50,6 +52,15 @@ extension MainContext {
                         self.handleDestinationInput(destination: destinationInput)
                     case .press:
                         self.destination?.showKeyboard()
+                    }
+                }).disposed(by: disposeBag)
+
+            searchResults?.events
+                .subscribe(onNext: { [unowned self] events in
+                    switch events {
+                    case .press(let destinationAddress):
+                        self.handleSearchResultPress(destinationAddress: destinationAddress)
+                    default: break
                     }
                 }).disposed(by: disposeBag)
 
@@ -87,6 +98,17 @@ extension MainContext {
             }
         }
 
+        private func handleSearchResultPress(destinationAddress: String) {
+            geocoder?.geocodeAddressString(destinationAddress) { [unowned self] place, error in
+                if let location = place?.first?.location {
+                    self.changeStateToZoomedOutDestinationState(destination: location)
+                }
+                if let error = error {
+                    print("There was an error \(error)")
+                }
+            }
+        }
+
         private func handleMapDrag() {
             if isDestinationInputEmpty {
                 changeStateToActiveMapInputState()
@@ -96,6 +118,10 @@ extension MainContext {
         // MARK: State Changes
         private func changeStateToActiveMapInputState() {
             stateManager?.changeState(ActiveMapInputSearchState(context: context))
+        }
+
+        private func changeStateToZoomedOutDestinationState(destination: CLLocation) {
+            stateManager?.changeState(ZoomedOutDestinationState(context: context, destination: destination))
         }
     }
 }

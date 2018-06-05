@@ -32,52 +32,71 @@ final class ReMap: ComponentManager {
 
 extension ReMap {
     // MARK: Component Changes
-    public func centerOnUserLocation(location: CLLocation) {
+    func enableScrolling() {
+        mapView?.isScrollEnabled = true
+    }
+
+    func disableScrolling() {
+        mapView?.isScrollEnabled = false
+    }
+
+    func enableZooming() {
+        mapView?.isZoomEnabled = true
+    }
+
+    func disableZooming() {
+        mapView?.isZoomEnabled = false
+    }
+
+    func centerOnUserLocation(location: CLLocation) {
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView?.setRegion(region, animated: true)
     }
+
+    func zoomOutToStartAndDestination(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+        let center = findCenterPoint(start: start, destination: destination)
+
+        let latDelta = abs(start.latitude - destination.latitude) * Double(Layout.height / Layout.width) * 1.3
+        let lonDelta = abs(start.longitude - destination.longitude) * 1.6
+
+        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+        let region = MKCoordinateRegion(center: center, span: span)
+
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = destination
+
+        mapView?.addAnnotation(annotation)
+        mapView?.setRegion(region, animated: true)
+    }
+
+    func resetAnnotations() {
+        let pinAnnotations = mapView?.annotations.filter { !$0.isEqual(mapView?.userLocation) } ?? []
+        mapView?.removeAnnotations(pinAnnotations)
+    }
 }
 
 extension ReMap: MKMapViewDelegate {
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//        store.currentLocation = userLocation.coordinate
-//
-//        if !store.didCenterOnUserLocation {
-//            store.didCenterOnUserLocation = true
-//            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-//            let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-//            mapView.setRegion(region, animated: false)
-//
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//                let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
-//                let region = MKCoordinateRegion(center: userLocation.coordinate, span: span)
-//                self.mapView?.setRegion(region, animated: true)
-//            }
-//        }
-    }
 
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         events.onNext(.onDrag)
-//        store.dsMap.event.onNext(.onDrag)
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         events.onNext(.onDragStopped(centerCoordinate: mapView.centerCoordinate))
-//      if !store.hidePin.value {
-//        let centerLocation = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-
         if !annotation.isEqual(mapView.userLocation) {
             return PinMarker(annotation: annotation, reuseIdentifier: nil)
         }
         return nil
     }
+}
 
-    func findCenterPoint(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+extension ReMap {
+    // MARK: Component Helper Methods
+    private func findCenterPoint(start: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
         var center = CLLocationCoordinate2D()
 
         let lon1 = start.longitude * .pi / 180;
@@ -98,46 +117,6 @@ extension ReMap: MKMapViewDelegate {
         center.longitude = lon3 * 180 / .pi;
 
         return center
-    }
-
-    private func getDestinationLocation() {
-//        let address = store.selectedLocation.value
-//        geocoder.geocodeAddressString(address) { [weak self] (placemark, _) in
-//            self?.store.destinationLocation = placemark?.first?.location?.coordinate
-//            self?.zoomOutToStartAndDestination()
-//        }
-    }
-
-    func zoomOutToStartAndDestination() {
-//        guard let start = store.currentLocation, let destination = store.destinationLocation else { return }
-//        let center = findCenterPoint(start: start, destination: destination)
-//
-//        let latDelta = abs(start.latitude - destination.latitude) * Double(Layout.height / Layout.width) * 1.3
-//        let lonDelta = abs(start.longitude - destination.longitude) * 1.6
-//
-//        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
-//        let region = MKCoordinateRegion(center: center, span: span)
-//
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = destination
-//
-//        store.dsMap.event.onNext(.map(type: .mutedStandard))
-//        resetAnnotations()
-//        mapView?.addAnnotation(annotation)
-//        mapView?.setRegion(region, animated: true)
-        //        map.isScrollEnabled = false
-        //        map.isZoomEnabled = false
-    }
-
-    private func resetAnnotations() {
-        let pinAnnotations = mapView?.annotations.filter { !$0.isEqual(mapView?.userLocation) } ?? []
-        mapView?.removeAnnotations(pinAnnotations)
-    }
-
-    func dragToDismiss(controller: UIViewController) {
-        let dragGesture = UIPanGestureRecognizer(target: controller, action: #selector (controller.dismissKeyboard))
-        dragGesture.delegate = controller
-        addGestureRecognizer(dragGesture)
     }
 }
 

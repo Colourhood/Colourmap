@@ -5,7 +5,7 @@ import MapKit
 import UIKit
 
 enum SearchResultEvents {
-    case press
+    case press(destinationAddress: String)
     case dismiss
 }
 
@@ -99,42 +99,13 @@ extension ReSearchResults {
     }
 }
 
-
-//    private func subscriptions() {
-//        // External Subscriptions
-//        store.addressSuggestions.asObservable()
-//            .subscribe(onNext: { results in
-//                self.didShow = true
-//            }).disposed(by: disposeBag)
-//
-//        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .dismiss:
-//                self?.hideSearchResults()
-//            case .press:
-//                self?.animateDismiss()
-//            }
-//        }).disposed(by: disposeBag)
-//
-//        // Internal Subscriptions
-//        searchResults?.rx.itemSelected
-//            .subscribe(onNext: { [unowned self] index in
-//                let selectedAddress = self.store.addressSuggestions.value[index.row].title
-//                self.store.selectedLocation.value = selectedAddress
-//                self.store.dsPin.event.onNext(.isHidden(val: true))
-//                self.controller.view.endEditing(true)
-//                self.store.dsSearchResults.event.onNext(.press)
-//            }).disposed(by: disposeBag)
-//    }
-
-//    private func hideSearchResults() {
-//        let newHeight = CGFloat(0)
-//        frame.size.height = newHeight
-//        searchResults?.frame.size.height = newHeight
-//    }
-
 extension ReSearchResults: UITableViewDataSource, UITableViewDelegate {
     // MARK: TableView Delegate Methods
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellData = dataSource[indexPath.row]
+        events.onNext(.press(destinationAddress: cellData.title))
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }

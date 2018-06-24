@@ -38,6 +38,9 @@
 		09E24E36209DA8D4004E4297 /* MainContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E24E35209DA8D4004E4297 /* MainContext.swift */; };
 		54148B2D20B21F12005195A9 /* Simplerhood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54BAB93A20B21D3300A3BDA0 /* Simplerhood.framework */; };
 		54148B2E20B21F12005195A9 /* Simplerhood.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54BAB93A20B21D3300A3BDA0 /* Simplerhood.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		542BE9A920D6EBCE00606807 /* Blimp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 542BE9A820D6EBCE00606807 /* Blimp.xib */; };
+		542BE9AB20D6F78A00606807 /* ReBlimp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542BE9AA20D6F78A00606807 /* ReBlimp.swift */; };
+		542BE9AD20D6F7C000606807 /* Blimp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542BE9AC20D6F7C000606807 /* Blimp.swift */; };
 		54C3CD8520C4F97B0036CE39 /* SearchResults.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54C3CD8420C4F97B0036CE39 /* SearchResults.xib */; };
 		54C3CD8720C501AC0036CE39 /* ActiveMapInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3CD8620C501AC0036CE39 /* ActiveMapInputState.swift */; };
 		54C3CD8B20C65B5D0036CE39 /* ZoomedOutDestinationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C3CD8A20C65B5D0036CE39 /* ZoomedOutDestinationState.swift */; };
@@ -107,6 +110,9 @@
 		09C0012E20AEB91E00A8F476 /* StartupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupState.swift; sourceTree = "<group>"; };
 		09E24E31209D979C004E4297 /* ActiveTextInputSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTextInputSearchState.swift; sourceTree = "<group>"; };
 		09E24E35209DA8D4004E4297 /* MainContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContext.swift; sourceTree = "<group>"; };
+		542BE9A820D6EBCE00606807 /* Blimp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Blimp.xib; sourceTree = "<group>"; };
+		542BE9AA20D6F78A00606807 /* ReBlimp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReBlimp.swift; sourceTree = "<group>"; };
+		542BE9AC20D6F7C000606807 /* Blimp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blimp.swift; sourceTree = "<group>"; };
 		54BAB91F20B2176200A3BDA0 /* Simplerhood.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simplerhood.xcodeproj; path = "../Get Around Frameworks/Simplerhood/Simplerhood.xcodeproj"; sourceTree = "<group>"; };
 		54C3CD8420C4F97B0036CE39 /* SearchResults.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResults.xib; sourceTree = "<group>"; };
 		54C3CD8620C501AC0036CE39 /* ActiveMapInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveMapInputState.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				0921AD3120808A4200E9C608 /* Map */,
 				09B836D22081C701007E4FA1 /* Destination */,
 				09B836FE20836CBD007E4FA1 /* Search Results */,
+				54E0D6C620CA60EA004AE351 /* Blimp */,
 				0921AD3820808C6800E9C608 /* Pin */,
 			);
 			path = Components;
@@ -331,6 +338,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		542BE9A620D6EBBD00606807 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				542BE9A820D6EBCE00606807 /* Blimp.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		544FD1B020B21D51007DB632 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +378,16 @@
 				09B8370320836F3B007E4FA1 /* Cells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		54E0D6C620CA60EA004AE351 /* Blimp */ = {
+			isa = PBXGroup;
+			children = (
+				542BE9AA20D6F78A00606807 /* ReBlimp.swift */,
+				542BE9AC20D6F7C000606807 /* Blimp.swift */,
+				542BE9A620D6EBBD00606807 /* View */,
+			);
+			path = Blimp;
 			sourceTree = "<group>";
 		};
 		54E61A3120B6A6EA005BC509 /* Main Workflow */ = {
@@ -465,6 +490,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542BE9A920D6EBCE00606807 /* Blimp.xib in Resources */,
 				0921AD3A20808C8B00E9C608 /* Pin.xib in Resources */,
 				09B836D42081C73E007E4FA1 /* Destination.xib in Resources */,
 				54C3CD8520C4F97B0036CE39 /* SearchResults.xib in Resources */,
@@ -489,7 +515,9 @@
 				09B8370220836E36007E4FA1 /* SearchResults.swift in Sources */,
 				09B836F0208329FF007E4FA1 /* DataStore.swift in Sources */,
 				0921AD20208088F100E9C608 /* MainController.swift in Sources */,
+				542BE9AD20D6F7C000606807 /* Blimp.swift in Sources */,
 				09B836F82083496E007E4FA1 /* RePin.swift in Sources */,
+				542BE9AB20D6F78A00606807 /* ReBlimp.swift in Sources */,
 				0912D874208C877C00F3F2BC /* PinMarker.swift in Sources */,
 				09C0012F20AEB91E00A8F476 /* StartupState.swift in Sources */,
 				54C3CD8B20C65B5D0036CE39 /* ZoomedOutDestinationState.swift in Sources */,

@@ -1,5 +1,6 @@
 import Simplerhood
 import RxSwift
+import RxCocoa
 import MapKit
 import UIKit
 
@@ -77,6 +78,10 @@ extension ReMap {
 }
 
 extension ReMap: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        print("is user location visible: \(mapView.isUserLocationVisible)")
+    }
 
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         events.onNext(.onDrag)

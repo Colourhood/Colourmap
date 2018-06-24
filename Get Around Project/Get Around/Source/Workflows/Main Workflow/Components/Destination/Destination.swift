@@ -2,7 +2,7 @@ import UIKit.UIView
 import Simplerhood
 import RxSwift
 
-final class Destination: UIView, RoundedEdges {
+final class Destination: UIView, RoundedEdges, Shadows {
     // MARK: IBOutlets
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var destinationTextfield: UITextField!

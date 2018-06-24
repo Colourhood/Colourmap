@@ -7,6 +7,7 @@ final class MainController: UIViewController {
     let searchResults = ReSearchResults()
     let destination = ReDestination()
     let pin = RePin()
+    let blimp = ReBlimp()
 
     // MARK: Service Provider
     private let provider = ServiceProvider()
@@ -21,26 +22,8 @@ final class MainController: UIViewController {
         searchResults.bindController(self)
         destination.bindController(self)
         pin.bindController(self)
+        blimp.bindController(self)
 
         mainContext.bindController(self, provider)
     }
-    
-//    func subscriptions() {
-//        // External Subcriptions
-//        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .press:
-//                self?.getDestinationLocation()
-//            default: break
-//            }
-//        }).disposed(by: disposeBag)
-//
-//        store.dsMap.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .map(let type):
-//                self?.map.mapType = type
-//            default: break
-//            }
-//        }).disposed(by: disposeBag)
-//    }
 }

@@ -14,7 +14,7 @@ final class ReDestination: ComponentManager {
     let events = PublishSubject<DestinationEvents>()
 
     internal override func childViewEvents() {
-        destinationView?.buttonEmitter.subscribe(onNext: { [unowned self] _ in
+        destinationView?.buttonEmitter.subscribe(onNext: { [unowned self] in
             self.events.onNext(.press)
         }).disposed(by: disposeBag)
 
@@ -22,7 +22,6 @@ final class ReDestination: ComponentManager {
             .debounce(0.2, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
                 guard let destinationText = self.destinationView?.destinationTextfield.text else { return }
-
 
                 self.events.onNext(.textfieldUpdated(destination: destinationText))
             }).disposed(by: disposeBag)

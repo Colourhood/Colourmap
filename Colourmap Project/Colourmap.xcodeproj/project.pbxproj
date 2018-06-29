@@ -77,7 +77,7 @@
 /* Begin PBXFileReference section */
 		0912D86D208BC94600F3F2BC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		0912D873208C877C00F3F2BC /* PinMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinMarker.swift; sourceTree = "<group>"; };
-		0921AD1A208088F100E9C608 /* Get Around.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Around.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0921AD1A208088F100E9C608 /* Colourmap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colourmap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0921AD1D208088F100E9C608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0921AD1F208088F100E9C608 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0921AD24208088F100E9C608 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		09B836D32081C73E007E4FA1 /* Destination.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Destination.xib; sourceTree = "<group>"; };
 		09B836D52081C9EA007E4FA1 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		09B836DC2081ED65007E4FA1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Get Around.entitlements"; sourceTree = "<group>"; };
+		09B836DE2081ED6E007E4FA1 /* Colourmap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Colourmap.entitlements; sourceTree = "<group>"; };
 		09B836DF2081EDBC007E4FA1 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		09B836EC2082D083007E4FA1 /* ReDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReDestination.swift; sourceTree = "<group>"; };
 		09B836F72083496E007E4FA1 /* RePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RePin.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		09C0012E20AEB91E00A8F476 /* StartupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupState.swift; sourceTree = "<group>"; };
 		09E24E31209D979C004E4297 /* ActiveTextInputSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTextInputSearchState.swift; sourceTree = "<group>"; };
 		09E24E35209DA8D4004E4297 /* MainContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContext.swift; sourceTree = "<group>"; };
-		54BAB91F20B2176200A3BDA0 /* Simplerhood.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simplerhood.xcodeproj; path = "../Get Around Frameworks/Simplerhood/Simplerhood.xcodeproj"; sourceTree = "<group>"; };
+		54BAB91F20B2176200A3BDA0 /* Simplerhood.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simplerhood.xcodeproj; path = "../Colourmap Frameworks/Simplerhood/Simplerhood.xcodeproj"; sourceTree = "<group>"; };
 		54C3CD8420C4F97B0036CE39 /* SearchResults.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResults.xib; sourceTree = "<group>"; };
 		54C3CD8620C501AC0036CE39 /* ActiveMapInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveMapInputState.swift; sourceTree = "<group>"; };
 		54C3CD8A20C65B5D0036CE39 /* ZoomedOutDestinationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomedOutDestinationState.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		0921AD11208088F100E9C608 = {
 			isa = PBXGroup;
 			children = (
-				0921AD1C208088F100E9C608 /* Get Around */,
+				0921AD1C208088F100E9C608 /* Colourmap */,
 				09B836D92081ED5B007E4FA1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -143,25 +143,25 @@
 		0921AD1B208088F100E9C608 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0921AD1A208088F100E9C608 /* Get Around.app */,
+				0921AD1A208088F100E9C608 /* Colourmap.app */,
 			);
 			name = Products;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		0921AD1C208088F100E9C608 /* Get Around */ = {
+		0921AD1C208088F100E9C608 /* Colourmap */ = {
 			isa = PBXGroup;
 			children = (
 				0921AD2F20808A2800E9C608 /* Resources */,
 				0928AECC20AD62BB00B3B74D /* Source */,
 			);
-			path = "Get Around";
+			path = Colourmap;
 			sourceTree = "<group>";
 		};
 		0921AD2F20808A2800E9C608 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				09B836DE2081ED6E007E4FA1 /* Get Around.entitlements */,
+				09B836DE2081ED6E007E4FA1 /* Colourmap.entitlements */,
 				0921AD29208088F100E9C608 /* Info.plist */,
 				0921AD24208088F100E9C608 /* Assets.xcassets */,
 			);
@@ -358,9 +358,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0921AD19208088F100E9C608 /* Get Around */ = {
+		0921AD19208088F100E9C608 /* Colourmap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0921AD2C208088F100E9C608 /* Build configuration list for PBXNativeTarget "Get Around" */;
+			buildConfigurationList = 0921AD2C208088F100E9C608 /* Build configuration list for PBXNativeTarget "Colourmap" */;
 			buildPhases = (
 				0921AD16208088F100E9C608 /* Sources */,
 				0921AD17208088F100E9C608 /* Frameworks */,
@@ -372,9 +372,9 @@
 			dependencies = (
 				54148B3020B21F12005195A9 /* PBXTargetDependency */,
 			);
-			name = "Get Around";
-			productName = "Get Around";
-			productReference = 0921AD1A208088F100E9C608 /* Get Around.app */;
+			name = Colourmap;
+			productName = Colourmap;
+			productReference = 0921AD1A208088F100E9C608 /* Colourmap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -404,7 +404,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0921AD15208088F100E9C608 /* Build configuration list for PBXProject "Get Around" */;
+			buildConfigurationList = 0921AD15208088F100E9C608 /* Build configuration list for PBXProject "Colourmap" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -423,7 +423,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				0921AD19208088F100E9C608 /* Get Around */,
+				0921AD19208088F100E9C608 /* Colourmap */,
 			);
 		};
 /* End PBXProject section */
@@ -624,10 +624,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
+				INFOPLIST_FILE = Colourmap/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies -Onone";
-				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
+				PRODUCT_BUNDLE_IDENTIFIER = colourhood.colourmap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
@@ -645,10 +645,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Get Around/Resources/Info.plist";
+				INFOPLIST_FILE = Colourmap/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies -Onone";
-				PRODUCT_BUNDLE_IDENTIFIER = "colourhood.Get-Around";
+				PRODUCT_BUNDLE_IDENTIFIER = colourhood.colourmap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
@@ -659,7 +659,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0921AD15208088F100E9C608 /* Build configuration list for PBXProject "Get Around" */ = {
+		0921AD15208088F100E9C608 /* Build configuration list for PBXProject "Colourmap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0921AD2A208088F100E9C608 /* Debug */,
@@ -668,7 +668,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0921AD2C208088F100E9C608 /* Build configuration list for PBXNativeTarget "Get Around" */ = {
+		0921AD2C208088F100E9C608 /* Build configuration list for PBXNativeTarget "Colourmap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0921AD2D208088F100E9C608 /* Debug */,

@@ -42,20 +42,20 @@
 /* Begin PBXFileReference section */
 		54148B3820B22E67005195A9 /* RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorners.swift; sourceTree = "<group>"; };
 		54148B3A20B22E9E005195A9 /* ComponentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentManager.swift; sourceTree = "<group>"; };
-		54148B3C20B22EB8005195A9 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DismissableKeyboard.swift; path = "../../../../../../Get Around Project/Get Around/Source/HigherOrderViews/DismissableKeyboard.swift"; sourceTree = "<group>"; };
-		541F0E0E20B2371000583763 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = "../../../../../Get Around Project/Get Around/Source/SwiftUtil/Typealiases.swift"; sourceTree = "<group>"; };
-		541F0E1320B2374B00583763 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Positions.swift; path = "../../../../../../Get Around Project/Get Around/Source/Layout/Positions.swift"; sourceTree = "<group>"; };
-		541F0E1420B2374B00583763 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = "../../../../../../Get Around Project/Get Around/Source/Layout/Layout.swift"; sourceTree = "<group>"; };
+		54148B3C20B22EB8005195A9 /* DismissableKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DismissableKeyboard.swift; path = "../../../../../../Colourmap Project/Colourmap/Source/HigherOrderViews/DismissableKeyboard.swift"; sourceTree = "<group>"; };
+		541F0E0E20B2371000583763 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = "../../../../../Colourmap Project/Colourmap/Source/SwiftUtil/Typealiases.swift"; sourceTree = "<group>"; };
+		541F0E1320B2374B00583763 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Positions.swift; path = "../../../../../../Colourmap Project/Colourmap/Source/Layout/Positions.swift"; sourceTree = "<group>"; };
+		541F0E1420B2374B00583763 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layout.swift; path = "../../../../../../Colourmap Project/Colourmap/Source/Layout/Layout.swift"; sourceTree = "<group>"; };
 		54958D4B20BFE34800D546A6 /* Geocoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Geocoder+Extensions.swift"; sourceTree = "<group>"; };
 		54958D4D20C126C100D546A6 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		54BAB91420B2172100A3BDA0 /* Simplerhood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Simplerhood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54BAB91720B2172100A3BDA0 /* Simplerhood.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simplerhood.h; sourceTree = "<group>"; };
 		54BAB91820B2172100A3BDA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54BAB92B20B21B7200A3BDA0 /* ExportFramework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ExportFramework.sh; sourceTree = "<group>"; };
-		54E61A1E20B6A1E3005BC509 /* StateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateManager.swift; path = "../../../../../Get Around Project/Get Around/Source/StateManager/StateManager.swift"; sourceTree = "<group>"; };
-		54E61A2020B6A1E3005BC509 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = "../../../../../Get Around Project/Get Around/Source/StateManager/Base/State.swift"; sourceTree = "<group>"; };
-		54E61A2620B6A217005BC509 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchService.swift; path = "../../../../../Get Around Project/Get Around/Source/Providers/Services/SearchService.swift"; sourceTree = "<group>"; };
-		54E61A2720B6A217005BC509 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationService.swift; path = "../../../../../Get Around Project/Get Around/Source/Providers/Services/LocationService.swift"; sourceTree = "<group>"; };
+		54E61A1E20B6A1E3005BC509 /* StateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateManager.swift; path = "../../../../../Colourmap Project/Colourmap/Source/StateManager/StateManager.swift"; sourceTree = "<group>"; };
+		54E61A2020B6A1E3005BC509 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = State.swift; path = "../../../../../Colourmap Project/Colourmap/Source/StateManager/Base/State.swift"; sourceTree = "<group>"; };
+		54E61A2620B6A217005BC509 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchService.swift; path = "../../../../../Colourmap Project/Colourmap/Source/Providers/Services/SearchService.swift"; sourceTree = "<group>"; };
+		54E61A2720B6A217005BC509 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationService.swift; path = "../../../../../Colourmap Project/Colourmap/Source/Providers/Services/LocationService.swift"; sourceTree = "<group>"; };
 		54E61A2B20B6A387005BC509 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		54E61A3320B6A751005BC509 /* BaseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseState.swift; sourceTree = "<group>"; };
 		54E61A3520B6A7C2005BC509 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "../Get Around Frameworks/Simplerhood/Simplerhood/Resources/ExportFramework.sh";
+			shellScript = "../Colourmap Frameworks/Simplerhood/Simplerhood/Resources/ExportFramework.sh";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -100,7 +100,10 @@ extension MainContext {
 
         private func handleSearchResultPress(destinationAddress: String) {
             geocoder?.geocodeAddressString(destinationAddress) { [unowned self] place, error in
-                if let location = place?.first?.location {
+                if let suggestedPlace = place?.first {
+                    guard let location = suggestedPlace.location else { return }
+
+                    self.destination?.textfieldPlaceholder(text: suggestedPlace.name)
                     self.changeStateToZoomedOutDestinationState(destination: location)
                 }
                 if let error = error {

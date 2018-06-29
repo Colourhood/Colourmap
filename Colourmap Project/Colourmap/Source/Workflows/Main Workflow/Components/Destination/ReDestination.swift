@@ -58,6 +58,10 @@ extension ReDestination {
     func clearTextfield() {
         destinationView?.destinationTextfield.text = ""
     }
+
+    func textfieldPlaceholder(text: String?) {
+        destinationView?.destinationTextfield.text = text
+    }
 }
 
 extension ReDestination {

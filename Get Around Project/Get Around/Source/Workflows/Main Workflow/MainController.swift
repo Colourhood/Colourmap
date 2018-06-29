@@ -24,23 +24,4 @@ final class MainController: UIViewController {
 
         mainContext.bindController(self, provider)
     }
-    
-//    func subscriptions() {
-//        // External Subcriptions
-//        store.dsSearchResults.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .press:
-//                self?.getDestinationLocation()
-//            default: break
-//            }
-//        }).disposed(by: disposeBag)
-//
-//        store.dsMap.event.subscribe(onNext: { [weak self] event in
-//            switch event {
-//            case .map(let type):
-//                self?.map.mapType = type
-//            default: break
-//            }
-//        }).disposed(by: disposeBag)
-//    }
 }

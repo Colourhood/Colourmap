@@ -17,13 +17,8 @@ extension MainContext {
         }
         
         override func stateEntry() {
-            print("Start up state did allocate")
             subscribeToLocationService()
             locationService?.getLocationPermission()
-        }
-
-        override func stateExit() {
-            print("Start up state was deallocated")
         }
 
         // MARK: Private Methods
